@@ -1,0 +1,9 @@
+{
+  "prettier.singleQuote": true,
+  "prettier.jsxBracketSameLine": true,
+  "prettier.trailingComma": "all",
+  "prettier.jsxSingleQuote": true,
+  "prettier.packageManager": "yarn",
+  "prettier.proseWrap": "never",
+  "prettier.quoteProps": "preserve"
+}
