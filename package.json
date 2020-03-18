@@ -2,7 +2,7 @@
   "name": "online-store-5-frontend",
   "private": true,
   "version": "0.1.0",
-  "author": "Fr0ntender",
+  "author": "Eduard Kirilov <kev987.free@ya.ru>",
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
     "@material-ui/core": "^4.9.1",
