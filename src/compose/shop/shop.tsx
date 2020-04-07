@@ -34,7 +34,7 @@ export const Shop: React.FC<IProps> = ({ classes, data }) => {
       <SEO title="Shop" />
       <h1>Карты товаров</h1>
       <Grid container spacing={4}>
-        {products.map((item) => (
+        {products.map(item => (
           <Grid item key={v4()} xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <CardMedia
@@ -46,9 +46,7 @@ export const Shop: React.FC<IProps> = ({ classes, data }) => {
                 <Typography gutterBottom variant="h5" component="h2">
                   {item.title}
                 </Typography>
-                <Typography>
-                  {item.subtitle}
-                </Typography>
+                <Typography>{item.subtitle}</Typography>
               </CardContent>
               <CardActions>
                 <Button size="small" color="primary">

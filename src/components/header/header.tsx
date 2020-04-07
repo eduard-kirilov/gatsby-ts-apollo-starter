@@ -22,13 +22,14 @@ import {
   MoreVert,
 } from '@material-ui/icons';
 
-type IProps = {
+interface IProps {
   classes: {
     [key: string]: string;
   };
+  handleOpen?: () => {};
 };
 
-export const Header: React.FC<IProps> = ({ classes }) => {
+export const Header: React.FC<IProps> = ({ classes, handleOpen }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isLogin, setLogin] = React.useState<Boolean>(false);
   const [
@@ -39,9 +40,9 @@ export const Header: React.FC<IProps> = ({ classes }) => {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const toggleLogin = () => {
-    setLogin(!isLogin);
-  };
+  // const toggleLogin = () => {
+  //   setLogin(!isLogin);
+  // };
 
   const handleLogout = () => {
     setLogin(false);
@@ -191,7 +192,7 @@ export const Header: React.FC<IProps> = ({ classes }) => {
               </>
             )}
             {!isLogin && (
-              <Button color="inherit" onClick={toggleLogin}>
+              <Button color="inherit" onClick={handleOpen}>
                 Войти
               </Button>
             )}

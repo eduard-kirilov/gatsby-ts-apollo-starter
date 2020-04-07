@@ -6,20 +6,20 @@ import { styles } from './home.styles';
 import { productsQuery } from '../../shema/query';
 import { Home } from './home';
 
-interface ISearchProduct {
-  name: string;
-  payType: string;
-  isFavorite: boolean;
-}
+// interface ISearchProduct {
+//   name: string;
+//   payType: string;
+//   isFavorite: boolean;
+// }
 
-const searchProduct = graphql(productsQuery, {
-  options: ({
-    name = '',
-    payType = '',
-    isFavorite = false,
-  }: ISearchProduct) => ({
-    variables: { name, payType, isFavorite },
-  }),
-});
+// const searchProduct = graphql(productsQuery, {
+//   options: ({
+//     name = '',
+//     payType = '',
+//     isFavorite = false,
+//   }: ISearchProduct) => ({
+//     variables: { name, payType, isFavorite },
+//   }),
+// });
 
-export default compose(searchProduct, withStyles(styles))(Home);
+export default compose(withStyles(styles))(Home);
