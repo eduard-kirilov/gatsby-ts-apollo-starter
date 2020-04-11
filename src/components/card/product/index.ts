@@ -5,8 +5,8 @@
 */
 import { compose } from 'recompose';
 import { withStyles } from '@material-ui/styles';
-import { Modal as ModalComponent } from './modal'
-import { styles } from './modal.styles';
+import { CardProduct as CardProductComponent } from './card-product'
+import { styles } from './card-product.styles';
 
 
-export const Modal = compose(withStyles(styles))(ModalComponent)
+export const CardProduct = compose(withStyles(styles))(CardProductComponent)

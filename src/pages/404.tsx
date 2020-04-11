@@ -1,14 +1,18 @@
+/**
+* React, Gatsby, Jest, TypeScript, Apollo - Starter
+* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+* Copyright (c) 2020 Eduard Kirilov | MIT License
+*/
 import * as React from 'react';
 
-import { Layout } from '../components/layout';
-import { SEO } from '../components/seo';
+import { LayoutWrapper } from 'containers/not-found/layout';
+import { ContentContainer } from 'containers/not-found/content';
+
 
 const NotFoundPage: React.FC = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+  <LayoutWrapper>
+    <ContentContainer page="notFound" />
+  </LayoutWrapper>
 );
 
 export default NotFoundPage;

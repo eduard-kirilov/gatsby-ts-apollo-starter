@@ -1,12 +1,16 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+<h1 align="start">
+  React, Gatsby, Jest, TypeScript, Apollo - Starter
+</h1>
+<p>It is too early to use this starter at the moment! Work in progress.</p>
 <p align="center">
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
   </a>
 </p>
-<h1 align="center">
+<h4 align="start">
   Developed with the assistance of Gatsby
-</h1>
+</h4>
 
 ## 🚀 Quick start
 
@@ -49,15 +53,30 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     .
     ├── node_modules
     ├── src
+    ├──/──components
+    ├──/──containers
+    ├──/──images
+    ├──/──pages
+    ├──/──shema
+    ├──/──styles
+    ├──/──utils
+    ├── .env
     ├── .gitignore
     ├── .prettierrc
     ├── gatsby-browser.js
     ├── gatsby-config.js
     ├── gatsby-node.js
     ├── gatsby-ssr.js
+    ├── jest-preprocess.js
+    ├── jest.config.js
+    ├── jest.setup.js
     ├── LICENSE
-    ├── package-lock.json
+    ├── LICENSE - gatsbyjs
+    ├── loadershim.js
     ├── package.json
+    ├── tempPolyfills.js
+    ├── tsconfig.json
+    ├── yarn.lock
     └── README.md
 
 1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.

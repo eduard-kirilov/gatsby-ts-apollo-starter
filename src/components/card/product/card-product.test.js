@@ -7,16 +7,16 @@ import * as React from 'react';
 import { createMount } from '@material-ui/core/test-utils';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import theme from '../../styles/theme'
-import { Header } from './index';
+import theme from 'styles/theme'
+import { CardProduct } from './index';
 
-describe('Header', () => {
+describe('CardProduct', () => {
   let mount;
 
   const ComponentTest = () => {
     return (
       <ThemeProvider theme={theme}>
-        <Header />
+        <CardProduct />
       </ThemeProvider>
     );
   }

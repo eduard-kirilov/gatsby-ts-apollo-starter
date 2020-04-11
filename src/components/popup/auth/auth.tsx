@@ -1,3 +1,8 @@
+/**
+* React, Gatsby, Jest, TypeScript, Apollo - Starter
+* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+* Copyright (c) 2020 Eduard Kirilov | MIT License
+*/
 import * as React from 'react';
 import {
   TextField,
@@ -10,17 +15,16 @@ import {
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
-import { Modal } from '../../modal';
+import { IClasses } from 'utils/interface';
+
+import { Modal } from 'components/modal';
 
 interface IProps {
-  classes: {
-    [key: string]: string;
-  };
   handleClose?: () => {};
   open?: boolean;
 }
 
-export const PopupAuth: React.FC<IProps> = ({
+export const PopupAuth: React.FC<IProps & IClasses> = ({
   classes,
   handleClose,
   open = false,

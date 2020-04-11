@@ -1,3 +1,8 @@
+/**
+* React, Gatsby, Jest, TypeScript, Apollo - Starter
+* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+* Copyright (c) 2020 Eduard Kirilov | MIT License
+*/
 import { Theme, fade } from '@material-ui/core/styles';
 import { createStyles } from '@material-ui/styles';
 

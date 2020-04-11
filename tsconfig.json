@@ -1,14 +1,24 @@
 {
   "compilerOptions": {
-      "outDir": "./dist/",
-      "sourceMap": true,
-      "noImplicitAny": true,
-      "module": "commonjs",
-      "target": "esnext",
-      "jsx": "react",
-      "lib": ["dom", "es2015", "es2017"]
+    "outDir": "./public/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2017"],
+    "baseUrl": "./src",
+    "paths": {
+      "components/*": ["components/*"],
+      "containers/*": ["containers/*"],
+      "images/*": ["images/*"],
+      "pages/*": ["pages/*"],
+      "shema/*": ["shema/*"],
+      "styles/*": ["styles/*"],
+      "utils/*": ["utils/*"],
+    }
   },
   "include": [
-      "./src/**/*"
+    "./src/**/*"
   ]
 }

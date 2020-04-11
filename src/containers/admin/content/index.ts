@@ -1,10 +1,13 @@
+/**
+* React, Gatsby, Jest, TypeScript, Apollo - Starter
+* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+* Copyright (c) 2020 Eduard Kirilov | MIT License
+*/
 import { compose } from 'recompose';
 import { graphql } from 'react-apollo';
-import { withStyles } from '@material-ui/styles';
 
-import { styles } from './admin.styles';
-import { productsQuery } from '../../shema/query';
-import { Admin } from './admin';
+import { productsQuery } from 'shema/query';
+import { Content } from 'components/content';
 
 interface ISearchProduct {
   name: string;
@@ -22,4 +25,4 @@ const searchProduct = graphql(productsQuery, {
   }),
 });
 
-export default compose(searchProduct, withStyles(styles))(Admin);
+export const ContentContainer = compose(searchProduct)(Content);

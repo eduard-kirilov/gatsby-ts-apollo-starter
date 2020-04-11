@@ -1,5 +1,5 @@
 {
-  "name": "online-store-5-frontend",
+  "name": "gatsby-apollo-ts-starter",
   "private": true,
   "version": "0.1.0",
   "author": "Eduard Kirilov <kev987.free@ya.ru>",
@@ -18,6 +18,7 @@
     "clsx": "^1.1.0",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-manifest": "^2.2.39",
     "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-offline": "^3.0.32",
@@ -48,7 +49,13 @@
     "prettier": "^1.19.1"
   },
   "keywords": [
-    "gatsby"
+    "react",
+    "gatsby",
+    "material-ui",
+    "apollo",
+    "graphql",
+    "jest",
+    "typescript"
   ],
   "license": "MIT",
   "scripts": {
@@ -62,9 +69,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/eduard-kirilov/gatsby-ts-apollo-starter"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/eduard-kirilov/gatsby-ts-apollo-starter/issues"
   }
 }

@@ -1,18 +1,18 @@
+/**
+* React, Gatsby, Jest, TypeScript, Apollo - Starter
+* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+* Copyright (c) 2020 Eduard Kirilov | MIT License
+*/
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-
+import { IClasses } from 'utils/interface';
 import { Container } from '@material-ui/core';
 
-import { Header } from '../header';
-import { PopupAuth } from '../popup';
+import { Header } from 'components/header';
+import { PopupAuth } from 'components/popup';
 
-interface IProps {
-  classes: {
-    [key: string]: string;
-  };
-};
 
-export const Layout: React.FC<IProps> = ({ classes, children }) => {
+export const Layout: React.FC<IClasses> = ({ classes, children }) => {
   const [modalOpen, setModalOpen] = React.useState<Boolean>(false);
 
   const handleOpen = () => {

@@ -1,5 +1,11 @@
+/**
+* React, Gatsby, Jest, TypeScript, Apollo - Starter
+* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+* Copyright (c) 2020 Eduard Kirilov | MIT License
+*/
 import * as React from 'react';
 import { Link as LinkG } from 'gatsby';
+import { IClasses } from 'utils/interface';
 
 import {
   AppBar,
@@ -23,13 +29,10 @@ import {
 } from '@material-ui/icons';
 
 interface IProps {
-  classes: {
-    [key: string]: string;
-  };
   handleOpen?: () => {};
 };
 
-export const Header: React.FC<IProps> = ({ classes, handleOpen }) => {
+export const Header: React.FC<IProps & IClasses> = ({ classes, handleOpen }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isLogin, setLogin] = React.useState<Boolean>(false);
   const [

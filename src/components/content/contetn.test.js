@@ -8,15 +8,15 @@ import { createMount } from '@material-ui/core/test-utils';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from '../../styles/theme'
-import { Header } from './index';
+import { Content } from './index';
 
-describe('Header', () => {
+describe('Content', () => {
   let mount;
 
-  const ComponentTest = () => {
+  const HeaderTest = () => {
     return (
       <ThemeProvider theme={theme}>
-        <Header />
+        <Content />
       </ThemeProvider>
     );
   }
@@ -30,6 +30,6 @@ describe('Header', () => {
   });
 
   it('Component Header should work', () => {
-    mount(<ComponentTest />);
+    mount(<HeaderTest />);
   });
 });
