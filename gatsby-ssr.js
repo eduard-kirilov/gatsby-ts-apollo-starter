@@ -1,9 +1,8 @@
 /**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
-
+* React, Gatsby, Jest, TypeScript, Apollo - Starter
+* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+* Copyright (c) 2020 Eduard Kirilov | MIT License
+*/
 // You can delete this file if you're not using it
 import React from 'react'
 import { ApolloProvider } from 'react-apollo'

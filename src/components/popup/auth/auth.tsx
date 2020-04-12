@@ -15,27 +15,23 @@ import {
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
-import { IClasses } from 'utils/interface';
-
-import { Modal } from 'components/modal';
+import { IClasses, IAllStringProps } from 'utils/interface';
 
 interface IProps {
-  handleClose?: () => {};
-  open?: boolean;
+  createUser?: () => void;
 }
 
 export const PopupAuth: React.FC<IProps & IClasses> = ({
   classes,
-  handleClose,
-  open = false,
+  createUser,
 }) => {
   const [state, setState] = React.useState({
     email: '',
     password: '',
     showPassword: false,
   });
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const { name, value } = e.currentTarget;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
     setState({
       ...state,
       [name]: value,
@@ -47,11 +43,16 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
   const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
   };
-
-  console.log(state.email);
+  const handleCreateUser = () => {
+    createUser({
+      email: state.email,
+      password: state.password
+    });
+  }
+  console.log(createUser)
   return (
-    <Modal handleClose={handleClose} open={open}>
-      <h2 className={classes.title}>Авторизация</h2>
+    <>
+      <h2 className={classes.title}>Вход или Регистрация</h2>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField
           name="email"
@@ -98,12 +99,16 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
           <Button variant="contained" color="primary" className={classes.button}>
             Войти
           </Button>
-          <span className={classes.text}>Если у вас нет аккаунта создайте его:</span>
-          <Button variant="outlined" color="primary" className={classes.button}>
-            Создать аккаунт
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            onClick={handleCreateUser}
+          >
+            Регистрация
           </Button>
         </div>
       </form>
-    </Modal>
+    </>
   );
 };

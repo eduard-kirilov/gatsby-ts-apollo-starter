@@ -14,17 +14,12 @@ export const productsQuery = gql`
     }
   }
 `;
-
-// export const productsQuery = gql`
-//   query courses($name: String, $payType: String, $isFavorite: Boolean) {
-//     products(name: $name, payType: $payType, isFavorite: $isFavorite) {
-//       id
-//       chakras
-//       bgUrl
-//       payType
-//       customType
-//       isFavorite
-//       name
-//     }
-//   }
-// `;
+export const usersQuery = gql`
+  query usersQuery {
+    users {
+      _id
+      email
+      password
+    }
+  }
+`;

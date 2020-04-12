@@ -4,16 +4,16 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import * as React from 'react';
-import { IClasses } from 'utils/interface';
+import { IClasses, IChildren } from 'utils/interface';
 
 import { Modal as ModalMatireal, Backdrop, Fade } from '@material-ui/core';
 
 interface IProps {
-  handleClose?: () => {};
+  handleClose?: () => void;
   open?: boolean;
 }
 
-export const Modal: React.FC<IProps & IClasses> = ({
+export const Modal: React.FC<IProps & IClasses & IChildren> = ({
   classes,
   children,
   handleClose,

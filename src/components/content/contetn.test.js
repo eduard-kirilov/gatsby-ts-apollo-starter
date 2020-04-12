@@ -7,13 +7,13 @@ import * as React from 'react';
 import { createMount } from '@material-ui/core/test-utils';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import theme from '../../styles/theme'
+import theme from 'styles/theme'
 import { Content } from './index';
 
 describe('Content', () => {
   let mount;
 
-  const HeaderTest = () => {
+  const ContentTest = () => {
     return (
       <ThemeProvider theme={theme}>
         <Content />
@@ -29,7 +29,7 @@ describe('Content', () => {
     mount.cleanUp();
   });
 
-  it('Component Header should work', () => {
-    mount(<HeaderTest />);
+  it('Component Content should work', () => {
+    mount(<ContentTest />);
   });
 });

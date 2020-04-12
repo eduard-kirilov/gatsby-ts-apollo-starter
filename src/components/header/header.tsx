@@ -29,7 +29,7 @@ import {
 } from '@material-ui/icons';
 
 interface IProps {
-  handleOpen?: () => {};
+  handleOpen?: () => void;
 };
 
 export const Header: React.FC<IProps & IClasses> = ({ classes, handleOpen }) => {

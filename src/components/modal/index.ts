@@ -8,5 +8,9 @@ import { withStyles } from '@material-ui/styles';
 import { Modal as ModalComponent } from './modal'
 import { styles } from './modal.styles';
 
+interface IProps {
+  handleClose?(): void;
+  open: boolean;
+}
 
-export const Modal = compose(withStyles(styles))(ModalComponent)
+export const Modal = compose<any, IProps>(withStyles(styles))(ModalComponent)

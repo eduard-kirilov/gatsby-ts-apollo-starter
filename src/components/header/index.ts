@@ -8,5 +8,8 @@ import { withStyles } from '@material-ui/styles';
 import { Header as HeaderComponent } from './header'
 import { styles } from './header.styles';
 
+interface IProps {
+  handleOpen?(): void;
+}
 
-export const Header = compose(withStyles(styles))(HeaderComponent)
+export const Header = compose<any, IProps>(withStyles(styles))(HeaderComponent)

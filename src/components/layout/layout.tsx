@@ -4,45 +4,32 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import * as React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { IClasses } from 'utils/interface';
 import { Container } from '@material-ui/core';
 
 import { Header } from 'components/header';
 import { PopupAuth } from 'components/popup';
+import { Modal } from 'components/modal';
 
+interface IProps {
+  auth?: React.ReactNode;
+};
 
-export const Layout: React.FC<IClasses> = ({ classes, children }) => {
-  const [modalOpen, setModalOpen] = React.useState<Boolean>(false);
-
-  const handleOpen = () => {
-    setModalOpen(true);
-  };
-
-  const handleClose = () => {
-    setModalOpen(false);
-  };
-
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+export const Layout: React.FC<IProps & IClasses> = ({ auth, children }) => {
+  const [modalOpen, setModalOpen] = React.useState<boolean>(false);
 
   return (
     <>
-      <Header handleOpen={handleOpen} />
+      <Header handleOpen={() => setModalOpen(true)} />
       <Container maxWidth="lg">
         {children}
       </Container>
-      <PopupAuth
-        handleClose={handleClose}
+      <Modal
+        handleClose={() => setModalOpen(false)}
         open={modalOpen}
-      />
+      >
+        {auth}
+      </Modal>
     </>
   );
 };

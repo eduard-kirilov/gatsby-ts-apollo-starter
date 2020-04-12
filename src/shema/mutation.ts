@@ -5,6 +5,19 @@
 */
 import { gql } from "apollo-boost";
 
+export const createUserMutation = gql`
+  mutation createUser(
+    $email: String!,
+    $password: String!
+  ) {
+    createUser(
+      email: $email,
+      password: $password
+    ) {
+      userId
+    }
+  }
+`
 export const addProductMutation = gql`
   mutation addProduct(
     $num: Int!

@@ -1,9 +1,8 @@
 /**
-* React, Gatsby, Jest, TypeScript, GraphQL - Starter Kit
-* https://github.com/eduard-kirilov/Online-store-5-frontend
+* React, Gatsby, Jest, TypeScript, Apollo - Starter
+* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';

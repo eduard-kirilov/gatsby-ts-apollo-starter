@@ -8,11 +8,14 @@ import * as React from 'react';
 import { IChildren } from 'utils/interface';
 
 import { LayoutContainer } from 'containers/admin/layout/layout'
+import { PopupAuth } from 'containers/popup';
 import { SEO } from 'components/seo';
 
 
 export const LayoutWrapper: React.FC<IChildren> = ({ children }) => (
-  <LayoutContainer>
+  <LayoutContainer
+    auth={<PopupAuth />}
+  >
     <SEO title="Shop" />
     {children}
   </LayoutContainer>
