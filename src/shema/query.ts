@@ -20,6 +20,8 @@ export const usersQuery = gql`
       _id
       email
       password
+      createdAt
+      updatedAt
     }
   }
 `;

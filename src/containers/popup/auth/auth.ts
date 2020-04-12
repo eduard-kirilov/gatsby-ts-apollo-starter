@@ -11,9 +11,9 @@ import { createUserMutation } from 'shema/mutation';
 import { usersQuery } from 'shema/query';
 import { PopupAuth } from 'components/popup';
 
-const createUser = graphql(createUserMutation, {
+const signUp = graphql(createUserMutation, {
   props: ({ mutate }) => ({
-    createUser: ({
+    signUp: ({
       email,
       password,
     }: IAllStringProps) => mutate({
@@ -28,4 +28,4 @@ const createUser = graphql(createUserMutation, {
   }),
 });
 
-export const PopupAuthContainer = compose(createUser)(PopupAuth);
+export const PopupAuthContainer = compose(signUp)(PopupAuth);

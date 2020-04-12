@@ -18,12 +18,12 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { IClasses, IAllStringProps } from 'utils/interface';
 
 interface IProps {
-  createUser?: () => void;
+  signUp?: (props: IAllStringProps) => void;
 }
 
 export const PopupAuth: React.FC<IProps & IClasses> = ({
   classes,
-  createUser,
+  signUp,
 }) => {
   const [state, setState] = React.useState({
     email: '',
@@ -43,13 +43,13 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
   const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
   };
-  const handleCreateUser = () => {
-    createUser({
+  const handleSignUp = () => {
+    signUp({
       email: state.email,
       password: state.password
     });
   }
-  console.log(createUser)
+
   return (
     <>
       <h2 className={classes.title}>Вход или Регистрация</h2>
@@ -103,7 +103,7 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
             variant="outlined"
             color="primary"
             className={classes.button}
-            onClick={handleCreateUser}
+            onClick={handleSignUp}
           >
             Регистрация
           </Button>
