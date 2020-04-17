@@ -5,13 +5,13 @@
 */
 import * as React from 'react';
 
-import { LayoutWrapper } from 'containers/not-found/layout';
-import { ContentContainer } from 'containers/not-found/content';
+import { LayoutWrapper } from 'compose/not-found/layout';
+import { ContentCompose } from 'compose/not-found/content';
 
 
 const NotFoundPage: React.FC = () => (
   <LayoutWrapper>
-    <ContentContainer page="notFound" />
+    <ContentCompose page="notFound" />
   </LayoutWrapper>
 );
 

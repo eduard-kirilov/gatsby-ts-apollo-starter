@@ -1,8 +1,8 @@
 /**
-* React, Gatsby, Jest, TypeScript, Apollo - Starter
-* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
-* Copyright (c) 2020 Eduard Kirilov | MIT License
-*/
+ * React, Gatsby, Jest, TypeScript, Apollo - Starter
+ * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+ * Copyright (c) 2020 Eduard Kirilov | MIT License
+ */
 import * as React from 'react';
 import { IClasses, IChildren } from 'utils/interface';
 
@@ -18,23 +18,21 @@ export const Modal: React.FC<IProps & IClasses & IChildren> = ({
   children,
   handleClose,
   open = false,
-}) => {
-  return (
-    <ModalMatireal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
-      className={classes.modal}
-      open={open}
-      onClose={handleClose}
-      closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        timeout: 500,
-      }}
-    >
-      <Fade in={open}>
-        <div className={classes.modalWrap}>{children}</div>
-      </Fade>
-    </ModalMatireal>
-  );
-};
+}) => (
+  <ModalMatireal
+    aria-labelledby="transition-modal-title"
+    aria-describedby="transition-modal-description"
+    className={classes.modal}
+    open={open}
+    onClose={handleClose}
+    closeAfterTransition
+    BackdropComponent={Backdrop}
+    BackdropProps={{
+      timeout: 500,
+    }}
+  >
+    <Fade in={open}>
+      <div className={classes.modalWrap}>{children}</div>
+    </Fade>
+  </ModalMatireal>
+);

@@ -6,7 +6,7 @@
 import { gql } from "apollo-boost";
 
 export const productsQuery = gql`
-  query productsQuery($title: String) {
+  query products($title: String) {
     products(title: $title) {
       title
       subtitle
@@ -15,11 +15,20 @@ export const productsQuery = gql`
   }
 `;
 export const usersQuery = gql`
-  query usersQuery {
+  query users {
     users {
       _id
       email
-      password
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const userQuery = gql`
+  query user {
+    users {
+      _id
+      email
       createdAt
       updatedAt
     }

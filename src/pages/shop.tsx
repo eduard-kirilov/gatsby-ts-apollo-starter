@@ -5,13 +5,13 @@
 */
 import * as React from 'react';
 
-import { LayoutWrapper } from 'containers/shop/layout';
-import { ContentContainer } from 'containers/shop/content';
+import { LayoutWrapper } from 'compose/shop/layout';
+import { ContentCompose } from 'compose/shop/content';
 
 
 const Shop: React.FC = () => (
   <LayoutWrapper>
-    <ContentContainer page="shop" />
+    <ContentCompose page="shop" />
   </LayoutWrapper>
 );
 

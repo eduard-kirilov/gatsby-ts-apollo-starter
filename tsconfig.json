@@ -10,7 +10,9 @@
     "baseUrl": "./src",
     "paths": {
       "components/*": ["components/*"],
-      "containers/*": ["containers/*"],
+      "compose/*": ["compose/*"],
+      "ducks/*": ["ducks/*"],
+      "gql/*": ["gql/*"],
       "images/*": ["images/*"],
       "pages/*": ["pages/*"],
       "shema/*": ["shema/*"],

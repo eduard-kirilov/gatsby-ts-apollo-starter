@@ -5,13 +5,13 @@
 */
 import * as React from 'react';
 
-import { LayoutWrapper } from 'containers/admin/layout';
-import { ContentContainer } from 'containers/admin/content';
+import { LayoutWrapper } from 'compose/admin/layout';
+import { ContentCompose } from 'compose/admin/content';
 
 
 const Admin: React.FC = () => (
   <LayoutWrapper>
-    <ContentContainer page="admin" />
+    <ContentCompose page="admin" />
   </LayoutWrapper>
 );
 

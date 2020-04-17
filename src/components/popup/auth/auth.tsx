@@ -19,36 +19,31 @@ import { IClasses, IAllStringProps } from 'utils/interface';
 
 interface IProps {
   signUp?: (props: IAllStringProps) => void;
+  handleLogin?: (props: IAllStringProps) => void;
+  data: any;
 }
 
 export const PopupAuth: React.FC<IProps & IClasses> = ({
   classes,
-  signUp,
+  handleLogin,
+  data,
 }) => {
-  const [state, setState] = React.useState({
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [userData, setUserData] = React.useState({
     email: '',
     password: '',
-    showPassword: false,
   });
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setState({
-      ...state,
+    setUserData({
+      ...userData,
       [name]: value,
     });
-  };
-  const handleClickShowPassword = () => {
-    setState({ ...state, showPassword: !state.showPassword });
   };
   const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
   };
-  const handleSignUp = () => {
-    signUp({
-      email: state.email,
-      password: state.password
-    });
-  }
 
   return (
     <>
@@ -59,7 +54,7 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
           id="outlined-basic"
           label="Email"
           variant="outlined"
-          value={state.email}
+          value={userData.email}
           className={classes.input}
           onChange={handleChange}
           size="small"
@@ -73,19 +68,19 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
           <OutlinedInput
             name="password"
             id="outlined-adornment-password"
-            type={state.showPassword ? 'text' : 'password'}
-            value={state.password}
+            type={showPassword ? 'text' : 'password'}
+            value={userData.password}
             onChange={handleChange}
             labelWidth={70}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
+                  onClick={() => setShowPassword(!showPassword)}
                   onMouseDown={handleMouseDownPassword}
                   edge="end"
                 >
-                  {state.showPassword ? (
+                  {showPassword ? (
                     <Visibility fontSize="small" />
                   ) : (
                     <VisibilityOff fontSize="small" />
@@ -96,14 +91,18 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
           />
         </FormControl>
         <div className={classes.buttonSet}>
-          <Button variant="contained" color="primary" className={classes.button}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={() => handleLogin(userData)}
+          >
             Войти
           </Button>
           <Button
             variant="outlined"
             color="primary"
             className={classes.button}
-            onClick={handleSignUp}
           >
             Регистрация
           </Button>

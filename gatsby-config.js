@@ -42,12 +42,14 @@ module.exports = {
       options: {
         alias: {
           "components": "src/components",
-          "containers": "src/containers",
+          "compose": "src/compose",
+          "ducks": "src/ducks",
+          "gql": "src/gql",
           "images": "src/images",
           "pages": "src/pages",
           "shema": "src/shema",
-          "styles": "content/styles",
-          "utils": "content/utils",
+          "styles": "src/styles",
+          "utils": "src/utils",
         },
         extensions: [
           "js",
