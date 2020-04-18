@@ -5,6 +5,7 @@
 */
 import * as React from 'react';
 import { Link as LinkG } from 'gatsby';
+// import { useQuery } from '@apollo/client';
 import { IClasses } from 'utils/interface';
 
 import {
@@ -30,11 +31,13 @@ import {
 
 interface IProps {
   handleOpen?: () => void;
+  data: any;
 };
 
-export const Header: React.FC<IProps & IClasses> = ({ classes, handleOpen }) => {
+export const Header: React.FC<IProps & IClasses> = ({ classes, handleOpen, data }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isLogin, setLogin] = React.useState<Boolean>(false);
+  
   const [
     mobileMoreAnchorEl,
     setMobileMoreAnchorEl,

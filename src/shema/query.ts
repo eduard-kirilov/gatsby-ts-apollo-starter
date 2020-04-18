@@ -3,9 +3,9 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-import { gql } from "apollo-boost";
+import { gql } from '@apollo/client';
 
-export const productsQuery = gql`
+export const PRODUCTS_QUERY = gql`
   query products($title: String) {
     products(title: $title) {
       title
@@ -14,7 +14,7 @@ export const productsQuery = gql`
     }
   }
 `;
-export const usersQuery = gql`
+export const USERS_QUERY = gql`
   query users {
     users {
       _id
@@ -24,9 +24,9 @@ export const usersQuery = gql`
     }
   }
 `;
-export const userQuery = gql`
-  query user {
-    users {
+export const USER_QUERY = gql`
+  query user($id: ID) {
+    user(_id: $id) {
       _id
       email
       createdAt

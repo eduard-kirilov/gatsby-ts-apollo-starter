@@ -4,6 +4,8 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import * as React from 'react';
+
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 import {
   TextField,
   FormControl,
@@ -13,27 +15,31 @@ import {
   IconButton,
   Button,
 } from '@material-ui/core';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
 
+import { signUpMutation, loginMutation } from 'shema/mutation';
 import { IClasses, IAllStringProps } from 'utils/interface';
 
 interface IProps {
+  handleClose?: () => void;
   signUp?: (props: IAllStringProps) => void;
-  handleLogin?: (props: IAllStringProps) => void;
+  login?: (props: IAllStringProps) => void;
   data: any;
 }
 
-export const PopupAuth: React.FC<IProps & IClasses> = ({
-  classes,
-  handleLogin,
-  data,
-}) => {
+export const PopupAuth: React.FC<IProps & IClasses> = (props) => {
+  const {
+    handleClose,
+    classes,
+    signUp,
+    login,
+  } = props;
+  console.log('props ', props);
   const [showPassword, setShowPassword] = React.useState(false);
   const [userData, setUserData] = React.useState({
     email: '',
     password: '',
   });
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData({
@@ -45,6 +51,15 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
     e.preventDefault();
   };
 
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { name } = e.currentTarget;
+    const handlers: any = {
+      login: () => login(userData),
+      signUp: () => signUp(userData),
+    };
+    name in handlers && handlers[name]();
+    handleClose();
+  }
   return (
     <>
       <h2 className={classes.title}>Вход или Регистрация</h2>
@@ -92,17 +107,20 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
         </FormControl>
         <div className={classes.buttonSet}>
           <Button
+            name="login"
             variant="contained"
             color="primary"
             className={classes.button}
-            onClick={() => handleLogin(userData)}
+            onClick={handleSubmit}
           >
             Войти
           </Button>
           <Button
+            name="signUp"
             variant="outlined"
             color="primary"
             className={classes.button}
+            onClick={handleSubmit}
           >
             Регистрация
           </Button>

@@ -4,22 +4,23 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 // You can delete this file if you're not using it
-import React from 'react'
-import { Provider } from 'react-redux';
-import { ApolloProvider } from 'react-apollo'
-import ApolloClient from 'apollo-boost'
-import fetch from 'isomorphic-fetch'
-import { store } from './configureStore';
+import React from 'react';
+import {
+  ApolloClient,
+  ApolloProvider,
+  HttpLink,
+  InMemoryCache,
+} from '@apollo/client';
+import fetch from 'isomorphic-fetch';
 
 export const client = new ApolloClient({
-  uri: process.env.GATSBY_API_URL,
+  cache: new InMemoryCache(),
+  link: new HttpLink({
+    uri: process.env.GATSBY_API_URL,
+  }),
   fetch,
-})
+});
 
 export const wrapRootElement = ({ element }) => (
-  <Provider store={store}>
-    <ApolloProvider client={client}>
-      {element}
-    </ApolloProvider>
-  </Provider>
-)
+  <ApolloProvider client={client}>{element}</ApolloProvider>
+);

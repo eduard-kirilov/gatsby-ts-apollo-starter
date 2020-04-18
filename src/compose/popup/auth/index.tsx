@@ -5,11 +5,24 @@
 */
 import * as React from 'react';
 
-import { PopupAuthCompose } from './auth';
-import { ModalCompose } from './modal';
+import { PopupAuth as PopupAuthComponent } from 'components/popup';
+import { Modal } from 'components/modal';
 
-export const PopupAuth: React.FC = () => (
-  <ModalCompose>
-    <PopupAuthCompose />
-  </ModalCompose>
+interface IProps {
+  open: boolean;
+  handleClose: () => void;
+}
+
+export const PopupAuth: React.FC<IProps> = ({
+  open,
+  handleClose,
+}) => (
+  <Modal
+    open={open}
+    handleClose={handleClose}
+  >
+    <PopupAuthComponent
+      handleClose={handleClose}
+    />
+  </Modal>
 )

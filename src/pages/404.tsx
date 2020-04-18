@@ -6,12 +6,13 @@
 import * as React from 'react';
 
 import { LayoutWrapper } from 'compose/not-found/layout';
-import { ContentCompose } from 'compose/not-found/content';
-
+import { Content } from 'components/content';
+import { SEO } from 'components/seo';
 
 const NotFoundPage: React.FC = () => (
   <LayoutWrapper>
-    <ContentCompose page="notFound" />
+    <SEO title="404: Not found" />
+    <Content page="notFound" />
   </LayoutWrapper>
 );
 

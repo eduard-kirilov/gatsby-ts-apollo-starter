@@ -6,11 +6,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import ui from './src/ducks/ui';
-import auth from './src/ducks/auth';
 
 export const store = configureStore({
   reducer: {
     ui,
-    auth,
   },
 });

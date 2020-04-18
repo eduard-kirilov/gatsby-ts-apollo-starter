@@ -11,8 +11,6 @@
     "paths": {
       "components/*": ["components/*"],
       "compose/*": ["compose/*"],
-      "ducks/*": ["ducks/*"],
-      "gql/*": ["gql/*"],
       "images/*": ["images/*"],
       "pages/*": ["pages/*"],
       "shema/*": ["shema/*"],

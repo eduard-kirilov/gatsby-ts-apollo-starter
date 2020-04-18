@@ -1,24 +1,25 @@
 /**
-* React, Gatsby, Jest, TypeScript, Apollo - Starter
-* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
-* Copyright (c) 2020 Eduard Kirilov | MIT License
-*/
+ * React, Gatsby, Jest, TypeScript, Apollo - Starter
+ * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+ * Copyright (c) 2020 Eduard Kirilov | MIT License
+ */
 import React from 'react';
-import { Provider } from 'react-redux';
-import { ApolloProvider } from 'react-apollo';
-import ApolloClient from 'apollo-boost';
+import {
+  ApolloClient,
+  ApolloProvider,
+  HttpLink,
+  InMemoryCache,
+} from '@apollo/client';
 import fetch from 'isomorphic-fetch';
-import { store } from './configureStore';
 
 export const client = new ApolloClient({
-  uri: process.env.GATSBY_API_URL,
+  cache: new InMemoryCache(),
+  link: new HttpLink({
+    uri: process.env.GATSBY_API_URL,
+  }),
   fetch,
 });
 
 export const wrapRootElement = ({ element }) => (
-  <Provider store={store}>
-    <ApolloProvider client={client}>
-      {element}
-    </ApolloProvider>
-  </Provider>
+  <ApolloProvider client={client}>{element}</ApolloProvider>
 );

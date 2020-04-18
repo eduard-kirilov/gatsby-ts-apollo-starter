@@ -3,9 +3,9 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-import { gql } from "apollo-boost";
+import { gql } from '@apollo/client';
 
-export const signUpMutation = gql`
+export const SIGN_UP__MUTATION  = gql`
   mutation signUp(
     $email: String!,
     $password: String!
@@ -18,7 +18,7 @@ export const signUpMutation = gql`
     }
   }
 `;
-export const loginMutation = gql`
+export const LOGIN_MUTATION  = gql`
   mutation login(
     $email: String!,
     $password: String!
@@ -34,7 +34,7 @@ export const loginMutation = gql`
       }
   }
 `;
-export const addProductMutation = gql`
+export const ADD_PRODUCT_MUTATION  = gql`
   mutation addProduct(
     $num: Int!
     $isbn: String!
@@ -65,7 +65,7 @@ export const addProductMutation = gql`
     }
   }
 `;
-export const upProductMutation = gql`
+export const UP_PRODUCT_MUTATION  = gql`
   mutation upProduct(
     $id: ID!
     $num: Int!
@@ -98,7 +98,7 @@ export const upProductMutation = gql`
     }
   }
 `;
-export const delProductMutation = gql`
+export const DEK_PRODUCT_MUTATION  = gql`
   mutation delProduct($id: ID) {
     delProduct(id: $id) {
       id

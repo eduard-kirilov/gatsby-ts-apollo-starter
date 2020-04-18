@@ -5,13 +5,14 @@
 */
 import * as React from 'react';
 
-import { LayoutWrapper } from 'compose/admin/layout';
-import { ContentCompose } from 'compose/admin/content';
-
+import { LayoutWrapper } from 'compose/layout';
+import { Content } from 'components/content';
+import { SEO } from 'components/seo';
 
 const Admin: React.FC = () => (
   <LayoutWrapper>
-    <ContentCompose page="admin" />
+    <SEO title="Admin" />
+    <Content page="admin" />
   </LayoutWrapper>
 );
 
