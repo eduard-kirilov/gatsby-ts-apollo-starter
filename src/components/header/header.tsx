@@ -1,12 +1,11 @@
 /**
-* React, Gatsby, Jest, TypeScript, Apollo - Starter
-* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
-* Copyright (c) 2020 Eduard Kirilov | MIT License
-*/
+ * React, Gatsby, Jest, TypeScript, Apollo - Starter
+ * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+ * Copyright (c) 2020 Eduard Kirilov | MIT License
+ */
 import * as React from 'react';
 import { Link as LinkG } from 'gatsby';
-// import { useQuery } from '@apollo/client';
-import { IClasses } from 'utils/interface';
+import { IClasses, IAllStringProps } from 'utils/interface';
 
 import {
   AppBar,
@@ -19,6 +18,7 @@ import {
   MenuItem,
   Toolbar,
   Typography,
+  LinearProgress,
 } from '@material-ui/core';
 
 import {
@@ -30,14 +30,22 @@ import {
 } from '@material-ui/icons';
 
 interface IProps {
+  authorized: boolean;
+  loading: boolean;
   handleOpen?: () => void;
-  data: any;
-};
+  currentUser: IAllStringProps;
+}
 
-export const Header: React.FC<IProps & IClasses> = ({ classes, handleOpen, data }) => {
+export const Header: React.FC<IProps & IClasses> = ({
+  classes,
+  handleOpen,
+  currentUser,
+  authorized,
+  loading,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isLogin, setLogin] = React.useState<Boolean>(false);
-  
+
   const [
     mobileMoreAnchorEl,
     setMobileMoreAnchorEl,
@@ -204,6 +212,7 @@ export const Header: React.FC<IProps & IClasses> = ({ classes, handleOpen, data 
             )}
           </Toolbar>
         </Container>
+        {loading && <LinearProgress />}
       </AppBar>
       {renderMobileMenu}
       {renderMenu}

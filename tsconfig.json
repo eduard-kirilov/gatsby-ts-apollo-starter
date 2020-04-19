@@ -11,9 +11,9 @@
     "paths": {
       "components/*": ["components/*"],
       "compose/*": ["compose/*"],
+      "gql/*": ["gql/*"],
       "images/*": ["images/*"],
       "pages/*": ["pages/*"],
-      "shema/*": ["shema/*"],
       "styles/*": ["styles/*"],
       "utils/*": ["utils/*"],
     }

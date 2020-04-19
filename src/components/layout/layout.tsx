@@ -4,9 +4,14 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
-import { IClasses } from 'utils/interface';
+import { IChildren, IClasses } from 'utils/interface';
 import { Container } from '@material-ui/core';
 
-export const Layout: React.FC<IClasses> = ({ children }) => (
-  <Container maxWidth="lg">{children}</Container>
+export const Layout: React.FC<IChildren & IClasses> = ({
+  children,
+  classes,
+}) => (
+  <Container maxWidth="lg" className={classes.root}>
+    {children}
+  </Container>
 );

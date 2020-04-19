@@ -24,9 +24,9 @@ export const USERS_QUERY = gql`
     }
   }
 `;
-export const USER_QUERY = gql`
-  query user($id: ID) {
-    user(_id: $id) {
+export const CURENT_USER_QUERY = gql`
+  query currentUser {
+    currentUser {
       _id
       email
       createdAt

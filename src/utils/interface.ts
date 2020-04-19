@@ -18,3 +18,9 @@ export interface ICardProduct {
   title: string;
   subtitle: string;
 }
+export interface IAutorize {
+  authorized: boolean;
+  loading: boolean;
+  error?: string;
+  currentUser?: any;
+}

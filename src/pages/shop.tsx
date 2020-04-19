@@ -8,12 +8,19 @@ import * as React from 'react';
 import { LayoutWrapper } from 'compose/layout';
 import { Products } from 'components/products';
 import { SEO } from 'components/seo';
+import { AuthContext } from 'utils/authorize';
+
+import { IAutorize } from 'utils/interface';
 
 const Shop: React.FC = () => (
-  <LayoutWrapper>
-    <SEO title="Shop" />
-    <Products />
-  </LayoutWrapper>
+  <AuthContext.Consumer>
+    {(auth: IAutorize) => (
+      <LayoutWrapper auth={auth}>
+        <SEO title="Shop" />
+        <Products />
+      </LayoutWrapper>
+    )}
+  </AuthContext.Consumer>
 );
 
 export default Shop;

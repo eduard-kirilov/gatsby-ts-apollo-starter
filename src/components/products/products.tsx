@@ -8,7 +8,7 @@ import * as React from 'react';
 import { useQuery } from '@apollo/client';
 import { v4 } from 'uuid';
 import { Grid, LinearProgress } from '@material-ui/core';
-import { PRODUCTS_QUERY } from 'shema/query';
+import { PRODUCTS_QUERY } from 'gql/query';
 
 import { ICardProduct, IAllStringProps } from 'utils/interface';
 import { CardProduct } from 'components/card/product';

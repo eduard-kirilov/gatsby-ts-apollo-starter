@@ -9,7 +9,10 @@ import { Header as HeaderComponent } from './header'
 import { styles } from './header.styles';
 
 interface IProps {
-  handleOpen?(): void;
+  authorized: boolean;
+  loading: boolean;
+  handleOpen?: () => void;
+  currentUser: IAllStringProps;
 }
 
 export const Header = compose<any, IProps>(withStyles(styles))(HeaderComponent)

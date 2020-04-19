@@ -8,12 +8,19 @@ import * as React from 'react';
 import { LayoutWrapper } from 'compose/layout';
 import { Content } from 'components/content';
 import { SEO } from 'components/seo';
+import { AuthContext } from 'utils/authorize';
+
+import { IAutorize } from 'utils/interface';
 
 const Home: React.FC = () => (
-  <LayoutWrapper>
-    <SEO title="Home" />
-    <Content page="home" />
-  </LayoutWrapper>
-);
+  <AuthContext.Consumer>
+    {(auth: IAutorize) => (
+      <LayoutWrapper auth={auth}>
+        <SEO title="Home" />
+        <Content page="home" />
+      </LayoutWrapper>
+    )}
+  </AuthContext.Consumer>
+)
 
 export default Home;

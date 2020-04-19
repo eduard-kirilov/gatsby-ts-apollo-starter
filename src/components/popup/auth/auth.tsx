@@ -16,7 +16,6 @@ import {
   Button,
 } from '@material-ui/core';
 
-import { signUpMutation, loginMutation } from 'shema/mutation';
 import { IClasses, IAllStringProps } from 'utils/interface';
 
 interface IProps {
