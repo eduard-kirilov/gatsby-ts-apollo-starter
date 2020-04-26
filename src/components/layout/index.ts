@@ -6,7 +6,7 @@
 import { compose } from 'recompose';
 import { withStyles } from '@material-ui/styles';
 import { Layout as LayoutComponent } from './layout'
-import { styles } from './layout.styles';
+import { styles } from './styles';
 
 interface IProps {
   loading: boolean;

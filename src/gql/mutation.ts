@@ -5,20 +5,24 @@
 */
 import { gql } from '@apollo/client';
 
-export const SIGNUP__MUTATION  = gql`
-  mutation signUp(
+export const SIGNUP_MUTATION = gql`
+  mutation signup(
     $email: String!,
     $password: String!
   ) {
-    signUp(
+    signup(
       email: $email,
       password: $password
     ) {
       _id
+      email
+      password
+      createdAt
+      updatedAt
     }
   }
 `;
-export const LOGIN_MUTATION  = gql`
+export const LOGIN_MUTATION = gql`
   mutation login(
     $email: String!,
     $password: String!
@@ -35,7 +39,12 @@ export const LOGIN_MUTATION  = gql`
       }
   }
 `;
-export const ADD_PRODUCT_MUTATION  = gql`
+export const LOGOUT_MUTATION = gql`
+  mutation logout{
+    logout
+  }
+`;
+export const ADD_PRODUCT_MUTATION = gql`
   mutation addProduct(
     $num: Int!
     $isbn: String!
@@ -66,7 +75,7 @@ export const ADD_PRODUCT_MUTATION  = gql`
     }
   }
 `;
-export const UP_PRODUCT_MUTATION  = gql`
+export const UP_PRODUCT_MUTATION = gql`
   mutation upProduct(
     $id: ID!
     $num: Int!
@@ -99,7 +108,7 @@ export const UP_PRODUCT_MUTATION  = gql`
     }
   }
 `;
-export const DEK_PRODUCT_MUTATION  = gql`
+export const DEK_PRODUCT_MUTATION = gql`
   mutation delProduct($id: ID) {
     delProduct(id: $id) {
       id

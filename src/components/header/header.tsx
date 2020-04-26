@@ -30,14 +30,16 @@ import {
 
 interface IProps {
   authorized: boolean;
-  handleOpen?: () => void;
   currentUser: IAllStringProps;
+  handleOpen?: () => void;
+  logout?: () => void;
 }
 
 export const Header: React.FC<IProps & IClasses> = ({
   classes,
   handleOpen,
   currentUser,
+  logout,
   authorized,
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -50,11 +52,6 @@ export const Header: React.FC<IProps & IClasses> = ({
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleLogout = () => {
-    setLogin(false);
-    handleMenuClose();
-  };
-
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -66,6 +63,11 @@ export const Header: React.FC<IProps & IClasses> = ({
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
+  };
+
+  const handleLogout = () => {
+    logout();
+    handleMenuClose();
   };
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -101,22 +103,6 @@ export const Header: React.FC<IProps & IClasses> = ({
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <Mail />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <Notifications />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -126,7 +112,7 @@ export const Header: React.FC<IProps & IClasses> = ({
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <div>{currentUser && currentUser.email}</div>
       </MenuItem>
     </Menu>
   );
@@ -160,29 +146,20 @@ export const Header: React.FC<IProps & IClasses> = ({
               <>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
-                  <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                      <Mail />
-                    </Badge>
-                  </IconButton>
-                  <IconButton
-                    aria-label="show 17 new notifications"
-                    color="inherit"
-                  >
-                    <Badge badgeContent={17} color="secondary">
-                      <Notifications />
-                    </Badge>
-                  </IconButton>
-                  <IconButton
-                    edge="end"
+                  <div
+                    className={classes.profile}
                     aria-label="account of current user"
                     aria-controls={menuId}
                     aria-haspopup="true"
                     onClick={handleProfileMenuOpen}
-                    color="inherit"
                   >
-                    <AccountCircle />
-                  </IconButton>
+                    <IconButton edge="end" color="inherit">
+                      <AccountCircle />
+                    </IconButton>
+                    <div className={classes.profileEmail}>
+                      {currentUser && currentUser.email}
+                    </div>
+                  </div>
                 </div>
                 <div className={classes.sectionMobile}>
                   <IconButton

@@ -7,10 +7,10 @@ import * as React from 'react';
 import { useMutation } from '@apollo/client';
 
 import { CURRENT_USER_QUERY } from 'gql/query';
-import { LOGIN_MUTATION, SIGNUP__MUTATION } from 'gql/mutation';
+import { LOGIN_MUTATION, SIGNUP_MUTATION } from 'gql/mutation';
 import { PopupAuth as PopupAuthComponent } from 'components/popup';
 import { Modal } from 'components/modal';
-import { IClasses, IAllStringProps } from 'utils/interface';
+import { IAllStringProps } from 'utils/interface';
 
 interface IProps {
   open: boolean;
@@ -22,7 +22,7 @@ export const PopupAuth: React.FC<IProps> = ({
   handleClose,
 }) => {
   const [signup] = useMutation(
-    SIGNUP__MUTATION,
+    SIGNUP_MUTATION,
     {
       update: (cache, { data }) => cache.writeQuery({
         query: CURRENT_USER_QUERY,
@@ -50,15 +50,16 @@ export const PopupAuth: React.FC<IProps> = ({
   const handleLogin = (userData: IAllStringProps) => {
     login({ variables: userData })
   }
+
   return (
     <Modal
       open={open}
       handleClose={handleClose}
     >
       <PopupAuthComponent
+        handleClose={handleClose}
         handleLogin={handleLogin}
         handleSignup={handleSignup}
-        handleClose={handleClose}
       />
     </Modal>
   )

@@ -6,7 +6,7 @@
 import { compose } from 'recompose';
 import { withStyles } from '@material-ui/styles';
 import { Modal as ModalComponent } from './modal'
-import { styles } from './modal.styles';
+import { styles } from './styles';
 
 interface IProps {
   handleClose?(): void;

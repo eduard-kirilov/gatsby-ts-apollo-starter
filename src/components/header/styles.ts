@@ -110,4 +110,13 @@ export const styles = (theme: Theme) =>
         display: 'none',
       },
     },
+    profile: {
+      display: 'flex',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      cursor: 'pointer',
+    },
+    profileEmail: {
+      marginLeft: 15,
+    }
   });

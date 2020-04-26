@@ -8,7 +8,7 @@ import { v4 } from 'uuid';
 import { Grid } from '@material-ui/core';
 
 import { ICardProduct, IAllStringProps } from 'utils/interface';
-import { CardProduct } from 'components/card/product';
+import { CardProduct } from 'components/card';
 
 interface IProps {
   products?: [IAllStringProps];

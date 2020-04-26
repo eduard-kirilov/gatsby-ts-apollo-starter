@@ -6,7 +6,7 @@
 import { compose } from 'recompose';
 import { withStyles } from '@material-ui/styles';
 import { Products as ProductsComponent } from './products'
-import { styles } from './products.styles';
+import { styles } from './styles';
 import { IAllStringProps } from 'utils/interface';
 
 interface IProps {
