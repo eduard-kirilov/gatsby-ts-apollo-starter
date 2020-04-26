@@ -7,10 +7,10 @@ import { compose } from 'recompose';
 import { withStyles } from '@material-ui/styles';
 import { Header as HeaderComponent } from './header'
 import { styles } from './header.styles';
+import { IAllStringProps } from 'utils/interface';
 
 interface IProps {
   authorized: boolean;
-  loading: boolean;
   handleOpen?: () => void;
   currentUser: IAllStringProps;
 }

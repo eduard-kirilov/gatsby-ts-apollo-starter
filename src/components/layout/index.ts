@@ -8,4 +8,8 @@ import { withStyles } from '@material-ui/styles';
 import { Layout as LayoutComponent } from './layout'
 import { styles } from './layout.styles';
 
-export const Layout = compose(withStyles(styles))(LayoutComponent);
+interface IProps {
+  loading: boolean;
+}
+
+export const Layout = compose<any, IProps>(withStyles(styles))(LayoutComponent);

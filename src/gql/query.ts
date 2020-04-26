@@ -19,16 +19,18 @@ export const USERS_QUERY = gql`
     users {
       _id
       email
+      password
       createdAt
       updatedAt
     }
   }
 `;
-export const CURENT_USER_QUERY = gql`
+export const CURRENT_USER_QUERY = gql`
   query currentUser {
     currentUser {
       _id
       email
+      password
       createdAt
       updatedAt
     }

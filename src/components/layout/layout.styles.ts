@@ -11,4 +11,7 @@ export const styles = () =>
     root: {
       marginTop: 65,
     },
+    progress: {
+      zIndex: 1202,
+    }
   });

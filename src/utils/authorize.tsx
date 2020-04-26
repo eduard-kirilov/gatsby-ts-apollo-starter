@@ -5,8 +5,7 @@
  */
 import * as React from 'react';
 import { useQuery } from '@apollo/client';
-
-import { CURENT_USER_QUERY } from 'gql/query';
+import { CURRENT_USER_QUERY } from 'gql/query';
 import { IChildren, IAllStringProps } from 'utils/interface';
 
 interface IQuery {
@@ -20,8 +19,7 @@ export const AuthContext = React.createContext({
 })
 
 export const AuthProvider: React.FC<IChildren> = ({ children, ...rest }) => {
-  const { loading, error, data } = useQuery<IQuery>(CURENT_USER_QUERY);
-  console.log('AuthProvider ', data)
+  const { loading, error, data } = useQuery<IQuery>(CURRENT_USER_QUERY);
 
   const newProps = {
     authorized: !!(data && data.currentUser),

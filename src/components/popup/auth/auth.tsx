@@ -20,19 +20,16 @@ import { IClasses, IAllStringProps } from 'utils/interface';
 
 interface IProps {
   handleClose?: () => void;
-  signUp?: (props: IAllStringProps) => void;
-  login?: (props: IAllStringProps) => void;
-  data: any;
+  handleSignup?: (props: IAllStringProps) => void;
+  handleLogin?: (props: IAllStringProps) => void;
 }
 
-export const PopupAuth: React.FC<IProps & IClasses> = (props) => {
-  const {
-    handleClose,
-    classes,
-    signUp,
-    login,
-  } = props;
-  console.log('props ', props);
+export const PopupAuth: React.FC<IProps & IClasses> = ({
+  handleClose,
+  classes,
+  handleSignup,
+  handleLogin,
+}) => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [userData, setUserData] = React.useState({
     email: '',
@@ -46,6 +43,7 @@ export const PopupAuth: React.FC<IProps & IClasses> = (props) => {
       [name]: value,
     });
   };
+
   const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
   };
@@ -53,8 +51,8 @@ export const PopupAuth: React.FC<IProps & IClasses> = (props) => {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     const { name } = e.currentTarget;
     const handlers: any = {
-      login: () => login(userData),
-      signUp: () => signUp(userData),
+      login: () => handleLogin(userData),
+      signup: () => handleSignup(userData),
     };
     name in handlers && handlers[name]();
     handleClose();
@@ -115,7 +113,7 @@ export const PopupAuth: React.FC<IProps & IClasses> = (props) => {
             Войти
           </Button>
           <Button
-            name="signUp"
+            name="signup"
             variant="outlined"
             color="primary"
             className={classes.button}

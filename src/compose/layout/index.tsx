@@ -27,12 +27,13 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
 
   const { authorized, loading, currentUser } = auth;
   return (
-    <Layout>
+    <Layout
+      loading={loading}
+    >
       <Header
         authorized={authorized}
         currentUser={currentUser}
         handleOpen={() => setOpenPopupAuth(true)}
-        loading={loading}
       />
       {children}
       <PopupAuth

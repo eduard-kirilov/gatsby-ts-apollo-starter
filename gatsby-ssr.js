@@ -18,6 +18,7 @@ export const client = new ApolloClient({
   link: new HttpLink({
     uri: process.env.GATSBY_API_URL,
   }),
+  credentials: 'same-origin',
   fetch,
 });
 

@@ -6,7 +6,7 @@
 import * as React from 'react';
 
 import { LayoutWrapper } from 'compose/layout';
-import { Products } from 'components/products';
+import { ProductsCompose } from 'compose/shop/products';
 import { SEO } from 'components/seo';
 import { AuthContext } from 'utils/authorize';
 
@@ -17,7 +17,7 @@ const Shop: React.FC = () => (
     {(auth: IAutorize) => (
       <LayoutWrapper auth={auth}>
         <SEO title="Shop" />
-        <Products />
+        <ProductsCompose />
       </LayoutWrapper>
     )}
   </AuthContext.Consumer>

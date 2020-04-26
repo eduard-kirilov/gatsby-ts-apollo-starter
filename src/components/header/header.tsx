@@ -18,7 +18,6 @@ import {
   MenuItem,
   Toolbar,
   Typography,
-  LinearProgress,
 } from '@material-ui/core';
 
 import {
@@ -31,7 +30,6 @@ import {
 
 interface IProps {
   authorized: boolean;
-  loading: boolean;
   handleOpen?: () => void;
   currentUser: IAllStringProps;
 }
@@ -41,10 +39,8 @@ export const Header: React.FC<IProps & IClasses> = ({
   handleOpen,
   currentUser,
   authorized,
-  loading,
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [isLogin, setLogin] = React.useState<Boolean>(false);
 
   const [
     mobileMoreAnchorEl,
@@ -53,10 +49,6 @@ export const Header: React.FC<IProps & IClasses> = ({
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  // const toggleLogin = () => {
-  //   setLogin(!isLogin);
-  // };
 
   const handleLogout = () => {
     setLogin(false);
@@ -164,7 +156,7 @@ export const Header: React.FC<IProps & IClasses> = ({
                 inputProps={{ 'aria-label': 'search' }}
               />
             </div>
-            {isLogin && (
+            {authorized && (
               <>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
@@ -205,14 +197,13 @@ export const Header: React.FC<IProps & IClasses> = ({
                 </div>
               </>
             )}
-            {!isLogin && (
+            {!authorized && (
               <Button color="inherit" onClick={handleOpen}>
                 Войти
               </Button>
             )}
           </Toolbar>
         </Container>
-        {loading && <LinearProgress />}
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
