@@ -1,19 +1,17 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import { ThemeProvider } from 'styled-components';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
 
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { ThemeProvider } from '@material-ui/styles'
+import theme from 'styles/theme'
 
-import theme from '../../src/styles/theme'
-
-export default function TopLayout(props) {
+export default function TopLayout({ children }) {
   return (
-    <React.Fragment>
+    <MuiThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-            {props.children}
+        {children}
       </ThemeProvider>
-    </React.Fragment>
+    </MuiThemeProvider>
   )
 }
 

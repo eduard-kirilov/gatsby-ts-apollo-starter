@@ -6,33 +6,46 @@
 import * as React from 'react';
 import { Link as LinkG } from 'gatsby';
 import { IClasses, IAllStringProps } from 'utils/interface';
-
 import {
   AppBar,
-  Badge,
   Button,
   Container,
   IconButton,
-  InputBase,
   Menu,
   MenuItem,
-  Toolbar,
-  Typography,
 } from '@material-ui/core';
 
 import {
-  Search,
   AccountCircle,
-  Mail,
-  Notifications,
   MoreVert,
 } from '@material-ui/icons';
+
+import {
+  LogoWrapper,
+  NavItems,
+  Wrapper,
+  NavRight,
+  NavLeft,
+  Toolbar,
+  Link,
+  LinkLogo,
+  LogoLeftStyled,
+  LogoRightStyled,
+  ProfileEmail,
+  Profile,
+} from './styles';
 
 interface IProps {
   authorized: boolean;
   currentUser: IAllStringProps;
   handleOpen?: () => void;
   logout?: () => void;
+}
+
+interface IProfileMenu {
+  title: string;
+  link?: string;
+  action?: () => void;
 }
 
 export const Header: React.FC<IProps & IClasses> = ({
@@ -51,6 +64,26 @@ export const Header: React.FC<IProps & IClasses> = ({
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const menu: IAllStringProps[] = [
+    {
+      title: 'Магазин',
+      link: '/shop',
+    }
+  ];
+  
+  const menuProfile: IProfileMenu[]  = [
+    {
+      title: 'Профиль',
+      link: '/profile',
+    }, {
+      title: 'Настройки',
+      link: '/settings',
+    },  {
+      title: 'Выйти',
+      action: () => handleLogout,
+    }
+  ];
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -85,10 +118,11 @@ export const Header: React.FC<IProps & IClasses> = ({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Профиль</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Настройки</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Администрирование</MenuItem>
-      <MenuItem onClick={handleLogout}>Выйти</MenuItem>
+      {menuProfile.map((item) => item.link ? (
+        <MenuItem href={item.link} key={item.title}>{item.title}</MenuItem>
+      ) : (
+        <MenuItem onClick={item.action} key={item.title}>{item.title}</MenuItem>
+      ))}
     </Menu>
   );
 
@@ -112,54 +146,47 @@ export const Header: React.FC<IProps & IClasses> = ({
         >
           <AccountCircle />
         </IconButton>
-        <div>{currentUser && currentUser.email}</div>
+        <div>Профиль</div>
       </MenuItem>
     </Menu>
   );
   return (
-    <div className={classes.root}>
+    <Wrapper>
       <AppBar position="fixed" className={classes.appBar}>
         <Container maxWidth="lg">
-          <Toolbar disableGutters={true}>
-            <Typography className={classes.title} variant="h6" noWrap>
-              <LinkG to="/">Material-UI</LinkG>
-            </Typography>
-            <nav className={classes.navItems}>
-              <Button className={classes.buttonLink}>
-                <LinkG to="/shop">Магазин</LinkG>
-              </Button>
-            </nav>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <Search />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>
-            {authorized && (
-              <>
+          <Toolbar>
+            <NavLeft>
+              <LinkLogo to="/">
+                <LogoWrapper>
+                  <LogoLeftStyled />
+                  <LogoRightStyled />
+                </LogoWrapper>
+              </LinkLogo>
+              <NavItems>
+                {menu.map((item) => (
+                  <Button key={item.title}>
+                    <Link to={item.link}>{item.title}</Link>
+                  </Button>
+                ))}
+              </NavItems>
+            </NavLeft>
+            {authorized ? (
+              <NavRight>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
-                  <div
-                    className={classes.profile}
+                  <Profile
                     aria-label="account of current user"
                     aria-controls={menuId}
                     aria-haspopup="true"
                     onClick={handleProfileMenuOpen}
                   >
-                    <IconButton edge="end" color="inherit">
+                    <Button>
                       <AccountCircle />
-                    </IconButton>
-                    <div className={classes.profileEmail}>
-                      {currentUser && currentUser.email}
-                    </div>
-                  </div>
+                      <ProfileEmail>
+                        {currentUser && currentUser.email}
+                      </ProfileEmail>
+                    </Button>
+                  </Profile>
                 </div>
                 <div className={classes.sectionMobile}>
                   <IconButton
@@ -172,18 +199,19 @@ export const Header: React.FC<IProps & IClasses> = ({
                     <MoreVert />
                   </IconButton>
                 </div>
-              </>
-            )}
-            {!authorized && (
-              <Button color="inherit" onClick={handleOpen}>
-                Войти
-              </Button>
+              </NavRight>
+            ) : (
+              <NavRight>
+                <Button color="inherit" onClick={handleOpen}>
+                  Войти
+                </Button>
+              </NavRight>
             )}
           </Toolbar>
         </Container>
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-    </div>
+    </Wrapper>
   );
 };

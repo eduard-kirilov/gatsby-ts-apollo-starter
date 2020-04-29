@@ -43,6 +43,7 @@ module.exports = {
         alias: {
           "components": "src/components",
           "compose": "src/compose",
+          "content": "src/content",
           "gql": "src/gql",
           "images": "src/images",
           "pages": "src/pages",
@@ -52,6 +53,14 @@ module.exports = {
         extensions: [
           "js",
         ],
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/
+        }
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

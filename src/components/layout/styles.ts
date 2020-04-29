@@ -6,10 +6,10 @@
 import { Theme } from '@material-ui/core/styles';
 import { createStyles } from '@material-ui/styles';
 
-export const styles = () =>
+export const styles = (theme: Theme) =>
   createStyles({
     root: {
-      marginTop: 65,
+      marginTop: theme.mixins.toolbar.minHeight,
     },
     progress: {
       zIndex: 1202,
