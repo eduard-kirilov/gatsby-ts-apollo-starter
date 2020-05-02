@@ -16,7 +16,9 @@ describe('Header', () => {
   const HeaderTest = () => {
     return (
       <ThemeProvider theme={theme}>
-        <Header />
+        <Header
+          authorized={false}
+        />
       </ThemeProvider>
     );
   }

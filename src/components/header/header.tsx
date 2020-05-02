@@ -4,10 +4,8 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
-import { Link as LinkG } from 'gatsby';
-import { IClasses, IAllStringProps } from 'utils/interface';
+import { IAllStringProps } from 'utils/interface';
 import {
-  AppBar,
   Button,
   Container,
   IconButton,
@@ -21,6 +19,7 @@ import {
 } from '@material-ui/icons';
 
 import {
+  AppBarStyled,
   LogoWrapper,
   NavItems,
   Wrapper,
@@ -32,7 +31,9 @@ import {
   LogoLeftStyled,
   LogoRightStyled,
   ProfileEmail,
+  SectionDesktop,
   Profile,
+  SectionMobile,
 } from './styles';
 
 interface IProps {
@@ -48,8 +49,7 @@ interface IProfileMenu {
   action?: () => void;
 }
 
-export const Header: React.FC<IProps & IClasses> = ({
-  classes,
+export const Header: React.FC<IProps> = ({
   handleOpen,
   currentUser,
   logout,
@@ -67,8 +67,24 @@ export const Header: React.FC<IProps & IClasses> = ({
 
   const menu: IAllStringProps[] = [
     {
-      title: 'Магазин',
-      link: '/shop',
+      title: 'Блог',
+      link: '/blog',
+    }
+  ];
+  
+  const menuMobile: IProfileMenu[]  = [
+    {
+      title: 'Блог',
+      link: '/blog',
+    }, {
+      title: 'Профиль',
+      link: '/profile',
+    }, {
+      title: 'Настройки',
+      link: '/settings',
+    }, {
+      title: 'Выйти',
+      action: () => handleLogout,
     }
   ];
   
@@ -79,7 +95,7 @@ export const Header: React.FC<IProps & IClasses> = ({
     }, {
       title: 'Настройки',
       link: '/settings',
-    },  {
+    }, {
       title: 'Выйти',
       action: () => handleLogout,
     }
@@ -137,22 +153,16 @@ export const Header: React.FC<IProps & IClasses> = ({
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <div>Профиль</div>
-      </MenuItem>
+      {menuMobile.map((item) => item.link ? (
+        <MenuItem href={item.link} key={item.title}>{item.title}</MenuItem>
+      ) : (
+        <MenuItem onClick={item.action} key={item.title}>{item.title}</MenuItem>
+      ))}
     </Menu>
   );
   return (
     <Wrapper>
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBarStyled position="fixed">
         <Container maxWidth="lg">
           <Toolbar>
             <NavLeft>
@@ -172,8 +182,7 @@ export const Header: React.FC<IProps & IClasses> = ({
             </NavLeft>
             {authorized ? (
               <NavRight>
-                <div className={classes.grow} />
-                <div className={classes.sectionDesktop}>
+                <SectionDesktop>
                   <Profile
                     aria-label="account of current user"
                     aria-controls={menuId}
@@ -187,18 +196,19 @@ export const Header: React.FC<IProps & IClasses> = ({
                       </ProfileEmail>
                     </Button>
                   </Profile>
-                </div>
-                <div className={classes.sectionMobile}>
+                </SectionDesktop>
+                <SectionMobile>
                   <IconButton
                     aria-label="show more"
                     aria-controls={mobileMenuId}
                     aria-haspopup="true"
                     onClick={handleMobileMenuOpen}
                     color="inherit"
+                    size="small"
                   >
                     <MoreVert />
                   </IconButton>
-                </div>
+                </SectionMobile>
               </NavRight>
             ) : (
               <NavRight>
@@ -209,7 +219,7 @@ export const Header: React.FC<IProps & IClasses> = ({
             )}
           </Toolbar>
         </Container>
-      </AppBar>
+      </AppBarStyled>
       {renderMobileMenu}
       {renderMenu}
     </Wrapper>

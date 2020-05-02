@@ -9,13 +9,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   mixins: {
     toolbar: {
-      '@media (min-width:0px) and (orientation: landscape)': {
-        minHeight: 45,
-      },
-      '@media (min-width:600px)': {
-        minHeight: 50,
-      },
-      minHeight: 40,
+      minHeight: 45,
     }
   },
   palette: {
@@ -25,7 +19,5 @@ const theme = createMuiTheme({
     },
   },
 });
-
-console.log('theme ', theme)
 
 export default theme;

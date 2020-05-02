@@ -9,7 +9,7 @@ module.exports = {
     description: `This is a testing ground for running code and new technologies just for fun;`,
     author: `@Ti3Au`,
   },
-  pathPrefix: `/shop`,
+  pathPrefix: `/blog`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
