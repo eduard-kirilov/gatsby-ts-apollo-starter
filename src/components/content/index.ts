@@ -7,6 +7,6 @@ import { compose } from 'recompose';
 import { withStyles } from '@material-ui/styles';
 import { Content as ContentComponent } from './content'
 import { styles } from './styles';
+import { IAllStringProps } from 'utils/interface';
 
-
-export const Content = compose(withStyles(styles))(ContentComponent)
+export const Content = compose<any, IAllStringProps>(withStyles(styles))(ContentComponent)

@@ -15,9 +15,9 @@ import {
   CardActions,
 } from '@material-ui/core';
 
-import { IClasses, ICardProduct } from 'utils/interface';
+import { IClasses, ICardProductProps } from 'utils/interface';
 
-export const CardProduct: React.FC<IClasses & ICardProduct> = ({
+export const CardProduct: React.FC<IClasses & ICardProductProps> = ({
   url,
   title,
   subtitle,

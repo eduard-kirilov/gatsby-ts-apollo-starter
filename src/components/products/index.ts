@@ -7,10 +7,7 @@ import { compose } from 'recompose';
 import { withStyles } from '@material-ui/styles';
 import { Products as ProductsComponent } from './products'
 import { styles } from './styles';
-import { IAllStringProps } from 'utils/interface';
+import { IProductsProps } from 'utils/interface';
 
-interface IProps {
-  products?: [IAllStringProps];
-}
 
-export const Products = compose<any, IProps>(withStyles(styles))(ProductsComponent)
+export const Products = compose<any, IProductsProps>(withStyles(styles))(ProductsComponent)

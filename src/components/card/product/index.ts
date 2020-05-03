@@ -7,6 +7,6 @@ import { compose } from 'recompose';
 import { withStyles } from '@material-ui/styles';
 import { CardProduct as CardProductComponent } from './product'
 import { styles } from './styles';
-import { ICardProduct } from 'utils/interface';
+import { ICardProductProps } from 'utils/interface';
 
-export const CardProduct = compose<any, ICardProduct>(withStyles(styles))(CardProductComponent)
+export const CardProduct = compose<any, ICardProductProps>(withStyles(styles))(CardProductComponent)

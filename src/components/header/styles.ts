@@ -3,22 +3,18 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
+import styled, { css } from 'styled-components';
 import { Theme } from '@material-ui/core/styles';
 import { Link as LinkGatsby } from 'gatsby';
-import styled, { css } from 'styled-components';
 
 import { AppBar } from '@material-ui/core';
-
-import LogoLeft from 'images/logo.inline.svg';
-import LogoRighe from 'images/logo-right.inline.svg';
-
 
 export const Wrapper = styled.div`
   display: flex;
   flex-grow: 1;
 `;
 export const AppBarStyled = styled(AppBar)<{ theme: Theme }>`
-  ${({ theme }) => css`
+  ${({ theme }) => `
     background-color: ${theme.palette.primary.light};
     z-index: ${theme.zIndex.drawer + 1};
     transition: ${theme.transitions.create(['width', 'margin'], {
@@ -27,21 +23,35 @@ export const AppBarStyled = styled(AppBar)<{ theme: Theme }>`
     })};
   `}
 `;
-export const LogoWrapper = styled.div`
+export const LogoWrapper = styled.div<{ theme: Theme }>`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  &:hover, &:focus {
+    background-color: ${({ theme }) => theme.palette.action.white};
+  }
 `;
-export const LogoLeftStyled = styled<any>(LogoLeft)`
-  max-width: 40px;
-  max-height: 40px;
-  flex-grow: 1;
+export const LogoLeftStyled = styled.div`
+  color: ${({ theme }) => theme.palette.common.white};
+  display: flex;
+  svg {
+    max-width: 25px;
+    max-height: 25px;
+    flex-grow: 1;
+  }
 `;
-export const LogoRightStyled = styled<any>(LogoRighe)`
-  max-width: 70px;
-  height: auto;
-  flex-grow: 1;
-  margin-left: 5px;
+export const LogoRightStyled = styled.div<{ theme: Theme }>`
+  color: ${({ theme }) => theme.palette.common.white};
+  display: none;
+  margin-left: 8px;
+  svg {
+    max-width: 70px;
+    height: auto;
+    flex-grow: 1;
+  }
+  ${({ theme }) => css`${theme.breakpoints.up('sm')} {
+    display: flex;
+  }`}
 `;
 export const NavItems = styled.nav<{ theme: Theme }>`
   margin-left: 32px;
@@ -71,23 +81,28 @@ export const Toolbar = styled.div<{ theme: Theme }>`
   `}
 `;
 export const Link = styled(LinkGatsby)<{ theme: Theme }>`
-  color: ${({ theme }) => theme.palette.primary.main};
+  color: ${({ theme }) => theme.palette.common.white};
   text-decoration: none;
   font-weight: 400;
   &:hover {
-    color: ${({ theme }) => theme.palette.primary.main};
+    color: ${({ theme }) => theme.palette.common.white};
     text-decoration: none;
   }
 `;
 export const LinkLogo = styled(LinkGatsby)<{ theme: Theme }>`
   text-decoration: none;
+  color: ${({ theme }) => theme.palette.common.white};
+  button {
+    min-width: 0;
+  }
   &:hover {
     text-decoration: none;
+    color: ${({ theme }) => theme.palette.common.white};
   }
 `;
 export const ProfileEmail = styled.div`
   margin-left: 15px;
-  color: ${({ theme }) => theme.palette.primary.main};
+  color: ${({ theme }) => theme.palette.common.white};
   
 `;
 export const Profile = styled.div`
@@ -95,17 +110,18 @@ export const Profile = styled.div`
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  color: ${({ theme }) => theme.palette.common.white};
 `;
 export const SectionMobile = styled.div<{ theme: Theme }>`
   display: flex;
-  color: ${({ theme }) => theme.palette.primary.main};
+  color: ${({ theme }) => theme.palette.common.white};    
   ${({ theme }) => css`${theme.breakpoints.up('md')} {
     display: none;
   }`}
 `;
 export const SectionDesktop = styled.div<{ theme: Theme }>`
   display: none;
-  color: ${({ theme }) => theme.palette.primary.main};
+  color: ${({ theme }) => theme.palette.common.white};
   ${({ theme }) => css`${theme.breakpoints.up('md')} {
     display: flex;
   }`}

@@ -21,13 +21,6 @@ export const Content: React.FC<IAllStringProps> = ({ page }) => {
         <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
       </>
     ),
-    home: (
-      <>
-        <h1>Home</h1>
-        <p>Hi people welcome to your.</p>
-        <p>Now go build something great.</p>
-      </>
-    ),
     admin: (
       <>
         <h1>Admin</h1>

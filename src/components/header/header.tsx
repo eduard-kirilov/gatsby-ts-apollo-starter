@@ -4,7 +4,7 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
-import { IAllStringProps } from 'utils/interface';
+import { IAllStringProps, IHeaderProps } from 'utils/interface';
 import {
   Button,
   Container,
@@ -18,30 +18,26 @@ import {
   MoreVert,
 } from '@material-ui/icons';
 
+import LogoLeft from 'images/logo-white.inline.svg';
+import LogoRight from 'images/logo-right.inline.svg';
+
 import {
   AppBarStyled,
-  LogoWrapper,
-  NavItems,
-  Wrapper,
-  NavRight,
-  NavLeft,
-  Toolbar,
   Link,
   LinkLogo,
   LogoLeftStyled,
   LogoRightStyled,
+  LogoWrapper,
+  NavItems,
+  NavLeft,
+  NavRight,
+  Profile,
   ProfileEmail,
   SectionDesktop,
-  Profile,
   SectionMobile,
+  Toolbar,
+  Wrapper,
 } from './styles';
-
-interface IProps {
-  authorized: boolean;
-  currentUser: IAllStringProps;
-  handleOpen?: () => void;
-  logout?: () => void;
-}
 
 interface IProfileMenu {
   title: string;
@@ -49,7 +45,7 @@ interface IProfileMenu {
   action?: () => void;
 }
 
-export const Header: React.FC<IProps> = ({
+export const Header: React.FC<IHeaderProps> = ({
   handleOpen,
   currentUser,
   logout,
@@ -64,42 +60,6 @@ export const Header: React.FC<IProps> = ({
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const menu: IAllStringProps[] = [
-    {
-      title: 'Блог',
-      link: '/blog',
-    }
-  ];
-  
-  const menuMobile: IProfileMenu[]  = [
-    {
-      title: 'Блог',
-      link: '/blog',
-    }, {
-      title: 'Профиль',
-      link: '/profile',
-    }, {
-      title: 'Настройки',
-      link: '/settings',
-    }, {
-      title: 'Выйти',
-      action: () => handleLogout,
-    }
-  ];
-  
-  const menuProfile: IProfileMenu[]  = [
-    {
-      title: 'Профиль',
-      link: '/profile',
-    }, {
-      title: 'Настройки',
-      link: '/settings',
-    }, {
-      title: 'Выйти',
-      action: () => handleLogout,
-    }
-  ];
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -122,6 +82,34 @@ export const Header: React.FC<IProps> = ({
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const menu: IAllStringProps[] = [
+    // {
+    //   title: 'Блог',
+    //   link: '/blog',
+    // }
+  ];
+
+  const menuProfile: IProfileMenu[]  = [
+    {
+      title: 'Профиль',
+      link: '/profile',
+    }, {
+      title: 'Настройки',
+      link: '/settings',
+    }, {
+      title: 'Выйти',
+      action: handleLogout,
+    }
+  ];
+
+  const menuMobile: IProfileMenu[]  = [
+    // {
+    //   title: 'Блог',
+    //   link: '/blog',
+    // },
+    ...menuProfile,
+  ];
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -167,10 +155,16 @@ export const Header: React.FC<IProps> = ({
           <Toolbar>
             <NavLeft>
               <LinkLogo to="/">
+                <Button color="inherit">
                 <LogoWrapper>
-                  <LogoLeftStyled />
-                  <LogoRightStyled />
+                  <LogoLeftStyled>
+                    <LogoLeft />
+                  </LogoLeftStyled>
+                  <LogoRightStyled>
+                    <LogoRight />
+                  </LogoRightStyled>
                 </LogoWrapper>
+                </Button>
               </LinkLogo>
               <NavItems>
                 {menu.map((item) => (
@@ -189,8 +183,12 @@ export const Header: React.FC<IProps> = ({
                     aria-haspopup="true"
                     onClick={handleProfileMenuOpen}
                   >
-                    <Button>
-                      <AccountCircle />
+                    <Button
+                      color="inherit"
+                    >
+                      <AccountCircle
+                        color="inherit"
+                      />
                       <ProfileEmail>
                         {currentUser && currentUser.email}
                       </ProfileEmail>
@@ -212,7 +210,12 @@ export const Header: React.FC<IProps> = ({
               </NavRight>
             ) : (
               <NavRight>
-                <Button color="inherit" onClick={handleOpen}>
+                <Button
+                  color="inherit"
+                  aria-label="login"
+                  name="login"
+                  onClick={handleOpen}
+                >
                   Войти
                 </Button>
               </NavRight>

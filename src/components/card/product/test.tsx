@@ -4,16 +4,16 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import * as React from 'react';
-import { createMount } from '@material-ui/core/test-utils';
+import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from 'styles/theme'
 import { CardProduct } from './index';
 
 describe('CardProduct', () => {
-  let mount;
+  // let mount: any;
 
-  const CardProductTest = () => {
+  const CardProductTest: React.FC = () => {
     return (
       <ThemeProvider theme={theme}>
         <CardProduct
@@ -23,17 +23,12 @@ describe('CardProduct', () => {
         />
       </ThemeProvider>
     );
-  }
+  };
 
-  beforeEach(() => {
-    mount = createMount();
-  });
-
-  afterEach(() => {
-    mount.cleanUp();
-  });
-
+  describe('CardProduct container initial', () => {
+    const mount = shallow(<CardProductTest />);
   it('CardProduct Test should work', () => {
-    mount(<CardProductTest />);
+      expect(mount.find('CardProduct')).toHaveLength(0);
+    });
   });
 });

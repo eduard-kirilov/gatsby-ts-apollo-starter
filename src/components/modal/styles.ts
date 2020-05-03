@@ -3,23 +3,23 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
+import styled, { css } from 'styled-components';
 import { Theme } from '@material-ui/core/styles';
-import { createStyles } from '@material-ui/styles';
+import { Modal } from '@material-ui/core';
 
-export const styles = (theme: Theme) =>
-  createStyles({
-    modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    modalWrap: {
-      backgroundColor: theme.palette.background.paper,
-      boxShadow: theme.shadows[5],
-      borderRadius: 8,
-      padding: theme.spacing(5),
-      '&:focus': {
-        outline: 'none',
-      }
+export const ModalStyled = styled(Modal)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const Wrapper = styled.div<{ theme: Theme }>`
+  ${({theme}) => css`
+    background-color: ${theme.palette.background.paper};
+    box-shadow: ${theme.shadows[5]};
+    border-radius: 8px;
+    padding: ${theme.spacing(5)}px;
+    &:focus {
+      outline: none;
     }
-  });
+  `}
+`;

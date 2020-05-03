@@ -7,18 +7,15 @@ import * as React from 'react';
 import { v4 } from 'uuid';
 import { Grid } from '@material-ui/core';
 
-import { ICardProduct, IAllStringProps } from 'utils/interface';
+import { ICardProductProps, IProductsProps } from 'utils/interface';
 import { CardProduct } from 'components/card';
 
-interface IProps {
-  products?: [IAllStringProps];
-}
 
-export const Products: React.FC<IProps> = ({ products = []}) => (
+export const Products: React.FC<IProductsProps> = ({ products = []}) => (
   <>
     <h1>Карты товаров</h1>
     <Grid container spacing={4}>
-      {products.map((item: ICardProduct) => (
+      {products.map((item: ICardProductProps) => (
         <CardProduct
           key={v4()}
           url={item.url}

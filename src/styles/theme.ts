@@ -12,12 +12,6 @@ const theme = createMuiTheme({
       minHeight: 45,
     }
   },
-  palette: {
-    primary: {
-      light: '#F9EDDA',
-      main: '#FFA33F',
-    },
-  },
 });
 
 export default theme;

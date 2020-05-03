@@ -7,20 +7,28 @@ export interface IAllStringProps {
   [key: string]: string;
 }
 export interface IClasses {
-  classes: IAllStringProps;
+  classes?: IAllStringProps;
 }
 export interface IChildren {
   children: React.ReactNode;
 }
-export interface ICardProduct {
-  key: string;
+export interface ICardProductProps {
   url: string;
   title: string;
   subtitle: string;
+}
+export interface IProductsProps {
+  products?: ICardProductProps[];
 }
 export interface IAutorize {
   authorized: boolean;
   loading: boolean;
   error?: string;
   currentUser?: any;
+}
+export interface IHeaderProps {
+  authorized: boolean;
+  currentUser: IAllStringProps;
+  handleOpen?: () => void;
+  logout?: () => void;
 }
