@@ -13,12 +13,14 @@ export interface IChildren {
   children: React.ReactNode;
 }
 export interface ICardProductProps {
+  _id: string;
   url: string;
   title: string;
   subtitle: string;
 }
 export interface IProductsProps {
   products?: ICardProductProps[];
+  addToCard: (key: string) => void;
 }
 export interface IAutorize {
   authorized: boolean;
@@ -31,4 +33,7 @@ export interface IHeaderProps {
   currentUser: IAllStringProps;
   handleOpen?: () => void;
   logout?: () => void;
+  language?: string;
+  productIds?: string[],
+  setLanguage?: (type: string) => void;
 }

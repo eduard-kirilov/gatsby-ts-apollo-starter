@@ -8,17 +8,20 @@ import { useQuery } from '@apollo/client';
 
 import { PRODUCTS_QUERY } from 'gql/query';
 import { Products } from 'components/products';
-import { IAllStringProps } from 'utils/interface';
+import { ICardProductProps } from 'utils/interface';
 
 interface IQuery {
-  products?: [IAllStringProps];
+  products?: [ICardProductProps];
+  addToCard: (key: string) => void;
 }
 
-export const ProductsCompose = () => {
-  const { data } = useQuery<IQuery>(
-    PRODUCTS_QUERY, {
+export const ProductsCompose = ({ addToCard }) => {
+  const { data } = useQuery<IQuery>(PRODUCTS_QUERY, {
     variables: { title: '' },
   });
-  if (data && data.products) return <Products products={data.products} />;
+
+  if (data && data.products) {
+    return <Products products={data.products} addToCard={addToCard} />;
+  }
   return null;
-}
+};

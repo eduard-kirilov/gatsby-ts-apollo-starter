@@ -3,54 +3,47 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
+import styled from 'styled-components';
 import { Theme } from '@material-ui/core/styles';
 import { createStyles } from '@material-ui/styles';
-import { buttonLinkStyles } from 'components/button';
+import { ButtonLinkStyles } from 'components/button';
 
-export const styles = (theme: Theme) =>
-  createStyles({
-    title: {
-      marginTop: 0,
-      marginBottom: 16,
-    },
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      flexDirection: 'column',
-    },
-    input: {
-      width: '250px',
-      marginBottom: 16,
-    },
-    password: {
-      width: '250px',
-      marginBottom: 16,
-    },
-    confirmPassword: {
-      width: '250px',
-      marginBottom: 32,
-    },
-    signupSet: {
-      display: 'flex',
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-    },
-    button: {
-      width: '100%',
-      marginBottom: 16,
-    },
-    text: {
-      marginBottom: 16,
-    },
-    buttonClear: {
-      ...buttonLinkStyles,
-      fontSize: '0.75rem',
-      fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-      fontWeight: 400,
-      marginLeft: 8,
-      color: theme.palette.primary.dark,
-      '&:hover, &:focus': {
-        color: theme.palette.primary.light,
-      }
-    },
-  });
+import {
+  Button,
+  FormControl,
+  TextField,
+} from '@material-ui/core';
+
+export const Tilte = styled.h2<{ theme: Theme }>`
+  margin-top: 0;
+  margin-bottom: ${({ theme }) => theme.spacing(2)}px !important;
+  font-family: ${({ theme }) => theme.typography.fontFamily};
+`;
+export const Form = styled.form`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+`;
+export const TextFieldStyled = styled(TextField)`
+  width: 250px;
+  margin-bottom: ${({ theme }) => theme.spacing(2)}px !important;
+`;
+export const FormControlStyled = styled(FormControl)`
+  width: 250px;
+  margin-bottom: ${({ theme }) => theme.spacing(2)}px !important;
+  &:last-child {
+    margin-bottom: 32px !important;
+  }
+`;
+export const ButtonStyled = styled(Button)`
+  width: 100%;
+  margin-bottom: ${({ theme }) => theme.spacing(2)}px !important;
+`;
+export const ButtonClear = styled(ButtonLinkStyles)`
+  margin-left: 8px;
+`;
+export const SignupSet = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;

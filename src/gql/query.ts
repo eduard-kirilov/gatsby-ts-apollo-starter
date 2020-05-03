@@ -11,6 +11,7 @@ export const PRODUCTS_QUERY = gql`
       title
       subtitle
       url
+      _id
     }
   }
 `;

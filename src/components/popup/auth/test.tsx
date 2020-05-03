@@ -25,7 +25,7 @@ describe('PopupAuth Container', () => {
   describe('PopupAuth container is open', () => {
     const mount = shallow(<PopupAuthTest />);
     it('<PopupAuth /> test should work', () => {
-      expect(mount.find('PopupAuth')).toHaveLength(0);
+      expect(mount.find('PopupAuth')).toHaveLength(1);
     });
   });
 });

@@ -6,6 +6,7 @@
 import * as React from 'react';
 import { IAllStringProps, IHeaderProps } from 'utils/interface';
 import {
+  Badge,
   Button,
   Container,
   IconButton,
@@ -13,22 +14,20 @@ import {
   MenuItem,
 } from '@material-ui/core';
 
-import {
-  AccountCircle,
-  MoreVert,
-} from '@material-ui/icons';
-
+import { AccountCircle, MoreVert, ShoppingCart, ExpandMore } from '@material-ui/icons';
+import { getContent } from 'content'
 import LogoLeft from 'images/logo-white.inline.svg';
 import LogoRight from 'images/logo-right.inline.svg';
 
 import {
   AppBarStyled,
+  Language,
+  ButtonLanguage,
   Link,
   LinkLogo,
   LogoLeftStyled,
   LogoRightStyled,
   LogoWrapper,
-  NavItems,
   NavLeft,
   NavRight,
   Profile,
@@ -46,11 +45,15 @@ interface IProfileMenu {
 }
 
 export const Header: React.FC<IHeaderProps> = ({
+  productIds = [],
+  language,
+  setLanguage,
   handleOpen,
   currentUser,
   logout,
   authorized,
 }) => {
+  const contents = getContent(language);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const [
@@ -58,8 +61,19 @@ export const Header: React.FC<IHeaderProps> = ({
     setMobileMoreAnchorEl,
   ] = React.useState<null | HTMLElement>(null);
 
+  const [languageMenuE1, setLanguageMenuE1] = React.useState<null | HTMLElement>(null);
+
   const isMenuOpen = Boolean(anchorEl);
+  const islanguageMenuOpen = Boolean(languageMenuE1);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const handleLanguageMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setLanguageMenuE1(event.currentTarget);
+  };
+
+  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -74,43 +88,67 @@ export const Header: React.FC<IHeaderProps> = ({
     handleMobileMenuClose();
   };
 
+  const handleLanguageMenuClose = () => {
+    setLanguageMenuE1(null);
+  };
+
+  const handleLanguageChange = (key: string) => {
+    setLanguage(key)
+    handleLanguageMenuClose();
+  };
+
   const handleLogout = () => {
     logout();
     handleMenuClose();
   };
 
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menu: IAllStringProps[] = [
-    // {
-    //   title: 'Блог',
-    //   link: '/blog',
-    // }
-  ];
-
-  const menuProfile: IProfileMenu[]  = [
+  const languageKey: IAllStringProps = {
+    ru: 'Русский',
+    en: 'English'
+  }
+  const languageList: IAllStringProps[] = [
     {
-      title: 'Профиль',
+      title: 'Русский',
+      key: 'ru',
+    }, {
+      title: 'English',
+      key: 'en',
+    },
+  ]
+
+  const menu: IProfileMenu[] = [
+    {
+      title: contents.menu.regular.profile,
       link: '/profile',
-    }, {
-      title: 'Настройки',
+    },
+    {
+      title: contents.menu.regular.settings,
       link: '/settings',
-    }, {
-      title: 'Выйти',
+    },
+    {
+      title: contents.menu.regular.logout,
       action: handleLogout,
-    }
+    },
   ];
 
-  const menuMobile: IProfileMenu[]  = [
-    // {
-    //   title: 'Блог',
-    //   link: '/blog',
-    // },
-    ...menuProfile,
-  ];
-
+  const languagemenuId = 'language-menu';
+  const languageMenu = (
+    <Menu
+      anchorEl={languageMenuE1}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={languagemenuId}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={islanguageMenuOpen}
+      onClose={handleLanguageMenuClose}
+    >
+      {languageList.map(item => (
+        <MenuItem onClick={() => handleLanguageChange(item.key)} key={item.title}>
+          {item.title}
+        </MenuItem>
+      ))}
+    </Menu>
+  );
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -122,11 +160,17 @@ export const Header: React.FC<IHeaderProps> = ({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {menuProfile.map((item) => item.link ? (
-        <MenuItem href={item.link} key={item.title}>{item.title}</MenuItem>
-      ) : (
-        <MenuItem onClick={item.action} key={item.title}>{item.title}</MenuItem>
-      ))}
+      {menu.map(item =>
+        item.link ? (
+          <MenuItem href={item.link} key={item.title}>
+            {item.title}
+          </MenuItem>
+        ) : (
+          <MenuItem onClick={item.action} key={item.title}>
+            {item.title}
+          </MenuItem>
+        ),
+      )}
     </Menu>
   );
 
@@ -141,11 +185,17 @@ export const Header: React.FC<IHeaderProps> = ({
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      {menuMobile.map((item) => item.link ? (
-        <MenuItem href={item.link} key={item.title}>{item.title}</MenuItem>
-      ) : (
-        <MenuItem onClick={item.action} key={item.title}>{item.title}</MenuItem>
-      ))}
+      {menu.map(item =>
+        item.link ? (
+          <MenuItem href={item.link} key={item.title}>
+            {item.title}
+          </MenuItem>
+        ) : (
+          <MenuItem onClick={item.action} key={item.title}>
+            {item.title}
+          </MenuItem>
+        ),
+      )}
     </Menu>
   );
   return (
@@ -156,39 +206,51 @@ export const Header: React.FC<IHeaderProps> = ({
             <NavLeft>
               <LinkLogo to="/">
                 <Button color="inherit">
-                <LogoWrapper>
-                  <LogoLeftStyled>
-                    <LogoLeft />
-                  </LogoLeftStyled>
-                  <LogoRightStyled>
-                    <LogoRight />
-                  </LogoRightStyled>
-                </LogoWrapper>
+                  <LogoWrapper>
+                    <LogoLeftStyled>
+                      <LogoLeft />
+                    </LogoLeftStyled>
+                    <LogoRightStyled>
+                      <LogoRight />
+                    </LogoRightStyled>
+                  </LogoWrapper>
                 </Button>
               </LinkLogo>
-              <NavItems>
-                {menu.map((item) => (
-                  <Button key={item.title}>
-                    <Link to={item.link}>{item.title}</Link>
-                  </Button>
-                ))}
-              </NavItems>
             </NavLeft>
             {authorized ? (
               <NavRight>
                 <SectionDesktop>
+                  {productIds.length > 0 && (
+                    <Link to="/cart">
+                      <IconButton
+                        aria-label="show 4 new mails"
+                        color="inherit"
+                      >
+                        <Badge badgeContent={productIds.length} color="secondary">
+                          <ShoppingCart fontSize="small" />
+                        </Badge>
+                      </IconButton>
+                    </Link>
+                  )}
+                  <ButtonLanguage 
+                    color="inherit"
+                    aria-controls={languagemenuId}
+                    onClick={handleLanguageMenuOpen}
+                  >
+                    <Language>
+                      {languageKey[language]}
+                    </Language>
+                    <ExpandMore color="inherit" />
+                  </ButtonLanguage>
                   <Profile
+                    tabIndex={0}
                     aria-label="account of current user"
                     aria-controls={menuId}
                     aria-haspopup="true"
                     onClick={handleProfileMenuOpen}
                   >
-                    <Button
-                      color="inherit"
-                    >
-                      <AccountCircle
-                        color="inherit"
-                      />
+                    <Button color="inherit">
+                      <AccountCircle color="inherit" />
                       <ProfileEmail>
                         {currentUser && currentUser.email}
                       </ProfileEmail>
@@ -225,6 +287,7 @@ export const Header: React.FC<IHeaderProps> = ({
       </AppBarStyled>
       {renderMobileMenu}
       {renderMenu}
+      {languageMenu}
     </Wrapper>
   );
 };

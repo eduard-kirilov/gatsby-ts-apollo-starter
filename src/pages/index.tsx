@@ -12,15 +12,26 @@ import { AuthContext } from 'utils/authorize';
 
 import { IAutorize } from 'utils/interface';
 
-const Home: React.FC = () => (
-  <AuthContext.Consumer>
-    {(auth: IAutorize) => (
-      <LayoutWrapper auth={auth}>
-        <SEO title="Home" />
-        <ProductsCompose />
-      </LayoutWrapper>
-    )}
-  </AuthContext.Consumer>
-)
+const Home: React.FC = () => {
+  const [productIds, setProductIds] = React.useState([])
+  const addToCard = (id: string) => {
+    const oldIds = productIds;
+    let ids: string[] = [...oldIds];
+    if (!oldIds.includes(id)) {
+      ids = [...ids, id];
+    }
+    setProductIds(ids);
+  };
+  return (
+    <AuthContext.Consumer>
+      {(auth: IAutorize) => (
+        <LayoutWrapper auth={auth} productIds={productIds}>
+          <SEO title="Home" />
+          <ProductsCompose addToCard={addToCard} />
+        </LayoutWrapper>
+      )}
+    </AuthContext.Consumer>
+  );
+}
 
 export default Home;

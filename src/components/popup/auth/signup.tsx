@@ -9,16 +9,22 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { IClasses, IAllStringProps } from 'utils/interface';
 
 import {
-  Button,
-  FormControl,
   IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
-  TextField,
   Typography,
 } from '@material-ui/core';
 
+import {
+  ButtonClear,
+  ButtonStyled,
+  Form,
+  FormControlStyled,
+  SignupSet,
+  TextFieldStyled,
+  Tilte,
+} from './styles';
 
 interface IProps {
   handleClose?: () => void;
@@ -27,7 +33,6 @@ interface IProps {
 }
 
 export const Signup: React.FC<IProps & IClasses> = ({
-  classes,
   handleClose,
   handleSignup,
   setTabName,
@@ -68,20 +73,18 @@ export const Signup: React.FC<IProps & IClasses> = ({
 
   return (
     <>
-      <h2 className={classes.title}>Регистрация</h2>
-      <form className={classes.root} noValidate autoComplete="off">
-        <TextField
+      <Tilte>Регистрация</Tilte>
+      <Form noValidate autoComplete="off">
+        <TextFieldStyled
           name="email"
           id="outlined-basic"
           label="Email"
           variant="outlined"
           value={userData.email}
-          className={classes.input}
           onChange={handleChange}
           size="small"
         />
-        <FormControl
-          className={classes.password}
+        <FormControlStyled
           variant="outlined"
           size="small"
         >
@@ -110,9 +113,8 @@ export const Signup: React.FC<IProps & IClasses> = ({
               </InputAdornment>
             }
           />
-        </FormControl>
-        <FormControl
-          className={classes.confirmPassword}
+        </FormControlStyled>
+        <FormControlStyled
           variant="outlined"
           size="small"
         >
@@ -143,29 +145,26 @@ export const Signup: React.FC<IProps & IClasses> = ({
               </InputAdornment>
             }
           />
-        </FormControl>
-        <Button
+        </FormControlStyled>
+        <ButtonStyled
           name="login"
           variant="contained"
           color="primary"
-          className={classes.button}
           onClick={handleSubmit}
         >
           Войти
-        </Button>
-        <div className={classes.signupSet}>
+        </ButtonStyled>
+        <SignupSet>
           <Typography variant="caption">Есть аккаунт?</Typography>
-          <button
+          <ButtonClear
             type="button"
             name="signup"
-            color="primary"
-            className={classes.buttonClear}
             onClick={() => setTabName(0)}
           >
             Войдите
-          </button>
-        </div>
-      </form>
+          </ButtonClear>
+        </SignupSet>
+      </Form>
     </>
   );
 };

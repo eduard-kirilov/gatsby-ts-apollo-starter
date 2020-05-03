@@ -23,13 +23,13 @@ describe('Content', () => {
   describe('Content container initial', () => {
     const mount = shallow(<ContentTest page='admin' />);
     it('Component Content by admin should work', () => {
-      expect(mount.find('Content')).toHaveLength(0);
+      expect(mount.find('Content')).toHaveLength(1);
     });
   });
   describe('Content container initial', () => {
     const mount = shallow(<ContentTest page='notFound' />);
     it('Component Content by notFound should work', () => {
-      expect(mount.find('Content')).toHaveLength(0);
+      expect(mount.find('Content')).toHaveLength(1);
     });
   });
 });

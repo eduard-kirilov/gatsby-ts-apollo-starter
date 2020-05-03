@@ -29,7 +29,7 @@ describe('Layout Container', () => {
   describe('Layout container is loading', () => {
     const mount = shallow(<LayoutTest loading={true}/>);
     it('<Layout /> test should work', () => {
-      expect(mount.find('Layout')).toHaveLength(0);
+      expect(mount.find('Layout')).toHaveLength(1);
     });
     it('<LinearProgress /> test should work', () => {
       expect(mount.find('LinearProgress')).toHaveLength(0);
@@ -39,7 +39,7 @@ describe('Layout Container', () => {
   describe('Layout container is not loading', () => {
     const mount = shallow(<LayoutTest loading={false}/>);
     it('<Layout /> test should work', () => {
-      expect(mount.find('Layout')).toHaveLength(0);
+      expect(mount.find('Layout')).toHaveLength(1);
     });
   });
 });

@@ -21,13 +21,16 @@ interface IProps {
     error?: string;
     currentUser?: any;
   };
+  productIds?: string[];
 }
 
 export const LayoutWrapper: React.FC<IChildren & IProps> = ({
   children,
+  productIds,
   auth,
 }) => {
   const [openPopupAuth, setOpenPopupAuth] = React.useState(false);
+  const [language, setLanguage] = React.useState('ru');
   const [logout] = useMutation(LOGOUT_MUTATION,
     {
       update: (cache) => cache.writeQuery({
@@ -43,6 +46,9 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
       loading={loading}
     >
       <Header
+        productIds={productIds}
+        language={language}
+        setLanguage={setLanguage}
         authorized={authorized}
         currentUser={currentUser}
         handleOpen={() => setOpenPopupAuth(true)}

@@ -6,7 +6,7 @@
 import * as React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 
-import { IClasses, IAllStringProps } from 'utils/interface';
+import { IAllStringProps } from 'utils/interface';
 import { Login } from './login';
 import { Signup } from './signup';
 
@@ -16,9 +16,8 @@ interface IProps {
   handleSignup: (props: IAllStringProps) => void;
 }
 
-export const PopupAuth: React.FC<IProps & IClasses> = ({
+export const PopupAuth: React.FC<IProps> = ({
   handleClose,
-  classes,
   handleSignup,
   handleLogin,
 }) => {
@@ -27,7 +26,6 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
   const tabSwitcher: any = {
     '0': (
       <Login
-        classes={classes}
         handleClose={handleClose}
         handleLogin={handleLogin}
         setTabName={setTabName}
@@ -35,7 +33,6 @@ export const PopupAuth: React.FC<IProps & IClasses> = ({
     ),
     '1': (
       <Signup
-        classes={classes}
         handleClose={handleClose}
         handleSignup={handleSignup}
         setTabName={setTabName}

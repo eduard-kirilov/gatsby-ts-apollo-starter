@@ -7,7 +7,7 @@ import styled, { css } from 'styled-components';
 import { Theme } from '@material-ui/core/styles';
 import { Link as LinkGatsby } from 'gatsby';
 
-import { AppBar } from '@material-ui/core';
+import { AppBar, Button } from '@material-ui/core';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -52,12 +52,6 @@ export const LogoRightStyled = styled.div<{ theme: Theme }>`
   ${({ theme }) => css`${theme.breakpoints.up('sm')} {
     display: flex;
   }`}
-`;
-export const NavItems = styled.nav<{ theme: Theme }>`
-  margin-left: 32px;
-  @media(max-width: ${({ theme }) => theme.breakpoints.values.md}px){
-    display: none;
-  }
 `;
 export const NavRight = styled.div`
   display: flex;
@@ -111,6 +105,7 @@ export const Profile = styled.div`
   align-items: center;
   cursor: pointer;
   color: ${({ theme }) => theme.palette.common.white};
+  margin-left: 16px;
 `;
 export const SectionMobile = styled.div<{ theme: Theme }>`
   display: flex;
@@ -125,4 +120,10 @@ export const SectionDesktop = styled.div<{ theme: Theme }>`
   ${({ theme }) => css`${theme.breakpoints.up('md')} {
     display: flex;
   }`}
+`;
+export const Language = styled.div`
+  margin-right: 8px;
+`;
+export const ButtonLanguage = styled(Button)`
+  margin-left: 16px !important;
 `;

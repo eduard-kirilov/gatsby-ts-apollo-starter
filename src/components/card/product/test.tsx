@@ -17,6 +17,8 @@ describe('CardProduct', () => {
     return (
       <ThemeProvider theme={theme}>
         <CardProduct
+          _id="1"
+          addToCard={() => {}}
           url="https://images.unsplash.com/photo-1583317916915-503b629e81a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2081&q=80"
           title="Первая картинка"
           subtitle="Контент первой картинки"
@@ -28,7 +30,7 @@ describe('CardProduct', () => {
   describe('CardProduct container initial', () => {
     const mount = shallow(<CardProductTest />);
   it('CardProduct Test should work', () => {
-      expect(mount.find('CardProduct')).toHaveLength(0);
+      expect(mount.find('CardProduct')).toHaveLength(1);
     });
   });
 });

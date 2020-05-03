@@ -3,14 +3,14 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-import { buttonClearStyles } from 'components/button';
+import styled from 'styled-components';
+import { ButtonClearStyles } from 'components/button';
 
-export const buttonLinkStyles = {
-  ...buttonClearStyles,
-  color: 'inherit',
-  textDecoration: 'underline',
-  '&:hover, &:focus': {
-    color: 'inherit',
-    textDecoration: 'underline',
+export const ButtonLinkStyles = styled(ButtonClearStyles)`
+  color: ${({ theme }) => theme.palette.primary.dark};
+  text-decoration: underline;
+  &:hover, &:focus {
+    color: ${({ theme }) => theme.palette.primary.light};
+    text-decoration: underline;
   }
-};
+`;

@@ -1,2 +1,2 @@
-export { buttonClearStyles } from './clear';
-export { buttonLinkStyles } from './link';
+export { ButtonClearStyles } from './clear';
+export { ButtonLinkStyles } from './link';

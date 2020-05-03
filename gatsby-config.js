@@ -5,11 +5,10 @@
 */
 module.exports = {
   siteMetadata: {
-    title: `The online store.`,
+    title: `Gatsby, Ts, Apollo - Starter.`,
     description: `This is a testing ground for running code and new technologies just for fun;`,
-    author: `@Ti3Au`,
+    author: `Eduard Kirilov <kev987.free@ya.ru>`,
   },
-  pathPrefix: `/blog`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -28,13 +27,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `gatsby-ts-apollo-starter.`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.svg`, // This path is relative to the root of the site.
       },
     },
     {
@@ -63,8 +62,5 @@ module.exports = {
         }
       }
     }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

@@ -10,16 +10,22 @@ import { Grid } from '@material-ui/core';
 import { ICardProductProps, IProductsProps } from 'utils/interface';
 import { CardProduct } from 'components/card';
 
+import { Title } from './styles';
 
-export const Products: React.FC<IProductsProps> = ({ products = []}) => (
+export const Products: React.FC<IProductsProps> = ({
+  products = [],
+  addToCard,
+}) => (
   <>
-    <h1>Карты товаров</h1>
+    <Title weight="bold">Карты товаров</Title>
     <Grid container spacing={4}>
       {products.map((item: ICardProductProps) => (
         <CardProduct
           key={v4()}
+          _id={item._id}
           url={item.url}
           title={item.title}
+          addToCard={addToCard}
           subtitle={item.subtitle}
         />
       ))}
