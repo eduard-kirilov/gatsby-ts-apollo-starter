@@ -12,28 +12,18 @@ export interface IClasses {
 export interface IChildren {
   children: React.ReactNode;
 }
-export interface ICardProductProps {
+export interface IProduct {
   _id: string;
   url: string;
   title: string;
   subtitle: string;
 }
-export interface IProductsProps {
-  products?: ICardProductProps[];
-  addToCard: (key: string) => void;
+export interface IProducts {
+  products?: IProduct[];
 }
 export interface IAutorize {
   authorized: boolean;
   loading: boolean;
   error?: string;
   currentUser?: any;
-}
-export interface IHeaderProps {
-  authorized: boolean;
-  currentUser: IAllStringProps;
-  handleOpen?: () => void;
-  logout?: () => void;
-  language?: string;
-  productIds?: string[],
-  setLanguage?: (type: string) => void;
 }

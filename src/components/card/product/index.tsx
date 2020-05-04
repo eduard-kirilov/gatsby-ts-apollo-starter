@@ -5,7 +5,7 @@
  */
 import * as React from 'react';
 
-import { ICardProductProps } from 'utils/interface';
+import { IProduct } from 'utils/interface';
 
 import { Grid, Button } from '@material-ui/core';
 
@@ -21,7 +21,7 @@ import {
 interface IProps {
   addToCard: (key: string) => void;
 }
-export const CardProduct: React.FC<IProps & ICardProductProps> = ({
+export const CardProduct: React.FC<IProps & IProduct> = ({
   addToCard,
   subtitle,
   title,

@@ -18,7 +18,7 @@ export const AuthContext = React.createContext({
   loading: false,
 })
 
-export const AuthProvider: React.FC<IChildren> = ({ children, ...rest }) => {
+export const AuthProvider: React.FC<IChildren> = ({ children }) => {
   const { loading, error, data } = useQuery<IQuery>(CURRENT_USER_QUERY);
 
   const newProps = {
@@ -28,6 +28,7 @@ export const AuthProvider: React.FC<IChildren> = ({ children, ...rest }) => {
     loading,
   }
   
+  console.log(newProps.authorized)
   return (
     <AuthContext.Provider value={newProps}>
       {children}

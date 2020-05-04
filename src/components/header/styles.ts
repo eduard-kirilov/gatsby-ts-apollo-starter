@@ -121,9 +121,3 @@ export const SectionDesktop = styled.div<{ theme: Theme }>`
     display: flex;
   }`}
 `;
-export const Language = styled.div`
-  margin-right: 8px;
-`;
-export const ButtonLanguage = styled(Button)`
-  margin-left: 16px !important;
-`;

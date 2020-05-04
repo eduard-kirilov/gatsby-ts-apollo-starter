@@ -4,7 +4,6 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
-import { IAllStringProps, IHeaderProps } from 'utils/interface';
 import {
   Badge,
   Button,
@@ -14,15 +13,14 @@ import {
   MenuItem,
 } from '@material-ui/core';
 
-import { AccountCircle, MoreVert, ShoppingCart, ExpandMore } from '@material-ui/icons';
-import { getContent } from 'content'
+import { AccountCircle, MoreVert, ShoppingCart } from '@material-ui/icons';
+import { IAllStringProps } from 'utils/interface';
 import LogoLeft from 'images/logo-white.inline.svg';
 import LogoRight from 'images/logo-right.inline.svg';
+import { LinkClearStyles } from 'components/link';
 
 import {
   AppBarStyled,
-  Language,
-  ButtonLanguage,
   Link,
   LinkLogo,
   LogoLeftStyled,
@@ -38,6 +36,15 @@ import {
   Wrapper,
 } from './styles';
 
+interface IHeaderProps {
+  authorized: boolean;
+  currentUser: IAllStringProps;
+  handleOpen?: () => void;
+  logout?: () => void;
+  language?: string;
+  productIds?: string[],
+  setLanguage?: (type: string) => void;
+}
 interface IProfileMenu {
   title: string;
   link?: string;
@@ -46,14 +53,11 @@ interface IProfileMenu {
 
 export const Header: React.FC<IHeaderProps> = ({
   productIds = [],
-  language,
-  setLanguage,
   handleOpen,
   currentUser,
   logout,
   authorized,
 }) => {
-  const contents = getContent(language);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const [
@@ -61,15 +65,8 @@ export const Header: React.FC<IHeaderProps> = ({
     setMobileMoreAnchorEl,
   ] = React.useState<null | HTMLElement>(null);
 
-  const [languageMenuE1, setLanguageMenuE1] = React.useState<null | HTMLElement>(null);
-
   const isMenuOpen = Boolean(anchorEl);
-  const islanguageMenuOpen = Boolean(languageMenuE1);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleLanguageMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setLanguageMenuE1(event.currentTarget);
-  };
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
@@ -88,67 +85,26 @@ export const Header: React.FC<IHeaderProps> = ({
     handleMobileMenuClose();
   };
 
-  const handleLanguageMenuClose = () => {
-    setLanguageMenuE1(null);
-  };
-
-  const handleLanguageChange = (key: string) => {
-    setLanguage(key)
-    handleLanguageMenuClose();
-  };
-
   const handleLogout = () => {
     logout();
     handleMenuClose();
   };
 
-  const languageKey: IAllStringProps = {
-    ru: 'Русский',
-    en: 'English'
-  }
-  const languageList: IAllStringProps[] = [
-    {
-      title: 'Русский',
-      key: 'ru',
-    }, {
-      title: 'English',
-      key: 'en',
-    },
-  ]
-
   const menu: IProfileMenu[] = [
     {
-      title: contents.menu.regular.profile,
+      title: 'Profile',
       link: '/profile',
     },
     {
-      title: contents.menu.regular.settings,
-      link: '/settings',
+      title: 'Admin',
+      link: '/admin',
     },
     {
-      title: contents.menu.regular.logout,
+      title: 'Logout',
       action: handleLogout,
     },
   ];
 
-  const languagemenuId = 'language-menu';
-  const languageMenu = (
-    <Menu
-      anchorEl={languageMenuE1}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={languagemenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={islanguageMenuOpen}
-      onClose={handleLanguageMenuClose}
-    >
-      {languageList.map(item => (
-        <MenuItem onClick={() => handleLanguageChange(item.key)} key={item.title}>
-          {item.title}
-        </MenuItem>
-      ))}
-    </Menu>
-  );
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -162,8 +118,10 @@ export const Header: React.FC<IHeaderProps> = ({
     >
       {menu.map(item =>
         item.link ? (
-          <MenuItem href={item.link} key={item.title}>
-            {item.title}
+          <MenuItem key={item.title}>
+            <LinkClearStyles to={item.link}>
+              {item.title}
+            </LinkClearStyles>
           </MenuItem>
         ) : (
           <MenuItem onClick={item.action} key={item.title}>
@@ -187,8 +145,10 @@ export const Header: React.FC<IHeaderProps> = ({
     >
       {menu.map(item =>
         item.link ? (
-          <MenuItem href={item.link} key={item.title}>
-            {item.title}
+          <MenuItem key={item.title}>
+            <LinkClearStyles to={item.link}>
+              {item.title}
+            </LinkClearStyles>
           </MenuItem>
         ) : (
           <MenuItem onClick={item.action} key={item.title}>
@@ -220,28 +180,13 @@ export const Header: React.FC<IHeaderProps> = ({
             {authorized ? (
               <NavRight>
                 <SectionDesktop>
-                  {productIds.length > 0 && (
-                    <Link to="/cart">
-                      <IconButton
-                        aria-label="show 4 new mails"
-                        color="inherit"
-                      >
-                        <Badge badgeContent={productIds.length} color="secondary">
-                          <ShoppingCart fontSize="small" />
-                        </Badge>
-                      </IconButton>
-                    </Link>
-                  )}
-                  <ButtonLanguage 
-                    color="inherit"
-                    aria-controls={languagemenuId}
-                    onClick={handleLanguageMenuOpen}
-                  >
-                    <Language>
-                      {languageKey[language]}
-                    </Language>
-                    <ExpandMore color="inherit" />
-                  </ButtonLanguage>
+                  <Link to="/cart">
+                    <IconButton aria-label="show 4 new mails" color="inherit">
+                      <Badge badgeContent={productIds.length} color="secondary">
+                        <ShoppingCart fontSize="small" />
+                      </Badge>
+                    </IconButton>
+                  </Link>
                   <Profile
                     tabIndex={0}
                     aria-label="account of current user"
@@ -278,7 +223,7 @@ export const Header: React.FC<IHeaderProps> = ({
                   name="login"
                   onClick={handleOpen}
                 >
-                  Войти
+                  Login
                 </Button>
               </NavRight>
             )}
@@ -287,7 +232,6 @@ export const Header: React.FC<IHeaderProps> = ({
       </AppBarStyled>
       {renderMobileMenu}
       {renderMenu}
-      {languageMenu}
     </Wrapper>
   );
 };

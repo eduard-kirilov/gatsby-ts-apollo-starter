@@ -42,7 +42,6 @@ module.exports = {
         alias: {
           "components": "src/components",
           "compose": "src/compose",
-          "content": "src/content",
           "gql": "src/gql",
           "images": "src/images",
           "pages": "src/pages",

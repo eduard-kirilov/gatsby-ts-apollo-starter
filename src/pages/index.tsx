@@ -6,7 +6,7 @@
 import * as React from 'react';
 
 import { LayoutWrapper } from 'compose/layout';
-import { ProductsCompose } from 'compose/shop/products';
+import { ProductsCompose } from 'compose/home';
 import { SEO } from 'components/seo';
 import { AuthContext } from 'utils/authorize';
 

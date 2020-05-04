@@ -30,7 +30,6 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
   auth,
 }) => {
   const [openPopupAuth, setOpenPopupAuth] = React.useState(false);
-  const [language, setLanguage] = React.useState('ru');
   const [logout] = useMutation(LOGOUT_MUTATION,
     {
       update: (cache) => cache.writeQuery({
@@ -47,8 +46,6 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
     >
       <Header
         productIds={productIds}
-        language={language}
-        setLanguage={setLanguage}
         authorized={authorized}
         currentUser={currentUser}
         handleOpen={() => setOpenPopupAuth(true)}

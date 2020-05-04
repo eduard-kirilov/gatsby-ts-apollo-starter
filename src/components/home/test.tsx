@@ -8,14 +8,14 @@ import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from 'styles/theme'
-import { Products } from './index';
-import { IProductsProps } from 'utils/interface';
+import { Home } from './index';
+import { IProducts } from 'utils/interface';
 
-describe('Products', () => {
-  const ProductsTest: React.FC<IProductsProps>  = ({ products }) => {
+describe('Home', () => {
+  const HomeTest: React.FC<IProducts>  = ({ products }) => {
     return (
       <ThemeProvider theme={theme}>
-        <Products products={products} />
+        <Home products={products} />
       </ThemeProvider>
     );
   }
@@ -28,9 +28,9 @@ describe('Products', () => {
     },
   ];
 
-  describe('Products container initial', () => {
-    const mount = shallow(<ProductsTest products={products} />);
-  it('Component Products should work', () => {
+  describe('Home container initial', () => {
+    const mount = shallow(<HomeTest products={products} />);
+  it('Component Home should work', () => {
       expect(mount.find('ProductsTest')).toHaveLength(0);
     });
     it('Component CardProduct should work', () => {

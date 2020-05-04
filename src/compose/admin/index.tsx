@@ -7,21 +7,16 @@ import * as React from 'react';
 import { useQuery } from '@apollo/client';
 
 import { PRODUCTS_QUERY } from 'gql/query';
-import { Products } from 'components/products';
-import { ICardProductProps } from 'utils/interface';
+import { Admin } from 'components/admin';
+import { IProducts } from 'utils/interface';
 
-interface IQuery {
-  products?: [ICardProductProps];
-  addToCard: (key: string) => void;
-}
-
-export const ProductsCompose = ({ addToCard }) => {
-  const { data } = useQuery<IQuery>(PRODUCTS_QUERY, {
+export const AdminCompose = () => {
+  const { data } = useQuery<IProducts>(PRODUCTS_QUERY, {
     variables: { title: '' },
   });
 
   if (data && data.products) {
-    return <Products products={data.products} addToCard={addToCard} />;
+    return <Admin products={data.products} />;
   }
   return null;
 };

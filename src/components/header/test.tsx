@@ -7,10 +7,14 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
+import { IAllStringProps } from 'utils/interface';
 import theme from 'styles/theme'
 import { Header } from './index';
-import { IHeaderProps } from 'utils/interface';
 
+interface IHeaderProps {
+  authorized: boolean;
+  currentUser: IAllStringProps;
+}
 
 describe('Header Container', () => {
   const HeaderTest: React.FC<IHeaderProps> = ({ authorized, currentUser }) => {

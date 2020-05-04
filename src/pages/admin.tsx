@@ -6,7 +6,8 @@
 import * as React from 'react';
 
 import { LayoutWrapper } from 'compose/layout';
-import { Content } from 'components/content';
+import { AdminCompose } from 'compose/admin';
+import { Private } from 'components/private';
 import { SEO } from 'components/seo';
 import { AuthContext } from 'utils/authorize';
 
@@ -15,10 +16,12 @@ import { IAutorize } from 'utils/interface';
 const Admin: React.FC = () => (
   <AuthContext.Consumer>
     {(auth: IAutorize) => (
-      <LayoutWrapper auth={auth}>
-        <SEO title="Admin" />
-        <Content page="admin" />
-      </LayoutWrapper>
+      <Private loading={auth.loading} authorized={auth.authorized}>
+        <LayoutWrapper auth={auth}>
+          <SEO title="Admin" />
+          <AdminCompose />
+        </LayoutWrapper>
+      </Private>
     )}
   </AuthContext.Consumer>
 );

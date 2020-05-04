@@ -7,19 +7,23 @@ import * as React from 'react';
 import { v4 } from 'uuid';
 import { Grid } from '@material-ui/core';
 
-import { ICardProductProps, IProductsProps } from 'utils/interface';
+import { IProduct, IProducts } from 'utils/interface';
 import { CardProduct } from 'components/card';
 
 import { Title } from './styles';
 
-export const Products: React.FC<IProductsProps> = ({
+interface IProps {
+  addToCard: (key: string) => void;
+}
+
+export const Home: React.FC<IProducts & IProps> = ({
   products = [],
   addToCard,
 }) => (
   <>
-    <Title weight="bold">Карты товаров</Title>
+    <Title weight="bold">Products</Title>
     <Grid container spacing={4}>
-      {products.map((item: ICardProductProps) => (
+      {products.map((item: IProduct) => (
         <CardProduct
           key={v4()}
           _id={item._id}
