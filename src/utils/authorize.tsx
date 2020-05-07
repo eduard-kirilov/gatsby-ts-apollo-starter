@@ -28,7 +28,6 @@ export const AuthProvider: React.FC<IChildren> = ({ children }) => {
     loading,
   }
   
-  console.log(newProps.authorized)
   return (
     <AuthContext.Provider value={newProps}>
       {children}

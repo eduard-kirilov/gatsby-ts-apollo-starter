@@ -8,9 +8,10 @@ import * as React from 'react';
 import { IProduct } from 'utils/interface';
 
 import { Grid, Button } from '@material-ui/core';
-
+import { Title5 } from 'components/typography';
+import { cropText } from 'utils/helpers';
 import {
-  CardActionsStyled,
+  CardFooter,
   CardContentStyled,
   CardMediaStyled,
   CardStyled,
@@ -25,18 +26,25 @@ export const CardProduct: React.FC<IProps & IProduct> = ({
   addToCard,
   subtitle,
   title,
+  price,
   url,
   _id,
 }) => {
+  const newUrl = process.env.GATSBY_MEDIA_URL + url;
   return (
     <Grid item xs={12} sm={6} md={3}>
       <CardStyled>
-        <CardMediaStyled image={url} title={title} />
+        <CardMediaStyled image={newUrl} title={title} />
         <CardContentStyled>
           <Title weight="bold">{title}</Title>
-          <Subtitle weight="regular">{subtitle}</Subtitle>
+          <Subtitle weight="regular">
+            {cropText({ text: subtitle, size: 140 })}
+          </Subtitle>
         </CardContentStyled>
-        <CardActionsStyled>
+        <CardFooter>
+          <Title5 weight="bold">
+            {price}
+          </Title5>
           <Button
             name="buy"
             size="small"
@@ -46,7 +54,7 @@ export const CardProduct: React.FC<IProps & IProduct> = ({
           >
             В корзину
           </Button>
-        </CardActionsStyled>
+        </CardFooter>
       </CardStyled>
     </Grid>
   );

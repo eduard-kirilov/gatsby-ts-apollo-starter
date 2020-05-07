@@ -46,72 +46,44 @@ export const LOGOUT_MUTATION = gql`
 `;
 export const ADD_PRODUCT_MUTATION = gql`
   mutation addProduct(
-    $num: Int!
-    $isbn: String!
-    $name: String!
-    $vote: Int!
-    $year: Int!
-    $price: Int!
-    $rating: Int!
-    $imgUrl: String!
-    $imgName: String!
-    $lastName: String!
-    $firstName: String!
+    $subtitle: String!
+    $title: String!
+    $price: String!
+    $url: String!
   ) {
     addProduct(
-      num: $num
-      isbn: $isbn
-      name: $name
-      vote: $vote
-      year: $year
+      subtitle: $subtitle
+      title: $title
       price: $price
-      rating: $rating
-      imgUrl: $imgUrl
-      imgName: $imgName
-      lastName: $lastName
-      firstName: $firstName
+      url: $url
     ) {
-      id
+      _id
     }
   }
 `;
 export const UP_PRODUCT_MUTATION = gql`
   mutation upProduct(
-    $id: ID!
-    $num: Int!
-    $isbn: String!
-    $name: String!
-    $vote: Int!
-    $year: Int!
-    $price: Int!
-    $rating: Int!
-    $imgUrl: String!
-    $imgName: String!
-    $lastName: String!
-    $firstName: String!
+    $_id: String!
+    $price: String
+    $subtitle: String
+    $title: String
+    $url: String
   ) {
     upProduct(
-      id: $id
-      num: $num
-      isbn: $isbn
-      name: $name
-      vote: $vote
-      year: $year
+      _id: $_id
       price: $price
-      rating: $rating
-      imgUrl: $imgUrl
-      imgName: $imgName
-      lastName: $lastName
-      firstName: $firstName
+      subtitle: $subtitle
+      title: $title
+      url: $url
     ) {
-      id
+      _id
     }
   }
 `;
-export const DEK_PRODUCT_MUTATION = gql`
-  mutation delProduct($id: ID) {
-    delProduct(id: $id) {
-      id
+export const DEL_PRODUCT_MUTATION = gql`
+  mutation delProduct($_id: String!) {
+    delProduct(_id: $_id) {
+      _id
     }
   }
 `;

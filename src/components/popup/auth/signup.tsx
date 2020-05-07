@@ -6,7 +6,7 @@
 import * as React from 'react';
 
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import { IClasses, IAllStringProps } from 'utils/interface';
+import { IAllStringProps } from 'utils/interface';
 
 import {
   IconButton,
@@ -32,7 +32,7 @@ interface IProps {
   handleSignup?: (props: IAllStringProps) => void;
 }
 
-export const Signup: React.FC<IProps & IClasses> = ({
+export const Signup: React.FC<IProps> = ({
   handleClose,
   handleSignup,
   setTabName,
@@ -88,14 +88,14 @@ export const Signup: React.FC<IProps & IClasses> = ({
           variant="outlined"
           size="small"
         >
-          <InputLabel htmlFor="password">Пароль</InputLabel>
+          <InputLabel htmlFor="password">Password</InputLabel>
           <OutlinedInput
             name="password"
             id="password"
             type={show.password ? 'text' : 'password'}
             value={userData.password}
             onChange={handleChange}
-            labelWidth={58}
+            labelWidth={73}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -119,7 +119,7 @@ export const Signup: React.FC<IProps & IClasses> = ({
           size="small"
         >
           <InputLabel htmlFor="confirm-password">
-            Подтвердите пароль
+            Confirm your password
           </InputLabel>
           <OutlinedInput
             name="confirmPassword"
@@ -127,7 +127,7 @@ export const Signup: React.FC<IProps & IClasses> = ({
             type={show.confirmPassword ? 'text' : 'password'}
             value={userData.confirmPassword}
             onChange={handleChange}
-            labelWidth={163}
+            labelWidth={170}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -152,16 +152,16 @@ export const Signup: React.FC<IProps & IClasses> = ({
           color="primary"
           onClick={handleSubmit}
         >
-          Войти
+          Signup
         </ButtonStyled>
         <SignupSet>
-          <Typography variant="caption">Есть аккаунт?</Typography>
+          <Typography variant="caption">Do you have an account?</Typography>
           <ButtonClear
             type="button"
             name="signup"
             onClick={() => setTabName(0)}
           >
-            Войдите
+            Login
           </ButtonClear>
         </SignupSet>
       </Form>

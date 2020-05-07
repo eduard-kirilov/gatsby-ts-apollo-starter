@@ -15,12 +15,11 @@ export const Wrapper = styled.div`
 `;
 export const AppBarStyled = styled(AppBar)<{ theme: Theme }>`
   ${({ theme }) => `
-    background-color: ${theme.palette.primary.light};
-    z-index: ${theme.zIndex.drawer + 1};
+    z-index: ${theme.zIndex.drawer + 1} !important;
     transition: ${theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    })};
+    })} !important;
   `}
 `;
 export const LogoWrapper = styled.div<{ theme: Theme }>`

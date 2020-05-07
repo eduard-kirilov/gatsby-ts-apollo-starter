@@ -8,7 +8,7 @@ import { useMutation } from '@apollo/client';
 
 import { CURRENT_USER_QUERY } from 'gql/query';
 import { LOGIN_MUTATION, SIGNUP_MUTATION } from 'gql/mutation';
-import { PopupAuth as PopupAuthComponent } from 'components/popup';
+import { PopupAuth } from 'components/popup';
 import { Modal } from 'components/modal';
 import { IAllStringProps } from 'utils/interface';
 
@@ -17,7 +17,7 @@ interface IProps {
   handleClose: () => void;
 }
 
-export const PopupAuth: React.FC<IProps> = ({
+export const PopupAuthCompose: React.FC<IProps> = ({
   open,
   handleClose,
 }) => {
@@ -56,7 +56,7 @@ export const PopupAuth: React.FC<IProps> = ({
       open={open}
       handleClose={handleClose}
     >
-      <PopupAuthComponent
+      <PopupAuth
         handleClose={handleClose}
         handleLogin={handleLogin}
         handleSignup={handleSignup}

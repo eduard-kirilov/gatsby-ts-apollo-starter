@@ -28,6 +28,7 @@ export const Home: React.FC<IProducts & IProps> = ({
           key={v4()}
           _id={item._id}
           url={item.url}
+          price={item.price}
           title={item.title}
           addToCard={addToCard}
           subtitle={item.subtitle}

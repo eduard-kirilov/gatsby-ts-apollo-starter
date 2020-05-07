@@ -25,26 +25,14 @@ export const Form = styled.form`
   flex-direction: column;
 `;
 export const TextFieldStyled = styled(TextField)`
-  width: 250px;
+  width: 300px;
   margin-bottom: ${({ theme }) => theme.spacing(2)}px !important;
 `;
 export const FormControlStyled = styled(FormControl)`
-  width: 250px;
+  width: 300px;
   margin-bottom: ${({ theme }) => theme.spacing(2)}px !important;
-  &:last-child {
-    margin-bottom: 32px !important;
-  }
 `;
 export const ButtonStyled = styled(Button)`
   width: 100%;
   margin-bottom: ${({ theme }) => theme.spacing(2)}px !important;
-`;
-export const ButtonClear = styled(ButtonLinkStyles)`
-  margin-left: 8px;
-  margin-bottom: 4px;
-`;
-export const SignupSet = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 `;

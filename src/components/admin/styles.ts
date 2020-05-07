@@ -3,7 +3,11 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-import { createStyles } from '@material-ui/styles';
+import styled from 'styled-components';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
 
-export const styles = () =>
-  createStyles({});
+import { Title5 } from 'components/typography';
+
+export const Title = styled(Title5)`
+  margin-bottom: 40px;
+`;

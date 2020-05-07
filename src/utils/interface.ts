@@ -13,10 +13,11 @@ export interface IChildren {
   children: React.ReactNode;
 }
 export interface IProduct {
-  _id: string;
+  _id?: string;
   url: string;
   title: string;
   subtitle: string;
+  price: string;
 }
 export interface IProducts {
   products?: IProduct[];
@@ -26,4 +27,8 @@ export interface IAutorize {
   loading: boolean;
   error?: string;
   currentUser?: any;
+}
+export interface ICropText {
+  text: string;
+  size: number;
 }

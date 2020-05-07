@@ -10,7 +10,7 @@ import { CURRENT_USER_QUERY } from 'gql/query';
 import { LOGOUT_MUTATION } from 'gql/mutation';
 import { IChildren } from 'utils/interface';
 
-import { PopupAuth } from 'compose/popup';
+import { PopupAuthCompose } from 'compose/popup';
 import { Layout } from 'components/layout';
 import { Header } from 'components/header';
 
@@ -52,7 +52,7 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
         logout={logout}
       />
       {children}
-      <PopupAuth
+      <PopupAuthCompose
         open={openPopupAuth}
         handleClose={() => setOpenPopupAuth(false)}
       />

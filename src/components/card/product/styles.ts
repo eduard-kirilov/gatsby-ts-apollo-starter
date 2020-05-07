@@ -5,14 +5,12 @@
 */
 import styled from 'styled-components';
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
-import { createStyles } from '@material-ui/styles';
 import { Title5, TextDefault } from 'components/typography';
 
 import {
   Card,
   CardMedia,
   CardContent,
-  CardActions,
 } from '@material-ui/core';
 
 export const CardStyled = styled(Card)`
@@ -22,18 +20,19 @@ export const CardStyled = styled(Card)`
 `;
 export const CardMediaStyled = styled(CardMedia)`
   padding-top: 56.25%;
+  margin-top: 10px;
 `;
 export const CardContentStyled = styled(CardContent)`
   flex-grow: 1;
 `;
-export const CardActionsStyled = styled(CardActions)`
+export const CardFooter = styled.div<{ theme: Theme }>`
   padding: ${({ theme }) => theme.spacing(2)}px !important;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
-export const Title = styled(Title5)`
+export const Title = styled(Title5)<{ theme: Theme }>`
   margin-bottom: ${({ theme }) => theme.spacing(2)}px;
 `;
-export const Subtitle = styled(TextDefault)`
+export const Subtitle = styled(TextDefault)<{ theme: Theme }>`
   margin-bottom: ${({ theme }) => theme.spacing(2)}px;
 `;

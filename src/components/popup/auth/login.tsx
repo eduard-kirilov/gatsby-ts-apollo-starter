@@ -6,7 +6,7 @@
 import * as React from 'react';
 
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import { IClasses, IAllStringProps } from 'utils/interface';
+import { IAllStringProps } from 'utils/interface';
 
 import {
   IconButton,
@@ -32,7 +32,7 @@ interface IProps {
   handleLogin?: (props: IAllStringProps) => void;
 }
 
-export const Login: React.FC<IProps & IClasses> = ({
+export const Login: React.FC<IProps> = ({
   handleClose,
   handleLogin,
   setTabName,
@@ -60,7 +60,7 @@ export const Login: React.FC<IProps & IClasses> = ({
 
   return (
     <>
-      <Tilte>Вход</Tilte>
+      <Tilte>Login</Tilte>
       <Form noValidate autoComplete="off">
         <TextFieldStyled
           name="email"
@@ -75,14 +75,14 @@ export const Login: React.FC<IProps & IClasses> = ({
           variant="outlined"
           size="small"
         >
-          <InputLabel htmlFor="outlined-adornment-password">Пароль</InputLabel>
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             name="password"
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
             value={userData.password}
             onChange={handleChange}
-            labelWidth={58}
+            labelWidth={73}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -107,16 +107,16 @@ export const Login: React.FC<IProps & IClasses> = ({
           color="primary"
           onClick={handleSubmit}
         >
-          Войти
+          Login
         </ButtonStyled>
         <SignupSet>
-          <Typography variant="caption">Нет аккаунта?</Typography>
+          <Typography variant="caption">You don't have an account?</Typography>
           <ButtonClear
             type="button"
             name="signup"
             onClick={() => setTabName(1)}
           >
-            Зарегистрируйтесь
+            Signup
           </ButtonClear>
         </SignupSet>
       </Form>

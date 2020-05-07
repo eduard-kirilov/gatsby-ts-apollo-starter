@@ -5,13 +5,25 @@
 */
 import { gql } from '@apollo/client';
 
-export const PRODUCTS_QUERY = gql`
-  query products($title: String) {
-    products(title: $title) {
-      title
-      subtitle
-      url
+export const PRODUCT_QUERY = gql`
+  query product($_id: String!) {
+    product(_id: $_id) {
       _id
+      subtitle
+      title
+      price
+      url
+    }
+  }
+`;
+export const PRODUCTS_QUERY = gql`
+  query products($ids: [String]) {
+    products(ids: $ids) {
+      _id
+      subtitle
+      title
+      price
+      url
     }
   }
 `;
