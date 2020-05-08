@@ -5,7 +5,7 @@
 */
 import * as React from 'react';
 import { v4 } from 'uuid'; 
-import { IAllStringProps, IProducts } from 'utils/interface';
+import { IProducts } from 'utils/interface';
 
 import {
   TableBody,
@@ -38,9 +38,9 @@ export const TableCart: React.FC<IProducts> = ({ products = [] }) => {
                 {item._id}
               </TableCell>
               <TableCell>{item.title}</TableCell>
-              <TableCell>{item.fat}</TableCell>
-              <TableCell>{item.carbs}</TableCell>
-              <TableCell>{item.protein}</TableCell>
+              <TableCell>{item.price}</TableCell>
+              <TableCell>{1}</TableCell>
+              <TableCell>{item.price * 1}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -14,15 +14,18 @@ describe('Admin', () => {
   const AdminTest: React.FC = () => {
     return (
       <ThemeProvider theme={theme}>
-        <Admin />
+        <Admin
+          table={null}
+          hadleOpenPopupAddProduct={() => {}}
+        />
       </ThemeProvider>
     );
   };
 
-  describe('Content container initial', () => {
+  describe('Admin container initial', () => {
     const mount = shallow(<AdminTest />);
     it('Component Admin should work', () => {
-      expect(mount.find('Content')).toHaveLength(1);
+      expect(mount.find('Admin')).toHaveLength(1);
     });
   });
 });

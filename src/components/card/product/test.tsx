@@ -11,17 +11,16 @@ import theme from 'styles/theme'
 import { CardProduct } from './index';
 
 describe('CardProduct', () => {
-  // let mount: any;
-
   const CardProductTest: React.FC = () => {
     return (
       <ThemeProvider theme={theme}>
         <CardProduct
           _id="1"
           addToCard={() => {}}
-          url="https://images.unsplash.com/photo-1583317916915-503b629e81a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2081&q=80"
-          title="Первая картинка"
-          subtitle="Контент первой картинки"
+          url="some text"
+          price="some text"
+          title="some text"
+          subtitle="some text"
         />
       </ThemeProvider>
     );

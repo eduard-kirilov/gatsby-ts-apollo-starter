@@ -7,24 +7,38 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import theme from 'styles/theme'
-import { PopupAddProduct } from './index';
+import theme from 'styles/theme';
+import { IProduct } from 'utils/interface';
+import { PopupUpProduct } from './index';
 
+interface IProps {
+  product: IProduct;
+};
 
-describe('PopupAddProduct Container', () => {
-  const PopupAddProductTest: React.FC = () => {
+describe('PopupUpProduct Container', () => {
+  const PopupUpProductTest: React.FC<IProps> = ({ product }) => {
     return (
       <ThemeProvider theme={theme}>
-        <PopupAddProduct
-            addProduct={() => {}}
+        <PopupUpProduct
+          handleClose={() => {}}
+          handleUpProduct={() => {}}
+          product={product}
         />
       </ThemeProvider>
     );
   }
-  describe('PopupAddProduct container is open', () => {
-    const mount = shallow(<PopupAddProductTest />);
-    it('<PopupAddProduct /> test should work', () => {
-      expect(mount.find('PopupAddProduct')).toHaveLength(1);
+  
+  const product = {
+    _id: '1',
+    url: 'some text',
+    title: 'some test',
+    price: 'some test',
+    subtitle: 'some test',
+  }
+  describe('PopupUpProduct container is open', () => {
+    const mount = shallow(<PopupUpProductTest product={product} />);
+    it('<PopupUpProduct /> test should work', () => {
+      expect(mount.find('PopupUpProduct')).toHaveLength(1);
     });
   });
 });

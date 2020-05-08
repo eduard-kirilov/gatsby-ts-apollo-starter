@@ -17,6 +17,12 @@ export const CardStyled = styled(Card)`
   height: 100%;
   display: flex;
   flex-direction: column;
+  &.MuiPaper-elevation1 {
+    transition: 0.2s ease-in;
+    &:hover {
+      box-shadow: ${({ theme }) => theme.shadows[4]};
+    }
+  }
 `;
 export const CardMediaStyled = styled(CardMedia)`
   padding-top: 56.25%;

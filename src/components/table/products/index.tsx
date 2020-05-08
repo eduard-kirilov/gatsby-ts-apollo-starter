@@ -24,7 +24,7 @@ import { TableStyled, ButtonWrapper } from './styles';
 
 interface IProps {
   handleOpen: (id: string) => void;
-  handleDelProduct: (id: string) => void;
+  handleDelProduct: (_id: string) => void;
 }
 export const TableProducts: React.FC<IProps & IProducts> = ({
   products = [],

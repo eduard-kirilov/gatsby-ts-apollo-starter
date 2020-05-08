@@ -16,7 +16,8 @@ describe('PopupAddProduct Container', () => {
     return (
       <ThemeProvider theme={theme}>
         <PopupAddProduct
-            addProduct={() => {}}
+          handleaddProduct={() => {}}
+          handleClose={() => {}}
         />
       </ThemeProvider>
     );

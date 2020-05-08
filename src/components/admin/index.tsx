@@ -13,7 +13,6 @@ import {
   ListItemText,
 } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
-import { TableProducts } from 'components/table';
 
 import { IProducts } from 'utils/interface';
 import { Title } from './styles';

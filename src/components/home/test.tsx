@@ -15,7 +15,10 @@ describe('Home', () => {
   const HomeTest: React.FC<IProducts>  = ({ products }) => {
     return (
       <ThemeProvider theme={theme}>
-        <Home products={products} />
+        <Home
+          products={products}
+          addToCard={()=>{}}
+        />
       </ThemeProvider>
     );
   }
@@ -23,9 +26,10 @@ describe('Home', () => {
   const products = [
     {
       _id: '1',
-      url: 'https://images.unsplash.com/photo-1583317916915-503b629e81a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2081&q=80',
-      title: 'Первая картинка',
-      subtitle: 'Контент первой картинки',
+      url: 'some test',
+      title: 'some test',
+      price: 'some test',
+      subtitle: 'some test',
     },
   ];
 

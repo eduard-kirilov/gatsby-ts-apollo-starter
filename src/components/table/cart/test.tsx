@@ -9,19 +9,28 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from 'styles/theme';
 import { TableCart } from './index';
-import { IAllStringProps } from 'utils/interface';
+import { IProducts } from 'utils/interface';
 
 describe('TableCart', () => {
-  const TableCartTest: React.FC<IAllStringProps> = ({ page }) => {
+  const TableCartTest: React.FC<IProducts> = ({ products = [] }) => {
     return (
       <ThemeProvider theme={theme}>
-        <TableCart page={page} />
+        <TableCart products={products} />
       </ThemeProvider>
     );
   };
 
+  const products = [
+    {
+      _id: '1',
+      url: 'some text',
+      title: 'some test',
+      price: 'some test',
+      subtitle: 'some test',
+    },
+  ];
   describe('TableCart container initial', () => {
-    const mount = shallow(<TableCartTest page='admin' />);
+    const mount = shallow(<TableCartTest products={products} />);
     it('TableCart should work', () => {
       expect(mount.find('TableCart')).toHaveLength(1);
     });

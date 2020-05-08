@@ -20,7 +20,7 @@ import {
 interface IProps {
   handleUpProduct: (props: IAllStringProps) => void;
   handleClose: () => void;
-  product: IProduct;
+  product: IAllStringProps;
 }
 
 export const PopupUpProduct: React.FC<IProps> = ({

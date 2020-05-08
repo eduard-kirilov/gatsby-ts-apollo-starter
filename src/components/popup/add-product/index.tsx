@@ -5,7 +5,7 @@
  */
 import * as React from 'react';
 
-import { IProduct } from 'utils/interface';
+import { IAllStringProps } from 'utils/interface';
 import { selectList, selectUrl } from './url';
 import {
   InputLabel,

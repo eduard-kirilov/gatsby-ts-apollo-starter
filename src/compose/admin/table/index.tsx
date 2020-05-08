@@ -33,8 +33,8 @@ export const TableProductsCompose: React.FC<IProps> = ({
     }
   );
 
-  const handleDelProduct = (data: IAllStringProps) => {
-    delProduct({ variables: data })
+  const handleDelProduct = (_id: string) => {
+    delProduct({ variables: { _id } })
   }
 
   if (loading) return <LinearProgressStyled />;

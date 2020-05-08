@@ -22,7 +22,7 @@ export const Home: React.FC<IProducts & IProps> = ({
 }) => (
   <>
     <Title weight="bold">Products</Title>
-    <Grid container spacing={4}>
+    <Grid container spacing={3}>
       {products.map((item: IProduct) => (
         <CardProduct
           key={v4()}
