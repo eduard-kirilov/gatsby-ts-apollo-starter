@@ -5,19 +5,22 @@
  */
 import * as React from 'react';
 import { v4 } from 'uuid';
-import { Grid } from '@material-ui/core';
-
-import { IProduct, IProducts } from 'utils/interface';
+import { Grid, Button, Box } from '@material-ui/core';
+import { CloudDownload } from '@material-ui/icons';
+import { IProduct } from 'utils/interface';
 import { CardProduct } from 'components/card';
 
 import { Title } from './styles';
 
 interface IProps {
   addToCard: (key: string) => void;
+  handleLoadMore: () => void;
+  products?: IProduct[];
 }
 
-export const Home: React.FC<IProducts & IProps> = ({
+export const Home: React.FC<IProps> = ({
   products = [],
+  handleLoadMore,
   addToCard,
 }) => (
   <>
@@ -35,5 +38,16 @@ export const Home: React.FC<IProducts & IProps> = ({
         />
       ))}
     </Grid>
+    <Box mt={3}>
+      <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        startIcon={<CloudDownload />}
+        onClick={handleLoadMore}
+      >
+        More product
+      </Button>
+    </Box>
   </>
 );

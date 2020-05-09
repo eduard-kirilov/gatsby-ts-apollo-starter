@@ -4,8 +4,7 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
-import { v4 } from 'uuid';
-import { IProducts } from 'utils/interface';
+import { IProduct } from 'utils/interface';
 
 import { Edit, Delete } from '@material-ui/icons';
 
@@ -18,39 +17,64 @@ import {
   TableRow,
   Paper,
   IconButton,
+  TableSortLabel,
   TablePagination,
 } from '@material-ui/core';
 import { TableStyled, ButtonWrapper } from './styles';
 
 interface IProps {
-  handleOpen: (id: string) => void;
+  direction: any;
+  handleChangePage: (_: unknown, newPage: number) => void;
+  handleChangeRowsPerPage: (e: any) => void;
   handleDelProduct: (_id: string) => void;
+  handleOpen: (id: string) => void;
+  page?: number;
+  products: {
+    total?: number;
+    first_id?: string;
+    last_id?: string;
+    data?: IProduct[];
+  };
+  rowsPerPage: number;
+  toggleDirection: () => void;
 }
-export const TableProducts: React.FC<IProps & IProducts> = ({
-  products = [],
-  handleOpen,
+
+export const TableProducts: React.FC<IProps> = ({
+  direction,
+  handleChangePage,
+  handleChangeRowsPerPage,
   handleDelProduct,
+  handleOpen,
+  page,
+  products,
+  rowsPerPage,
+  toggleDirection,
 }) => {
-  const head = ['Id', 'Name', 'Price', 'Actions'];
+  const { data = [], total = 0 } = products;
   return (
     <Paper>
       <TableContainer>
         <TableStyled size="small" aria-label="products table">
           <TableHead>
             <TableRow>
-              {head.map(item =>
-                item !== 'Actions' ? (
-                  <TableCell key={v4()}>{item}</TableCell>
-                ) : (
-                  <TableCell key={v4()} align="right">
-                    {item}
-                  </TableCell>
-                ),
-              )}
+              <TableCell
+                sortDirection={direction}
+              >
+                <TableSortLabel
+                  active={true}
+                  direction={direction}
+                  onClick={toggleDirection}
+                >
+                  Id
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Price</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map(item => (
+            {data.map((item) => (
               <TableRow key={item._id}>
                 <TableCell>{item._id}</TableCell>
                 <TableCell>{item.title}</TableCell>
@@ -87,15 +111,11 @@ export const TableProducts: React.FC<IProps & IProducts> = ({
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={products.length}
-        rowsPerPage={0}
-        page={0}
-        onChangePage={(event: unknown, newPage: number) =>
-          console.log('change page', newPage)
-        }
-        onChangeRowsPerPage={(event: React.ChangeEvent<HTMLInputElement>) =>
-          console.log('per page', event.target.value)
-        }
+        count={total}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </Paper>
   );

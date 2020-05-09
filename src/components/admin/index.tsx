@@ -10,19 +10,17 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
 } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 
-import { IProducts } from 'utils/interface';
-import { Title } from './styles';
+import { Title, ListItemTextStyled } from './styles';
 
 interface IProps {
   table: React.ReactNode;
   hadleOpenPopupAddProduct: () => void;
 }
 
-export const Admin: React.FC<IProducts & IProps> = ({
+export const Admin: React.FC<IProps> = ({
   table,
   hadleOpenPopupAddProduct,
 }) => {
@@ -32,11 +30,11 @@ export const Admin: React.FC<IProducts & IProps> = ({
         <Title weight="bold">Actions</Title>
         <Paper>
           <List aria-label="list of admin actions">
-            <ListItem button onClick={hadleOpenPopupAddProduct}>
+            <ListItem component="li" button onClick={hadleOpenPopupAddProduct}>
               <ListItemIcon>
                 <Add />
               </ListItemIcon>
-              <ListItemText primary="Add product" />
+              <ListItemTextStyled primary="Add product" />
             </ListItem>
           </List>
         </Paper>

@@ -6,37 +6,48 @@
 import * as React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 
-import { IAllStringProps, IProduct } from 'utils/interface';
+import { IAllStringProps } from 'utils/interface';
 import { Modal } from 'components/modal';
 import { PopupUpProduct } from 'components/popup';
 import { PRODUCT_QUERY, PRODUCTS_QUERY } from 'gql/query';
 import { UP_PRODUCT_MUTATION } from 'gql/mutation';
 
 interface IProps {
-  open: boolean;
+  currentSortId?: IAllStringProps;
   currrentId: string;
+  direction: string;
   handleClose: () => void;
+  open: boolean;
+  rowsPerPage: number;
 }
 interface IQuery {
   product: IAllStringProps;
 }
 
 export const PopupUpProductCompose: React.FC<IProps> = ({
-  open,
+  currentSortId,
   currrentId,
+  direction,
   handleClose,
+  open,
+  rowsPerPage,
 }) => {
   if (currrentId === '') return null;
+
   const { data, loading } = useQuery<IQuery>(PRODUCT_QUERY, {
     variables: { _id: currrentId },
   });
-  PRODUCT_QUERY;
+
   const [upProduct] = useMutation(UP_PRODUCT_MUTATION, {
-    update: cache =>
-      cache.writeQuery({
-        query: PRODUCTS_QUERY,
-        data: null,
-      }),
+    refetchQueries: [{
+      query: PRODUCTS_QUERY,
+      variables: {
+        page_size: rowsPerPage,
+        direction,
+        ...currentSortId,
+      }
+    }],
+    awaitRefetchQueries: true,
   });
 
   const handleUpProduct = (data: IAllStringProps) => {
@@ -44,8 +55,9 @@ export const PopupUpProductCompose: React.FC<IProps> = ({
       variables: data,
     });
   };
-
+  
   if (loading) return null;
+
   return (
     <Modal open={open} handleClose={handleClose}>
       <PopupUpProduct

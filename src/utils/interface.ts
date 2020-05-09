@@ -20,7 +20,12 @@ export interface IProduct {
   price: string;
 }
 export interface IProducts {
-  products?: IProduct[];
+  products: {
+    total?: number;
+    first_id?: string;
+    last_id?: string;
+    data?: IProduct[];
+  };
 }
 export interface IAutorize {
   authorized: boolean;

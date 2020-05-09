@@ -17,13 +17,28 @@ export const PRODUCT_QUERY = gql`
   }
 `;
 export const PRODUCTS_QUERY = gql`
-  query products($ids: [String]) {
-    products(ids: $ids) {
-      _id
-      subtitle
-      title
-      price
-      url
+  query products(
+    $page_size: Int!,
+    $first_id: ID,
+    $last_id: ID,
+    $direction: String!,
+  ) {
+    products(
+      page_size: $page_size
+      first_id: $first_id
+      last_id: $last_id
+      direction: $direction
+    ) {
+      first_id
+      last_id
+      total
+      data {
+        _id
+        subtitle
+        title
+        price
+        url
+      }
     }
   }
 `;

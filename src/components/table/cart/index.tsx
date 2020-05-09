@@ -5,7 +5,7 @@
 */
 import * as React from 'react';
 import { v4 } from 'uuid'; 
-import { IProducts } from 'utils/interface';
+import { IProduct } from 'utils/interface';
 
 import {
   TableBody,
@@ -15,13 +15,39 @@ import {
   TableRow,
   Paper,
 } from '@material-ui/core';
-import { Title, TableStyled } from './styles';
+import { TableStyled } from './styles';
 
-export const TableCart: React.FC<IProducts> = ({ products = [] }) => {
+interface IProps {
+  direction: any;
+  handleChangePage: (_: unknown, newPage: number) => void;
+  handleChangeRowsPerPage: (e: any) => void;
+  handleDelProduct: (_id: string) => void;
+  handleOpen: (id: string) => void;
+  page?: number;
+  products: {
+    total?: number;
+    first_id?: string;
+    last_id?: string;
+    data?: IProduct[];
+  };
+  rowsPerPage: number;
+  toggleDirection: () => void;
+}
+
+export const TableCart: React.FC<IProps> = ({
+  direction,
+  handleChangePage,
+  handleChangeRowsPerPage,
+  handleDelProduct,
+  handleOpen,
+  page,
+  products,
+  rowsPerPage,
+  toggleDirection,
+}) => {
   const head = ['Id', 'Name', 'Quantity', 'Price', 'Amount'];
+  const { data = [], total = 0 } = products;
   return (
-    <>
-    <Title weight="bold">My cart</Title>
     <TableContainer component={Paper}>
       <TableStyled aria-label="simple table">
         <TableHead>
@@ -32,7 +58,7 @@ export const TableCart: React.FC<IProducts> = ({ products = [] }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map((item) => (
+          {data.map((item) => (
             <TableRow key={item._id}>
               <TableCell component="th" scope="row">
                 {item._id}
@@ -46,7 +72,5 @@ export const TableCart: React.FC<IProducts> = ({ products = [] }) => {
         </TableBody>
       </TableStyled>
     </TableContainer>
-    </>
   );
 };
-

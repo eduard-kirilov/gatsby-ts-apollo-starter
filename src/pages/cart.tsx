@@ -7,7 +7,7 @@ import * as React from 'react';
 
 import { LayoutWrapper } from 'compose/layout';
 import { SEO } from 'components/seo';
-import { TableCart } from 'components/table';
+import { CartCompose } from 'compose/cart';
 import { AuthContext } from 'utils/authorize';
 import { IAutorize } from 'utils/interface';
 
@@ -16,7 +16,7 @@ const Blog: React.FC = () => (
     {(auth: IAutorize) => (
       <LayoutWrapper auth={auth}>
         <SEO title="Cart" />
-        <TableCart />
+        <CartCompose />
       </LayoutWrapper>
     )}
   </AuthContext.Consumer>

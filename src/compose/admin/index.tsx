@@ -16,30 +16,52 @@ export const AdminCompose = () => {
   const [addProductPopup, setAddProductPopup] = React.useState(false);
   const [upProductPopup, setUpProductPopup] = React.useState(false);
   const [currrentId, setCurrrentId] = React.useState('');
+  const [currentSortId, setCurrrentSortId] = React.useState({});
+  const [page, setPage] = React.useState(0);
+  const [direction, setDirection] = React.useState('ASC');
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const handleUpOpen = (_id: string) => {
     setUpProductPopup(true);
     setCurrrentId(_id);
   }
-  const handleUpClose = (_id: string) => {
+  const handleUpClose = () => {
     setUpProductPopup(false);
     setCurrrentId('');
+  }
+  const handleResetPage = () => {
+    setPage(0);
+    setCurrrentSortId({});
   }
   return (
     <>
       <Admin 
         table={<TableProductsCompose
+          direction={direction}
           handleOpen={handleUpOpen}
+          page={page}
+          rowsPerPage={rowsPerPage}
+          setCurrrentSortId={setCurrrentSortId}
+          setDirection={setDirection}
+          setPage={setPage}
+          handleResetPage={handleResetPage}
+          setRowsPerPage={setRowsPerPage}
         />}
         hadleOpenPopupAddProduct={() => setAddProductPopup(true)}
       />
       <PopupAddProductCompose
-        open={addProductPopup}
+        handleResetPage={handleResetPage}
+        direction={direction}
         handleClose={() => setAddProductPopup(false)}
+        open={addProductPopup}
+        rowsPerPage={rowsPerPage}
       />
       <PopupUpProductCompose
-        open={upProductPopup}
+        currentSortId={currentSortId}
         currrentId={currrentId}
+        direction={direction}
         handleClose={handleUpClose}
+        open={upProductPopup}
+        rowsPerPage={rowsPerPage}
       />
     </>
   );

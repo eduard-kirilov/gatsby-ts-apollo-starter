@@ -10,28 +10,36 @@ import { PRODUCTS_QUERY } from 'gql/query';
 import { ADD_PRODUCT_MUTATION } from 'gql/mutation';
 import { PopupAddProduct } from 'components/popup';
 import { Modal } from 'components/modal';
-
+import { IAllStringProps } from 'utils/interface';
 interface IProps {
-  open: boolean;
+  direction: string;
   handleClose: () => void;
+  handleResetPage: () => void;
+  open: boolean;
+  rowsPerPage: number;
 }
 
 export const PopupAddProductCompose: React.FC<IProps> = ({
-  open,
+  direction,
   handleClose,
+  handleResetPage,
+  open,
+  rowsPerPage,
 }) => {
-  const [addProduct] = useMutation(
-    ADD_PRODUCT_MUTATION,
-    {
-      update: (cache) => cache.writeQuery({
-        query: PRODUCTS_QUERY,
-        data: null,
-      }),
-    }
-  );
+  const [addProduct] = useMutation(ADD_PRODUCT_MUTATION, {
+    refetchQueries: [{
+      query: PRODUCTS_QUERY,
+      variables: {
+        page_size: rowsPerPage,
+        direction,
+      }
+    }],
+    awaitRefetchQueries: true,
+  });
 
   const handleaddProduct = (data: IAllStringProps) => {
-    addProduct({ variables: data })
+    addProduct({ variables: data });
+    handleResetPage();
   }
 
   return (

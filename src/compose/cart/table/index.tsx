@@ -8,7 +8,7 @@ import { useQuery, useMutation } from '@apollo/client';
 
 import { PRODUCTS_QUERY } from 'gql/query';
 import { DEL_PRODUCT_MUTATION } from 'gql/mutation';
-import { TableProducts } from 'components/table';
+import { TableCart } from 'components/table';
 import { IProducts, IAllStringProps } from 'utils/interface';
 
 interface IProps {
@@ -24,7 +24,7 @@ interface IProps {
   setRowsPerPage: (a: number) => void;
 }
 
-export const TableProductsCompose: React.FC<IProps> = ({
+export const TableCartCompose: React.FC<IProps> = ({
   direction,
   handleOpen,
   page,
@@ -94,7 +94,7 @@ export const TableProductsCompose: React.FC<IProps> = ({
     direction === 'ASC' ? setDirection('DESC') : setDirection('ASC');
   };
   return (
-    <TableProducts
+    <TableCart
       direction={direction.toLowerCase()}
       handleChangePage={handleChangePage}
       handleChangeRowsPerPage={handleChangeRowsPerPage}
