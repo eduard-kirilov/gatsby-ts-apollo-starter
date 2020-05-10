@@ -7,15 +7,14 @@ import * as React from 'react';
 import { useQuery } from '@apollo/client';
 
 import { PRODUCTS_QUERY } from 'gql/query';
-import { Home } from 'components/home';
+
 import { LinearProgressStyled } from 'components/status';
+
 import { IProducts } from 'utils/interface';
 
-interface IProps {
-  addToCard: (key: string) => void;
-}
+import { HomeWrapper } from './home';
 
-export const ProductsCompose: React.FC<IProps> = ({ addToCard }) => {
+export const ProductsCompose: React.FC = () => {
   const { data, fetchMore, loading } = useQuery<IProducts>(PRODUCTS_QUERY, {
     variables: {
       page_size: 4,
@@ -49,9 +48,8 @@ export const ProductsCompose: React.FC<IProps> = ({ addToCard }) => {
     });
   };
   return (
-    <Home
+    <HomeWrapper
       products={data.products.data}
-      addToCard={addToCard}
       handleLoadMore={handleLoadMore}
     />
   );

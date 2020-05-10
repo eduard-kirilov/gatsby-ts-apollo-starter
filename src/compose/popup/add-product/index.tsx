@@ -8,22 +8,21 @@ import { useMutation } from '@apollo/client';
 
 import { PRODUCTS_QUERY } from 'gql/query';
 import { ADD_PRODUCT_MUTATION } from 'gql/mutation';
-import { PopupAddProduct } from 'components/popup';
-import { Modal } from 'components/modal';
+
 import { IAllStringProps } from 'utils/interface';
+
+import { PopupAddProductWrapper } from './add-product';
+import { ModalWrapper } from './modal';
+
 interface IProps {
   direction: string;
-  handleClose: () => void;
   handleResetPage: () => void;
-  open: boolean;
   rowsPerPage: number;
 }
 
 export const PopupAddProductCompose: React.FC<IProps> = ({
   direction,
-  handleClose,
   handleResetPage,
-  open,
   rowsPerPage,
 }) => {
   const [addProduct] = useMutation(ADD_PRODUCT_MUTATION, {
@@ -43,14 +42,8 @@ export const PopupAddProductCompose: React.FC<IProps> = ({
   }
 
   return (
-    <Modal
-      open={open}
-      handleClose={handleClose}
-    >
-      <PopupAddProduct
-        handleaddProduct={handleaddProduct}
-        handleClose={handleClose}
-      />
-    </Modal>
+    <ModalWrapper>
+      <PopupAddProductWrapper handleaddProduct={handleaddProduct} />
+    </ModalWrapper>
   )
 }

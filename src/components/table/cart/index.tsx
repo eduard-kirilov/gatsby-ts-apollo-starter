@@ -22,7 +22,6 @@ interface IProps {
   handleChangePage: (_: unknown, newPage: number) => void;
   handleChangeRowsPerPage: (e: any) => void;
   handleDelProduct: (_id: string) => void;
-  handleOpen: (id: string) => void;
   page?: number;
   products: {
     total?: number;
@@ -39,14 +38,20 @@ export const TableCart: React.FC<IProps> = ({
   handleChangePage,
   handleChangeRowsPerPage,
   handleDelProduct,
-  handleOpen,
   page,
   products,
   rowsPerPage,
   toggleDirection,
 }) => {
-  const head = ['Id', 'Name', 'Quantity', 'Price', 'Amount'];
+  const head = ['Id', 'Name', 'Price', 'Quantity', 'Amount'];
   const { data = [], total = 0 } = products;
+  const sum = (price: string, qty: number) => {
+    const re1 = /(\$)?( )/ig;
+    const re2 = /(\d)(?=(\d{3})+(?!\d))/g;
+    const re3 = /(\d{1})/;
+    const ammount = String(Number(price.replace(re1, '')) * qty);
+    return ammount.replace(re2, '$1 ').replace(re3, '$ $1');
+  }
   return (
     <TableContainer component={Paper}>
       <TableStyled aria-label="simple table">
@@ -66,7 +71,7 @@ export const TableCart: React.FC<IProps> = ({
               <TableCell>{item.title}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>{1}</TableCell>
-              <TableCell>{item.price * 1}</TableCell>
+              <TableCell>{sum(item.price, 1)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

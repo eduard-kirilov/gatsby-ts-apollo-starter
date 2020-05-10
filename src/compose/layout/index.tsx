@@ -12,7 +12,7 @@ import { IChildren } from 'utils/interface';
 
 import { PopupAuthCompose } from 'compose/popup';
 import { Layout } from 'components/layout';
-import { Header } from 'components/header';
+import { HeaderWrapper } from './header';
 
 interface IProps {
   auth: {
@@ -21,15 +21,12 @@ interface IProps {
     error?: string;
     currentUser?: any;
   };
-  productIds?: string[];
 }
 
 export const LayoutWrapper: React.FC<IChildren & IProps> = ({
   children,
-  productIds,
   auth,
 }) => {
-  const [openPopupAuth, setOpenPopupAuth] = React.useState(false);
   const [logout] = useMutation(LOGOUT_MUTATION,
     {
       update: (cache) => cache.writeQuery({
@@ -44,18 +41,13 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
     <Layout
       loading={loading}
     >
-      <Header
-        productIds={productIds}
+      <HeaderWrapper
         authorized={authorized}
         currentUser={currentUser}
-        handleOpen={() => setOpenPopupAuth(true)}
         logout={logout}
       />
       {children}
-      <PopupAuthCompose
-        open={openPopupAuth}
-        handleClose={() => setOpenPopupAuth(false)}
-      />
+      <PopupAuthCompose/>
     </Layout>
   );
 };

@@ -6,18 +6,19 @@
 import * as React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 
-import { IAllStringProps } from 'utils/interface';
-import { Modal } from 'components/modal';
-import { PopupUpProduct } from 'components/popup';
 import { PRODUCT_QUERY, PRODUCTS_QUERY } from 'gql/query';
 import { UP_PRODUCT_MUTATION } from 'gql/mutation';
 
+import { IAllStringProps } from 'utils/interface';
+
+import { ModalWrapper } from './modal';
+import { PopupUpProductWrapper } from './up-product';
+
+
 interface IProps {
   currentSortId?: IAllStringProps;
-  currrentId: string;
+  updateId: string;
   direction: string;
-  handleClose: () => void;
-  open: boolean;
   rowsPerPage: number;
 }
 interface IQuery {
@@ -26,16 +27,14 @@ interface IQuery {
 
 export const PopupUpProductCompose: React.FC<IProps> = ({
   currentSortId,
-  currrentId,
+  updateId,
   direction,
-  handleClose,
-  open,
   rowsPerPage,
 }) => {
-  if (currrentId === '') return null;
+  if (updateId === '') return null;
 
   const { data, loading } = useQuery<IQuery>(PRODUCT_QUERY, {
-    variables: { _id: currrentId },
+    variables: { _id: updateId },
   });
 
   const [upProduct] = useMutation(UP_PRODUCT_MUTATION, {
@@ -59,12 +58,11 @@ export const PopupUpProductCompose: React.FC<IProps> = ({
   if (loading) return null;
 
   return (
-    <Modal open={open} handleClose={handleClose}>
-      <PopupUpProduct
+    <ModalWrapper>
+      <PopupUpProductWrapper
         product={data ? data.product : {}}
         handleUpProduct={handleUpProduct}
-        handleClose={handleClose}
       />
-    </Modal>
+    </ModalWrapper>
   );
 };

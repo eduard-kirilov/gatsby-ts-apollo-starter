@@ -1,37 +1,30 @@
 /**
-* React, Gatsby, Jest, TypeScript, Apollo - Starter
-* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
-* Copyright (c) 2020 Eduard Kirilov | MIT License
-*/
+ * React, Gatsby, Jest, TypeScript, Apollo - Starter
+ * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+ * Copyright (c) 2020 Eduard Kirilov | MIT License
+ */
 import * as React from 'react';
 
+import { InitializationWrapper } from 'compose/home/initialization';
 import { LayoutWrapper } from 'compose/layout';
 import { ProductsCompose } from 'compose/home';
-import { SEO } from 'components/seo';
-import { AuthContext } from 'utils/authorize';
 
+import { SEO } from 'components/seo';
+
+import { AuthContext } from 'utils/authorize';
 import { IAutorize } from 'utils/interface';
 
-const Home: React.FC = () => {
-  const [productIds, setProductIds] = React.useState([])
-  const addToCard = (id: string) => {
-    const oldIds = productIds;
-    let ids: string[] = [...oldIds];
-    if (!oldIds.includes(id)) {
-      ids = [...ids, id];
-    }
-    setProductIds(ids);
-  };
-  return (
+const Home: React.FC = () => (
+  <InitializationWrapper>
     <AuthContext.Consumer>
       {(auth: IAutorize) => (
-        <LayoutWrapper auth={auth} productIds={productIds}>
+        <LayoutWrapper auth={auth}>
           <SEO title="Home" />
-          <ProductsCompose addToCard={addToCard} />
+          <ProductsCompose />
         </LayoutWrapper>
       )}
     </AuthContext.Consumer>
-  );
-}
+  </InitializationWrapper>
+);
 
 export default Home;

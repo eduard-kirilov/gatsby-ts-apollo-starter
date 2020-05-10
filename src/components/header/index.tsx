@@ -91,10 +91,10 @@ export const Header: React.FC<IHeaderProps> = ({
   };
 
   const menu: IProfileMenu[] = [
-    {
-      title: 'Profile',
-      link: '/profile',
-    },
+    // {
+    //   title: 'Profile',
+    //   link: '/profile',
+    // },
     {
       title: 'Admin',
       link: '/admin',

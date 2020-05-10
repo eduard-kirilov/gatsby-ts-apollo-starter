@@ -8,19 +8,11 @@ import { useMutation } from '@apollo/client';
 
 import { CURRENT_USER_QUERY } from 'gql/query';
 import { LOGIN_MUTATION, SIGNUP_MUTATION } from 'gql/mutation';
-import { PopupAuth } from 'components/popup';
-import { Modal } from 'components/modal';
+import { PopupAuthWrapper } from './auth';
+import { ModalWrapper } from './modal';
 import { IAllStringProps } from 'utils/interface';
 
-interface IProps {
-  open: boolean;
-  handleClose: () => void;
-}
-
-export const PopupAuthCompose: React.FC<IProps> = ({
-  open,
-  handleClose,
-}) => {
+export const PopupAuthCompose: React.FC = () => {
   const [signup] = useMutation(
     SIGNUP_MUTATION,
     {
@@ -52,15 +44,11 @@ export const PopupAuthCompose: React.FC<IProps> = ({
   }
 
   return (
-    <Modal
-      open={open}
-      handleClose={handleClose}
-    >
-      <PopupAuth
-        handleClose={handleClose}
+    <ModalWrapper>
+      <PopupAuthWrapper
         handleLogin={handleLogin}
         handleSignup={handleSignup}
       />
-    </Modal>
+    </ModalWrapper>
   )
 }

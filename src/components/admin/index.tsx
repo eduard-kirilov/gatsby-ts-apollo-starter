@@ -17,12 +17,12 @@ import { Title, ListItemTextStyled } from './styles';
 
 interface IProps {
   table: React.ReactNode;
-  hadleOpenPopupAddProduct: () => void;
+  handleOpen: () => void;
 }
 
 export const Admin: React.FC<IProps> = ({
   table,
-  hadleOpenPopupAddProduct,
+  handleOpen,
 }) => {
   return (
     <Grid container spacing={4}>
@@ -30,7 +30,7 @@ export const Admin: React.FC<IProps> = ({
         <Title weight="bold">Actions</Title>
         <Paper>
           <List aria-label="list of admin actions">
-            <ListItem component="li" button onClick={hadleOpenPopupAddProduct}>
+            <ListItem component="li" button onClick={handleOpen}>
               <ListItemIcon>
                 <Add />
               </ListItemIcon>

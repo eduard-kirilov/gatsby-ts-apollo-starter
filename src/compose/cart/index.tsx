@@ -24,7 +24,6 @@ export const CartCompose = () => {
           direction={direction}
           page={page}
           rowsPerPage={rowsPerPage}
-          setCurrrentSortId={setCurrrentSortId}
           setDirection={setDirection}
           setPage={setPage}
           handleResetPage={handleResetPage}

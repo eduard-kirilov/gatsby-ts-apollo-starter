@@ -18,6 +18,7 @@ module.exports = {
     '^gql(.*)$': '<rootDir>/src/gql$1',
     '^images(.*)$': '<rootDir>/src/images$1',
     '^pages(.*)$': '<rootDir>/src/pages$1',
+    '^stores(.*)$': '<rootDir>/src/stores$1',
     '^styles(.*)$': '<rootDir>/src/styles$1',
     '^utils(.*)$': '<rootDir>/src/utils$1',
   },

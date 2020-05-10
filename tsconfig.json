@@ -14,6 +14,7 @@
       "gql/*": ["gql/*"],
       "images/*": ["images/*"],
       "pages/*": ["pages/*"],
+      "stores/*": ["stores/*"],
       "styles/*": ["styles/*"],
       "utils/*": ["utils/*"],
     }

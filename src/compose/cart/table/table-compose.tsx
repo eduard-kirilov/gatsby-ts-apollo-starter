@@ -14,11 +14,11 @@ import { IProducts, IAllStringProps } from 'utils/interface';
 interface IProps {
   currentSortId?: string;
   direction: string;
-  handleOpen: (id: string) => void;
+  handleResetPage: () => void;
+  ids: string[],
   page: number;
   rowsPerPage: number;
-  handleResetPage: () => void;
-  setCurrrentSortId: (a: IAllStringProps) => void;
+  setSortId: (a: IAllStringProps) => void;
   setDirection: (a: string) => void;
   setPage: (a: number) => void;
   setRowsPerPage: (a: number) => void;
@@ -26,17 +26,19 @@ interface IProps {
 
 export const TableCartCompose: React.FC<IProps> = ({
   direction,
-  handleOpen,
+  handleResetPage,
+  ids,
   page,
   rowsPerPage,
-  handleResetPage,
-  setCurrrentSortId,
+  setSortId,
   setDirection,
   setPage,
   setRowsPerPage,
 }) => {
+  if (!ids.length || ids.length === 0) return null;
   const { data, fetchMore } = useQuery<IProducts>(PRODUCTS_QUERY, {
     variables: {
+      ids,
       page_size: rowsPerPage,
       direction,
     },
@@ -74,14 +76,14 @@ export const TableCartCompose: React.FC<IProps> = ({
         last_id,
         direction,
       });
-      setCurrrentSortId({ last_id });
+      setSortId({ last_id });
     } else {
       handleLoadData({
         page_size: rowsPerPage,
         first_id,
         direction,
       });
-      setCurrrentSortId({ first_id });
+      setSortId({ first_id });
     }
     setPage(newPage);
   };
@@ -99,7 +101,6 @@ export const TableCartCompose: React.FC<IProps> = ({
       handleChangePage={handleChangePage}
       handleChangeRowsPerPage={handleChangeRowsPerPage}
       handleDelProduct={handleDelProduct}
-      handleOpen={handleOpen}
       page={page}
       products={products}
       rowsPerPage={rowsPerPage}

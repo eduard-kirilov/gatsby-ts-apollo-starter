@@ -11,7 +11,9 @@ import {
   InMemoryCache,
 } from '@apollo/client';
 import fetch from 'isomorphic-fetch';
+import { Provider } from 'react-redux';
 import { AuthProvider } from 'utils/authorize';
+import { store } from './configureStore';
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -23,7 +25,9 @@ export const client = new ApolloClient({
 });
 
 export const wrapRootElement = ({ element }) => (
-  <ApolloProvider client={client}>
-    <AuthProvider>{element}</AuthProvider>
-  </ApolloProvider>
+  <Provider store={store}>
+    <ApolloProvider client={client}>
+      <AuthProvider>{element}</AuthProvider>
+    </ApolloProvider>
+  </Provider>
 );

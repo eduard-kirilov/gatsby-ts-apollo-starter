@@ -37,3 +37,7 @@ export interface ICropText {
   text: string;
   size: number;
 }
+
+export interface IStringArray {
+  [key: string]: string[];
+}

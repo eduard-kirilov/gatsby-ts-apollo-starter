@@ -8,13 +8,13 @@ import { useQuery, useMutation } from '@apollo/client';
 
 import { PRODUCTS_QUERY } from 'gql/query';
 import { DEL_PRODUCT_MUTATION } from 'gql/mutation';
-import { TableProducts } from 'components/table';
+
 import { IProducts, IAllStringProps } from 'utils/interface';
 
+import { TableProductsWrapper } from './table';
+
 interface IProps {
-  currentSortId?: string;
   direction: string;
-  handleOpen: (id: string) => void;
   page: number;
   rowsPerPage: number;
   handleResetPage: () => void;
@@ -26,7 +26,6 @@ interface IProps {
 
 export const TableProductsCompose: React.FC<IProps> = ({
   direction,
-  handleOpen,
   page,
   rowsPerPage,
   handleResetPage,
@@ -93,13 +92,13 @@ export const TableProductsCompose: React.FC<IProps> = ({
   const toggleDirection = () => {
     direction === 'ASC' ? setDirection('DESC') : setDirection('ASC');
   };
+  
   return (
-    <TableProducts
+    <TableProductsWrapper
       direction={direction.toLowerCase()}
       handleChangePage={handleChangePage}
       handleChangeRowsPerPage={handleChangeRowsPerPage}
       handleDelProduct={handleDelProduct}
-      handleOpen={handleOpen}
       page={page}
       products={products}
       rowsPerPage={rowsPerPage}

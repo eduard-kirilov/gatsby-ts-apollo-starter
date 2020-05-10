@@ -45,6 +45,7 @@ module.exports = {
           "gql": "src/gql",
           "images": "src/images",
           "pages": "src/pages",
+          "stores": "src/stores",
           "styles": "src/styles",
           "utils": "src/utils",
         },

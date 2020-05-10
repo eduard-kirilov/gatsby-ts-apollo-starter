@@ -32,12 +32,16 @@ interface IProps {
   handleSignup?: (props: IAllStringProps) => void;
 }
 
+interface IShow {
+  [key: string]: boolean,
+};
+
 export const Signup: React.FC<IProps> = ({
   handleClose,
   handleSignup,
   setTabName,
 }) => {
-  const [show, setShow] = React.useState({
+  const [show, setShow] = React.useState<IShow>({
     password: false,
     confirmPassword: false,
   });
