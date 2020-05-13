@@ -17,12 +17,4 @@ describe('Private Container', () => {
       expect(mount.find('Private')).toHaveLength(0);
     });
   });
-  describe('Private', () => {
-    const mount = shallow(
-      <Private loading={false} authorized={false}>some text to imitate a children</Private>,
-    );
-    it('<Private /> is unauthorized test should work', () => {
-      expect(mount.find('Private')).toHaveLength(0);
-    });
-  });
 });

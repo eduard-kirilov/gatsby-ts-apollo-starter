@@ -10,7 +10,6 @@ export const initCartSelected = () => async (
   const items = JSON.parse(localStorage.getItem('CartSelected'));
 
   if (items.length && items.length > 0) {
-    console.log('items ', items)
     dispatch(setSelectedIds(items));
   }
 };
@@ -22,7 +21,6 @@ export const addToCart = (id: string) => async (
   const store = getStore();
   const ids = getCartSelectedIds(store);
 
-  console.log('addToCart ', store, ids)
   let newIds = [...ids];
   if (!ids.includes(id)) newIds = [...newIds, id];
 

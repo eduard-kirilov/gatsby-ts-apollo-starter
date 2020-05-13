@@ -1,11 +1,11 @@
 /**
-* React, Gatsby, Jest, TypeScript, Apollo - Starter
-* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
-* Copyright (c) 2020 Eduard Kirilov | MIT License
-*/
+ * React, Gatsby, Jest, TypeScript, Apollo - Starter
+ * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+ * Copyright (c) 2020 Eduard Kirilov | MIT License
+ */
 import * as React from 'react';
-import { v4 } from 'uuid'; 
-import { IProduct } from 'utils/interface';
+import { IProduct, IAllStringProps } from 'utils/interface';
+import { priceToStr, priceToNum, priceSumArr } from 'utils/helpers';
 
 import {
   TableBody,
@@ -15,7 +15,7 @@ import {
   TableRow,
   Paper,
 } from '@material-ui/core';
-import { TableStyled } from './styles';
+import { TableStyled, TbleFooter, Text, Amount } from './styles';
 
 interface IProps {
   direction: any;
@@ -45,25 +45,28 @@ export const TableCart: React.FC<IProps> = ({
 }) => {
   const head = ['Id', 'Name', 'Price', 'Quantity', 'Amount'];
   const { data = [], total = 0 } = products;
-  const sum = (price: string, qty: number) => {
-    const re1 = /(\$)?( )/ig;
-    const re2 = /(\d)(?=(\d{3})+(?!\d))/g;
-    const re3 = /(\d{1})/;
-    const ammount = String(Number(price.replace(re1, '')) * qty);
-    return ammount.replace(re2, '$1 ').replace(re3, '$ $1');
-  }
+
+  function sum(price: string, qty: number) {
+    const amount = priceToNum(price) * qty;
+    return priceToStr(amount);
+  };
+
+  const amount = priceSumArr(data.map(({ price }) => price));
+
   return (
     <TableContainer component={Paper}>
       <TableStyled aria-label="simple table">
         <TableHead>
           <TableRow>
-            {head.map(item => (
-              <TableCell key={v4()}>{item}</TableCell>
+            {head.map(item => item !== 'Amount' ? (
+              <TableCell key={item}>{item}</TableCell>
+            ) : (
+              <TableCell key={item} align="right">{item}</TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((item) => (
+          {data.map(item => (
             <TableRow key={item._id}>
               <TableCell component="th" scope="row">
                 {item._id}
@@ -71,11 +74,15 @@ export const TableCart: React.FC<IProps> = ({
               <TableCell>{item.title}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>{1}</TableCell>
-              <TableCell>{sum(item.price, 1)}</TableCell>
+              <TableCell align="right">{sum(item.price, 1)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </TableStyled>
+      <TbleFooter>
+        <Text>Final amount:</Text>
+          <Amount>{amount}</Amount>
+      </TbleFooter>
     </TableContainer>
   );
 };
