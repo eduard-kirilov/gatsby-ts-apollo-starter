@@ -6,3 +6,15 @@
 export const getUpdateId = (state:any) => {
   return state.adminTable.updateId;
 }
+
+export const getPage = (state:any) => {
+  return state.adminTable.page;
+}
+
+export const getPerPage = (state:any) => {
+  return state.adminTable.perPage;
+}
+
+export const getDirection = (state:any) => {
+  return state.adminTable.direction;
+}

@@ -15,33 +15,21 @@ import {
   TableRow,
   Paper,
 } from '@material-ui/core';
+import { LinearStatus } from 'components/status';
 import { TableStyled, TbleFooter, Text, Amount } from './styles';
 
 interface IProps {
-  direction: any;
-  handleChangePage: (_: unknown, newPage: number) => void;
-  handleChangeRowsPerPage: (e: any) => void;
-  handleDelProduct: (_id: string) => void;
-  page?: number;
+  loading?: boolean;
   products: {
     total?: number;
-    first_id?: string;
-    last_id?: string;
+    page?: number;
     data?: IProduct[];
   };
-  rowsPerPage: number;
-  toggleDirection: () => void;
 }
 
-export const TableCart: React.FC<IProps> = ({
-  direction,
-  handleChangePage,
-  handleChangeRowsPerPage,
-  handleDelProduct,
-  page,
+const TableCartMemo: React.FC<IProps> = ({
+  loading = false,
   products,
-  rowsPerPage,
-  toggleDirection,
 }) => {
   const head = ['Id', 'Name', 'Price', 'Quantity', 'Amount'];
   const { data = [], total = 0 } = products;
@@ -66,7 +54,9 @@ export const TableCart: React.FC<IProps> = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(item => (
+          {loading
+            ? <LinearStatus />
+            : data.map(item => (
             <TableRow key={item._id}>
               <TableCell component="th" scope="row">
                 {item._id}
@@ -86,3 +76,5 @@ export const TableCart: React.FC<IProps> = ({
     </TableContainer>
   );
 };
+
+export const TableCart = React.memo(TableCartMemo);

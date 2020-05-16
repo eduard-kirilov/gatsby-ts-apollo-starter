@@ -9,7 +9,7 @@ interface IProps {
   children: React.ReactNode;
   handleMount?: () => void;
 }
-export const Initialization: React.FC<IProps> = ({
+export const InitMemo: React.FC<IProps> = ({
   children,
   handleMount,
 }) => {
@@ -19,3 +19,5 @@ export const Initialization: React.FC<IProps> = ({
 
   return <>{children}</>;
 };
+
+export const Init = React.memo(InitMemo);

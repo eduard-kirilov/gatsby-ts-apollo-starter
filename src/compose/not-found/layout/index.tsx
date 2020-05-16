@@ -8,6 +8,8 @@ import * as React from 'react';
 import { IChildren } from 'utils/interface';
 import { Layout } from 'components/layout'
 
-export const LayoutWrapper: React.FC<IChildren> = ({ children }) => (
+const LayoutWrapperMemo: React.FC<IChildren> = ({ children }) => (
   <Layout>{children}</Layout>
 );
+
+export const LayoutWrapper = React.memo(LayoutWrapperMemo);

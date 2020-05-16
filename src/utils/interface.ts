@@ -22,8 +22,7 @@ export interface IProduct {
 export interface IProducts {
   products: {
     total?: number;
-    first_id?: string;
-    last_id?: string;
+    page?: number;
     data?: IProduct[];
   };
 }

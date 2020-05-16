@@ -22,7 +22,8 @@ import {
 interface IProps {
   addToCard: (key: string) => void;
 }
-export const CardProduct: React.FC<IProps & IProduct> = ({
+
+const CardProductMemo: React.FC<IProps & IProduct> = ({
   addToCard,
   subtitle,
   title,
@@ -59,3 +60,5 @@ export const CardProduct: React.FC<IProps & IProduct> = ({
     </Grid>
   );
 };
+
+export const CardProduct = React.memo(CardProductMemo);

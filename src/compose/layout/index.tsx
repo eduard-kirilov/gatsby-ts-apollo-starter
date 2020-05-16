@@ -4,15 +4,18 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 
 import { CURRENT_USER_QUERY } from 'gql/query';
 import { LOGOUT_MUTATION } from 'gql/mutation';
 import { IChildren } from 'utils/interface';
+import { actions } from 'stores/modals';
+import { get as getSelected } from 'stores/cart/selected';
 
 import { PopupAuthCompose } from 'compose/popup';
 import { Layout } from 'components/layout';
-import { HeaderWrapper } from './header';
+import { Header } from 'components/header';
 
 interface IProps {
   auth: {
@@ -23,10 +26,16 @@ interface IProps {
   };
 }
 
+const { openLogin } = actions;
+const { getCartSelectedIds } = getSelected;
+
 export const LayoutWrapper: React.FC<IChildren & IProps> = ({
   children,
   auth,
 }) => {
+  const productIds = useSelector(getCartSelectedIds);
+  const dispatch = useDispatch();
+
   const [logout] = useMutation(LOGOUT_MUTATION,
     {
       update: (cache) => cache.writeQuery({
@@ -35,13 +44,17 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
       }),
     }
   )
+  const handleOpen = () => dispatch(openLogin());
 
   const { authorized, loading, currentUser } = auth;
+
   return (
     <Layout
       loading={loading}
     >
-      <HeaderWrapper
+      <Header
+        handleOpen={handleOpen}
+        productIds={productIds}
         authorized={authorized}
         currentUser={currentUser}
         logout={logout}

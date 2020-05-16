@@ -4,32 +4,20 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
+import { Grid } from '@material-ui/core';
 
-import { Cart } from 'components/cart';
-import { TableCartCompose } from 'compose/cart/table';
+import { Title } from 'components/cart/styles';
+import { TableCartCompose } from './table';
 
-export const CartCompose = () => {
-  const [currentSortId, setCurrrentSortId] = React.useState({});
-  const [page, setPage] = React.useState(0);
-  const [direction, setDirection] = React.useState('ASC');
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const handleResetPage = () => {
-    setPage(0);
-    setCurrrentSortId({});
-  }
+const CartComposeMemo = () => {
   return (
-    <>
-      <Cart table={<TableCartCompose
-          direction={direction}
-          page={page}
-          rowsPerPage={rowsPerPage}
-          setDirection={setDirection}
-          setPage={setPage}
-          handleResetPage={handleResetPage}
-          setRowsPerPage={setRowsPerPage}
-        />}
-      />
-    </>
+    <Grid container spacing={4}>
+      <Grid item xs={12}>
+        <Title weight="bold">My cart</Title>
+        <TableCartCompose />
+      </Grid>
+    </Grid>
   );
 };
+
+export const CartCompose = React.memo(CartComposeMemo);

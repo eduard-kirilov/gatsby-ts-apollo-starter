@@ -5,15 +5,15 @@
 */
 import * as React from 'react';
 
-import { InitializationWrapper } from 'compose/cart/initialization';
+import { InitCompose } from 'compose/admin/init';
 import { LayoutWrapper } from 'compose/layout';
 import { SEO } from 'components/seo';
 import { CartCompose } from 'compose/cart';
 import { AuthContext } from 'utils/authorize';
 import { IAutorize } from 'utils/interface';
 
-const Blog: React.FC = () => (
-  <InitializationWrapper>
+const Cart: React.FC = () => (
+  <InitCompose>
     <AuthContext.Consumer>
       {(auth: IAutorize) => (
         <LayoutWrapper auth={auth}>
@@ -22,7 +22,7 @@ const Blog: React.FC = () => (
         </LayoutWrapper>
       )}
     </AuthContext.Consumer>
-  </InitializationWrapper>
+  </InitCompose>
 );
 
-export default Blog;
+export default  React.memo(Cart);

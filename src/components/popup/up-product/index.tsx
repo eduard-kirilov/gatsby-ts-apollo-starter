@@ -23,7 +23,7 @@ interface IProps {
   product: IAllStringProps;
 }
 
-export const PopupUpProduct: React.FC<IProps> = ({
+const PopupUpProductMemo: React.FC<IProps> = ({
   handleUpProduct,
   handleClose,
   product,
@@ -123,3 +123,5 @@ export const PopupUpProduct: React.FC<IProps> = ({
     </>
   );
 };
+
+export const PopupUpProduct = React.memo(PopupUpProductMemo);

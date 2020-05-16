@@ -5,7 +5,7 @@
 */
 import * as React from 'react';
 
-import { InitializationWrapper } from 'compose/admin/initialization';
+import { InitCompose } from 'compose/admin/init';
 import { LayoutWrapper } from 'compose/layout';
 import { AdminCompose } from 'compose/admin';
 import { Private } from 'components/private';
@@ -15,7 +15,7 @@ import { AuthContext } from 'utils/authorize';
 import { IAutorize } from 'utils/interface';
 
 const Admin: React.FC = () => (
-  <InitializationWrapper>
+  <InitCompose>
     <AuthContext.Consumer>
       {(auth: IAutorize) => (
         <Private loading={auth.loading} authorized={auth.authorized}>
@@ -26,7 +26,7 @@ const Admin: React.FC = () => (
         </Private>
       )}
     </AuthContext.Consumer>
-  </InitializationWrapper>
+  </InitCompose>
 );
 
-export default Admin;
+export default React.memo(Admin);

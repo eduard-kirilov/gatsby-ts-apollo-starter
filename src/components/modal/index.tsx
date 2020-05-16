@@ -14,7 +14,7 @@ interface IProps {
   open?: boolean;
 }
 
-export const Modal: React.FC<IProps & IChildren> = ({
+const ModalMemo: React.FC<IProps & IChildren> = ({
   children,
   handleClose,
   open = false,
@@ -33,3 +33,5 @@ export const Modal: React.FC<IProps & IChildren> = ({
     </Fade>
   </ModalStyled>
 );
+
+export const Modal = React.memo(ModalMemo);

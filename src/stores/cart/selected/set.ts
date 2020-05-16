@@ -3,15 +3,22 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import { IAllStringProps } from 'utils/interface';
+import { defaults } from './defaults';
 
 interface ISetSelectedIds {
-  payload: [string];
+  payload: string[];
 }
 
 export const setSelectedIds = (state: any, { payload }: ISetSelectedIds) => {
   return {
     ...state,
     ids: payload,
+  };
+};
+
+export const resetSelectedIds = (state: any, { payload }: ISetSelectedIds) => {
+  return {
+    ...state,
+    ...defaults,
   };
 };

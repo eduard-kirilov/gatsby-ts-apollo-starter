@@ -4,15 +4,23 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import * as React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 
 import { CURRENT_USER_QUERY } from 'gql/query';
 import { LOGIN_MUTATION, SIGNUP_MUTATION } from 'gql/mutation';
-import { PopupAuthWrapper } from './auth';
-import { ModalWrapper } from './modal';
+import { actions, get } from 'stores/modals';
+import { PopupAuth } from 'components/popup';
+import { Modal } from 'components/modal';
 import { IAllStringProps } from 'utils/interface';
 
-export const PopupAuthCompose: React.FC = () => {
+const { closeLogin } = actions;
+const { getLoginModalsStatus } = get;
+
+const PopupAuthComposeMemo: React.FC = () => {
+  const open = useSelector(getLoginModalsStatus);
+  const dispatch = useDispatch();
+
   const [signup] = useMutation(
     SIGNUP_MUTATION,
     {
@@ -24,6 +32,7 @@ export const PopupAuthCompose: React.FC = () => {
       }),
     }
   );
+
   const [login] = useMutation(
     LOGIN_MUTATION,
     {
@@ -39,16 +48,25 @@ export const PopupAuthCompose: React.FC = () => {
   const handleSignup = (userData: IAllStringProps) => {
     signup({ variables: userData })
   }
+
   const handleLogin = (userData: IAllStringProps) => {
     login({ variables: userData })
   }
 
+  const handleClose = () => dispatch(closeLogin());
+  
   return (
-    <ModalWrapper>
-      <PopupAuthWrapper
+    <Modal
+      open={open}
+      handleClose={handleClose}
+    >
+      <PopupAuth
         handleLogin={handleLogin}
         handleSignup={handleSignup}
+        handleClose={handleClose}
       />
-    </ModalWrapper>
+    </Modal>
   )
 }
+
+export const PopupAuthCompose = React.memo(PopupAuthComposeMemo);

@@ -16,7 +16,7 @@ interface IProps {
   handleSignup: (props: IAllStringProps) => void;
 }
 
-export const PopupAuth: React.FC<IProps> = ({
+const PopupAuthMemo: React.FC<IProps> = ({
   handleClose,
   handleSignup,
   handleLogin,
@@ -47,3 +47,5 @@ export const PopupAuth: React.FC<IProps> = ({
     </SwipeableViews>
   );
 };
+
+export const PopupAuth = React.memo(PopupAuthMemo);

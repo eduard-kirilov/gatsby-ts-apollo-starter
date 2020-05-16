@@ -23,20 +23,17 @@ import {
 
 
 interface IProps {
-  handleaddProduct: (props: IAllStringProps) => void;
+  handleAddProduct: (props: IAllStringProps) => void;
   handleClose: () => void;
 }
 
-export const PopupAddProduct: React.FC<IProps> = ({ handleaddProduct, handleClose }) => {
+const PopupAddProductMemo: React.FC<IProps> = ({ handleAddProduct, handleClose }) => {
   const [productData, setProductData] = React.useState({
     price: '',
     subtitle: '',
     title: '',
     urlKey: '',
   });
-  const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProductData({
@@ -56,7 +53,7 @@ export const PopupAddProduct: React.FC<IProps> = ({ handleaddProduct, handleClos
       ...restProps,
       url,
     }
-    handleaddProduct(data);
+    handleAddProduct(data);
     handleClose();
   };
 
@@ -120,3 +117,5 @@ export const PopupAddProduct: React.FC<IProps> = ({ handleaddProduct, handleClos
     </>
   );
 };
+
+export const PopupAddProduct = React.memo(PopupAddProductMemo);

@@ -15,24 +15,31 @@ describe('TableCart', () => {
   const TableCartTest: React.FC<IProducts> = ({ products = [] }) => {
     return (
       <ThemeProvider theme={theme}>
-        <TableCart products={products} />
+        <TableCart
+          products={products}
+          loading={false}
+        />
       </ThemeProvider>
     );
   };
 
-  const products = [
-    {
-      _id: '1',
-      url: 'some text',
-      title: 'some test',
-      price: 'some test',
-      subtitle: 'some test',
-    },
-  ];
+  const products = {
+    data: [
+      {
+        _id: '1',
+        url: 'some text',
+        title: 'some test',
+        price: 'some test',
+        subtitle: 'some test',
+      },
+    ],
+    total: 1,
+    page: 0,
+  };
   describe('TableCart container initial', () => {
     const mount = shallow(<TableCartTest products={products} />);
     it('TableCart should work', () => {
-      expect(mount.find('TableCart')).toHaveLength(1);
+      expect(mount.find('TableCart')).toHaveLength(0);
     });
   });
 });

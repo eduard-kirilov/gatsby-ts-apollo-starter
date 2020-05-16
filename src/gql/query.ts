@@ -19,20 +19,17 @@ export const PRODUCT_QUERY = gql`
 export const PRODUCTS_QUERY = gql`
   query products(
     $direction: String!,
-    $first_id: ID,
     $ids: [String],
-    $last_id: ID,
-    $page_size: Int!,
+    $page: Int,
+    $per_page: Int!,
   ) {
     products(
       direction: $direction
-      first_id: $first_id
       ids: $ids
-      last_id: $last_id
-      page_size: $page_size
+      page: $page
+      per_page: $per_page
     ) {
-      first_id
-      last_id
+      page
       total
       data {
         _id

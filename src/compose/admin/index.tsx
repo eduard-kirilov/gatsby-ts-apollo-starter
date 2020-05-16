@@ -4,49 +4,41 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
+import {
+  Grid,
+  Paper,
+  List,
+} from '@material-ui/core';
 
+import { Title } from 'components/admin/styles';
 import {
   PopupAddProductCompose,
   PopupUpProductCompose,
 } from 'compose/popup';
-import { AdminWrapper } from './admin';
+import { ItemCompose } from './item';
 import { TableProductsCompose } from './table';
 
-export const AdminCompose = () => {
-  const [currentSortId, setCurrrentSortId] = React.useState({});
-  const [page, setPage] = React.useState(0);
-  const [direction, setDirection] = React.useState('ASC');
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const handleResetPage = () => {
-    setPage(0);
-    setCurrrentSortId({});
-  }
-
+const AdminComposeMemo = () => {
   return (
     <>
-      <AdminWrapper 
-        table={<TableProductsCompose
-          direction={direction}
-          page={page}
-          rowsPerPage={rowsPerPage}
-          setCurrrentSortId={setCurrrentSortId}
-          setDirection={setDirection}
-          setPage={setPage}
-          handleResetPage={handleResetPage}
-          setRowsPerPage={setRowsPerPage}
-        />}
-      />
-      <PopupAddProductCompose
-        handleResetPage={handleResetPage}
-        direction={direction}
-        rowsPerPage={rowsPerPage}
-      />
-      <PopupUpProductCompose
-        currentSortId={currentSortId}
-        direction={direction}
-        rowsPerPage={rowsPerPage}
-      />
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={4} md={3}>
+          <Title weight="bold">Actions</Title>
+          <Paper>
+            <List aria-label="list of admin actions">
+              <ItemCompose />
+            </List>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={8} md={9}>
+          <Title weight="bold">Products</Title>
+          <TableProductsCompose />
+        </Grid>
+      </Grid>
+      <PopupAddProductCompose />
+      <PopupUpProductCompose />
     </>
   );
 };
+
+export const AdminCompose = React.memo(AdminComposeMemo);

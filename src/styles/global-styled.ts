@@ -7,4 +7,11 @@ export const GlobalStyleAllPage = createGlobalStyle`
   svg {
     fill: currentColor;
   }
-`
+  .linear-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1204;
+  }
+`;

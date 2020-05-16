@@ -29,7 +29,7 @@ describe('CardProduct', () => {
   describe('CardProduct container initial', () => {
     const mount = shallow(<CardProductTest />);
   it('CardProduct Test should work', () => {
-      expect(mount.find('CardProduct')).toHaveLength(1);
+      expect(mount.find('CardProduct')).toHaveLength(0);
     });
   });
 });

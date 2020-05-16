@@ -20,6 +20,7 @@ import {
   TableSortLabel,
   TablePagination,
 } from '@material-ui/core';
+import { LinearStatus } from 'components/status';
 import { TableStyled, ButtonWrapper } from './styles';
 
 interface IProps {
@@ -28,26 +29,27 @@ interface IProps {
   handleChangeRowsPerPage: (e: any) => void;
   handleDelProduct: (_id: string) => void;
   handleOpen: (id: string) => void;
+  loading?: boolean;
   page?: number;
   products: {
     total?: number;
-    first_id?: string;
-    last_id?: string;
+    page?: number;
     data?: IProduct[];
   };
-  rowsPerPage: number;
+  perPage: number;
   toggleDirection: () => void;
 }
 
-export const TableProducts: React.FC<IProps> = ({
+const TableProductsMemo: React.FC<IProps> = ({
   direction,
   handleChangePage,
   handleChangeRowsPerPage,
   handleDelProduct,
   handleOpen,
+  loading = false,
   page,
+  perPage = 5,
   products,
-  rowsPerPage,
   toggleDirection,
 }) => {
   const { data = [], total = 0 } = products;
@@ -74,7 +76,9 @@ export const TableProducts: React.FC<IProps> = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((item) => (
+            {loading
+              ? <LinearStatus />
+              : data.map((item) => (
               <TableRow key={item._id}>
                 <TableCell>{item._id}</TableCell>
                 <TableCell>{item.title}</TableCell>
@@ -112,7 +116,7 @@ export const TableProducts: React.FC<IProps> = ({
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
         count={total}
-        rowsPerPage={rowsPerPage}
+        rowsPerPage={perPage}
         page={page}
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
@@ -120,3 +124,5 @@ export const TableProducts: React.FC<IProps> = ({
     </Paper>
   );
 };
+
+export const TableProducts = React.memo(TableProductsMemo);

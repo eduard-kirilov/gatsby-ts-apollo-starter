@@ -6,20 +6,22 @@
 import * as React from 'react';
 
 import { IChildren } from 'utils/interface';
-import { ContainerStyled, LinearProgressStyled } from './styles';
-
+import { ContainerStyled } from './styles';
+import { LinearStatus } from 'components/status';
 interface IProps {
-  loading: boolean;
+  loading?: boolean;
 }
 
-export const Layout: React.FC<IChildren & IProps> = ({
+const LayoutMemo: React.FC<IChildren & IProps> = ({
   children,
-  loading,
+  loading = false,
 }) => (
   <>
-    {loading && <LinearProgressStyled />}
+    {loading && <LinearStatus />}
     <ContainerStyled maxWidth="lg">
       {children}
     </ContainerStyled>
   </>
 );
+
+export const Layout = React.memo(LayoutMemo);

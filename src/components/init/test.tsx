@@ -6,17 +6,17 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
-import { Initialization } from './index';
+import { Init } from './index';
 
-describe('Initialization Container', () => {
-  describe('Initialization', () => {
+describe('Init Container', () => {
+  describe('Init', () => {
     const mount = shallow(
-      <Initialization handleMount={() => {}}>
+      <Init handleMount={() => {}}>
         some text to imitate a children
-      </Initialization>,
+      </Init>,
     );
-    it('<Initialization /> is authorized test should work', () => {
-      expect(mount.find('Initialization')).toHaveLength(0);
+    it('<Init /> is authorized test should work', () => {
+      expect(mount.find('Init')).toHaveLength(0);
     });
   });
 });

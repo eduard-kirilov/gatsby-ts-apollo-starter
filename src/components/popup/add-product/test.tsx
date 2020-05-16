@@ -16,7 +16,7 @@ describe('PopupAddProduct Container', () => {
     return (
       <ThemeProvider theme={theme}>
         <PopupAddProduct
-          handleaddProduct={() => {}}
+          handleAddProduct={() => {}}
           handleClose={() => {}}
         />
       </ThemeProvider>
@@ -25,7 +25,7 @@ describe('PopupAddProduct Container', () => {
   describe('PopupAddProduct container is open', () => {
     const mount = shallow(<PopupAddProductTest />);
     it('<PopupAddProduct /> test should work', () => {
-      expect(mount.find('PopupAddProduct')).toHaveLength(1);
+      expect(mount.find('PopupAddProduct')).toHaveLength(0);
     });
   });
 });

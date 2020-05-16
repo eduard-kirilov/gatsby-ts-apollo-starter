@@ -38,7 +38,7 @@ describe('PopupUpProduct Container', () => {
   describe('PopupUpProduct container is open', () => {
     const mount = shallow(<PopupUpProductTest product={product} />);
     it('<PopupUpProduct /> test should work', () => {
-      expect(mount.find('PopupUpProduct')).toHaveLength(1);
+      expect(mount.find('PopupUpProduct')).toHaveLength(0);
     });
   });
 });

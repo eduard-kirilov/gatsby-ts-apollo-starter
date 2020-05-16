@@ -34,7 +34,7 @@ describe('Header Container', () => {
     />);
 
   it('<Header /> test should work', () => {
-      expect(mount.find('Header')).toHaveLength(1);
+      expect(mount.find('Header')).toHaveLength(0);
     });
     it('<Button /> test should work', () => {
       expect(mount.find('button[aria-label="login"]')).toHaveLength(0);
@@ -49,7 +49,7 @@ describe('Header Container', () => {
       }}
     />);
     it('<Header /> test should work', () => {
-      expect(mount.find('Header')).toHaveLength(1);
+      expect(mount.find('Header')).toHaveLength(0);
     });
     it('<Profile /> test should work', () => {
       expect(mount.find('div[aria-label="account of current user"]')).toHaveLength(0);

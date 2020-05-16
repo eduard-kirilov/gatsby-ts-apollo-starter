@@ -5,7 +5,7 @@
  */
 import * as React from 'react';
 
-import { InitializationWrapper } from 'compose/home/initialization';
+import { InitCompose } from 'compose/home/init';
 import { LayoutWrapper } from 'compose/layout';
 import { ProductsCompose } from 'compose/home';
 
@@ -15,7 +15,7 @@ import { AuthContext } from 'utils/authorize';
 import { IAutorize } from 'utils/interface';
 
 const Home: React.FC = () => (
-  <InitializationWrapper>
+  <InitCompose>
     <AuthContext.Consumer>
       {(auth: IAutorize) => (
         <LayoutWrapper auth={auth}>
@@ -24,7 +24,7 @@ const Home: React.FC = () => (
         </LayoutWrapper>
       )}
     </AuthContext.Consumer>
-  </InitializationWrapper>
+  </InitCompose>
 );
 
-export default Home;
+export default  React.memo(Home);

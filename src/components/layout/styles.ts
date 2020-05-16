@@ -6,11 +6,8 @@
 import styled from 'styled-components';
 import { Theme } from '@material-ui/core/styles';
 
-import { Container, LinearProgress } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 export const ContainerStyled = styled(Container)<{ theme: Theme }>`
   margin-top: ${({ theme }) => theme.mixins.toolbar.minHeight + 60}px;
-`;
-export const LinearProgressStyled = styled(LinearProgress)<{ theme: Theme }>`
-  z-index: ${({ theme }) => theme.zIndex.drawer + 2},
 `;

@@ -51,7 +51,7 @@ interface IProfileMenu {
   action?: () => void;
 }
 
-export const Header: React.FC<IHeaderProps> = ({
+const HeaderMemo: React.FC<IHeaderProps> = ({
   productIds = [],
   handleOpen,
   currentUser,
@@ -235,3 +235,5 @@ export const Header: React.FC<IHeaderProps> = ({
     </Wrapper>
   );
 };
+
+export const Header = React.memo(HeaderMemo);
