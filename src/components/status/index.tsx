@@ -7,9 +7,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { LinearProgressStyled } from './styled';
 
-const appRoot = document.getElementById('___gatsby');
-
 export const LinearStatus = () => {
+  if (typeof window !== 'object') return null;
+  const appRoot = document.getElementById('___gatsby');
   const el = document.createElement('div');
   el.classList.add('linear-status');
   React.useEffect(() => {
