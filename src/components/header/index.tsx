@@ -15,17 +15,13 @@ import {
 
 import { AccountCircle, MoreVert, ShoppingCart } from '@material-ui/icons';
 import { IAllStringProps } from 'utils/interface';
-import LogoLeft from 'images/logo-white.inline.svg';
-import LogoRight from 'images/logo-right.inline.svg';
+
 import { LinkClearStyles } from 'components/link';
+import { Logo } from 'components/logo';
 
 import {
   AppBarStyled,
   Link,
-  LinkLogo,
-  LogoLeftStyled,
-  LogoRightStyled,
-  LogoWrapper,
   NavLeft,
   NavRight,
   Profile,
@@ -164,18 +160,7 @@ const HeaderMemo: React.FC<IHeaderProps> = ({
         <Container maxWidth="lg">
           <Toolbar>
             <NavLeft>
-              <LinkLogo to="/">
-                <Button color="inherit">
-                  <LogoWrapper>
-                    <LogoLeftStyled>
-                      <LogoLeft />
-                    </LogoLeftStyled>
-                    <LogoRightStyled>
-                      <LogoRight />
-                    </LogoRightStyled>
-                  </LogoWrapper>
-                </Button>
-              </LinkLogo>
+              <Logo />
             </NavLeft>
             {authorized ? (
               <NavRight>

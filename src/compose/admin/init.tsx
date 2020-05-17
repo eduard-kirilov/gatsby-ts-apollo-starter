@@ -11,14 +11,15 @@ import { initCartSelected } from 'stores/cart/selected/actions';
 import { actions } from 'stores/admin/table';
 import { IChildren } from 'utils/interface';
 
-const { setPerPage } = actions;
+const { setPage, setPerPage } = actions;
 
 const InitComposeMemo: React.FC<IChildren> = ({ children }) => {
   const dispatch = useDispatch();
 
   const handleMount = () => {
-    dispatch(initCartSelected());
     dispatch(setPerPage(5));
+    dispatch(setPage(0));
+    dispatch(initCartSelected());
   };
     
   return (

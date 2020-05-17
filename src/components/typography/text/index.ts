@@ -33,3 +33,16 @@ export const TextDefault = styled.p<IProps>`
   font-size: ${({ theme }) => theme.typography.fontSize};
   margin: 0;
 `;
+export const Text1 = styled.p<IProps>`
+  font-family: ${({ theme }) => theme.typography.subtitle1.fontFamily};
+  font-weight: ${({ theme, weight }) => {
+    const types = switchWeight(theme.typography);
+    return weight in types ? types[weight] : types.regular;
+  }};
+  font-size: ${({ theme }) => theme.typography.subtitle1.fontSize};
+  margin: 0;
+  @media screen and (max-width: ${({ theme }) =>
+    theme.breakpoints.values.md}px) {
+    text-align: center;
+  }
+`;

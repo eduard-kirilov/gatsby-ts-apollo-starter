@@ -6,10 +6,10 @@
 import * as React from 'react';
 
 import { IChildren } from 'utils/interface';
-import { Layout } from 'components/layout'
+import { ContainerStyled } from 'styles/custom/layout';
 
 const LayoutWrapperMemo: React.FC<IChildren> = ({ children }) => (
-  <Layout>{children}</Layout>
+  <ContainerStyled maxWidth="lg">{children}</ContainerStyled>
 );
 
 export const LayoutWrapper = React.memo(LayoutWrapperMemo);

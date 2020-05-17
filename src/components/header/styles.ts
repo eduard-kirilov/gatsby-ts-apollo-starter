@@ -31,7 +31,7 @@ export const LogoWrapper = styled.div<{ theme: Theme }>`
   }
 `;
 export const LogoLeftStyled = styled.div`
-  color: ${({ theme }) => theme.palette.common.white};
+  color: ${({ theme }) => theme.palette.primary.contrastText};
   display: flex;
   svg {
     max-width: 25px;
@@ -40,7 +40,7 @@ export const LogoLeftStyled = styled.div`
   }
 `;
 export const LogoRightStyled = styled.div<{ theme: Theme }>`
-  color: ${({ theme }) => theme.palette.common.white};
+  color: ${({ theme }) => theme.palette.primary.contrastText};
   display: none;
   margin-left: 8px;
   svg {
@@ -61,6 +61,7 @@ export const NavLeft = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-left: -8px;
 `;
 export const Toolbar = styled.div<{ theme: Theme }>`
   display: flex;
@@ -74,28 +75,28 @@ export const Toolbar = styled.div<{ theme: Theme }>`
   `}
 `;
 export const Link = styled(LinkGatsby)<{ theme: Theme }>`
-  color: ${({ theme }) => theme.palette.common.white};
+  color: ${({ theme }) => theme.palette.primary.contrastText};
   text-decoration: none;
   font-weight: 400;
   &:hover {
-    color: ${({ theme }) => theme.palette.common.white};
+    color: ${({ theme }) => theme.palette.primary.contrastText};
     text-decoration: none;
   }
 `;
 export const LinkLogo = styled(LinkGatsby)<{ theme: Theme }>`
   text-decoration: none;
-  color: ${({ theme }) => theme.palette.common.white};
+  color: ${({ theme }) => theme.palette.primary.contrastText};
   button {
     min-width: 0;
   }
   &:hover {
     text-decoration: none;
-    color: ${({ theme }) => theme.palette.common.white};
+    color: ${({ theme }) => theme.palette.primary.contrastText};
   }
 `;
 export const ProfileEmail = styled.div`
   margin-left: 15px;
-  color: ${({ theme }) => theme.palette.common.white};
+  color: ${({ theme }) => theme.palette.primary.contrastText};
   
 `;
 export const Profile = styled.div`
@@ -103,19 +104,19 @@ export const Profile = styled.div`
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
-  color: ${({ theme }) => theme.palette.common.white};
+  color: ${({ theme }) => theme.palette.primary.contrastText};
   margin-left: 16px;
 `;
 export const SectionMobile = styled.div<{ theme: Theme }>`
   display: flex;
-  color: ${({ theme }) => theme.palette.common.white};    
+  color: ${({ theme }) => theme.palette.primary.contrastText};    
   ${({ theme }) => css`${theme.breakpoints.up('md')} {
     display: none;
   }`}
 `;
 export const SectionDesktop = styled.div<{ theme: Theme }>`
   display: none;
-  color: ${({ theme }) => theme.palette.common.white};
+  color: ${({ theme }) => theme.palette.primary.contrastText};
   ${({ theme }) => css`${theme.breakpoints.up('md')} {
     display: flex;
   }`}

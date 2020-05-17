@@ -16,12 +16,13 @@ import { CardProduct } from 'components/card';
 import { IProducts } from 'utils/interface';
 import { actions, get } from 'stores/admin/table';
 
-import { Title } from 'components/home/styles';
+import { Title5 } from 'components/typography';
 
-const { setPerPage } = actions;
-const { getPerPage, getDirection } = get;
+const { setPage } = actions;
+const { getPage, getPerPage, getDirection } = get;
 
 const ProductsComposeMemo: React.FC = () => {
+  const page = useSelector(getPage);
   const perPage = useSelector(getPerPage);
   const direction = useSelector(getDirection);
   const dispatch = useDispatch();
@@ -38,11 +39,11 @@ const ProductsComposeMemo: React.FC = () => {
   const total =
     data && data.products && data.products.data ? data.products.total : 0;
 
-  const loadMore = (newPerPage: number = perPage) => fetchMore({
+  const loadMore = (newPage: number = page) => fetchMore({
       query: PRODUCTS_QUERY,
       variables: {
-        per_page: newPerPage,
-        page: 0,
+        per_page: perPage,
+        page: newPage,
         direction,
       },
       updateQuery: (prev: any, { fetchMoreResult }: any) => {
@@ -51,7 +52,7 @@ const ProductsComposeMemo: React.FC = () => {
           ...prev,
           products: {
             ...prev.products,
-            data: fetchMoreResult.products.data,
+            data: [...prev.products.data, ...fetchMoreResult.products.data],
             page: fetchMoreResult.products.page,
             total: fetchMoreResult.products.total,
           },
@@ -60,14 +61,10 @@ const ProductsComposeMemo: React.FC = () => {
     });
 
   const handleLoadMore = () => {
-    if (perPage + 4 <= total) {
-      const newPerPage: number = perPage + 4;
-      dispatch(setPerPage(newPerPage));
-      loadMore(newPerPage);
-    } else if (perPage <= total) {
-      const newPerPage: number = total;
-      dispatch(setPerPage(newPerPage));
-      loadMore(newPerPage);
+    if (products.length < total) {
+      const newPage: number = page + 1;
+      dispatch(setPage(newPage));
+      loadMore(newPage);
     }
   };
 
@@ -75,7 +72,7 @@ const ProductsComposeMemo: React.FC = () => {
 
   return (
     <>
-      <Title weight="bold">Products</Title>
+      <Title5 weight="bold" mb="40">Products</Title5>
       <Grid container spacing={3}>
         {loading ? (
           <LinearStatus />
@@ -93,7 +90,7 @@ const ProductsComposeMemo: React.FC = () => {
           ))
         )}
       </Grid>
-      {perPage !== total && (
+      {products.length < total && (
         <Box mt={3}>
           <Button
             variant="contained"

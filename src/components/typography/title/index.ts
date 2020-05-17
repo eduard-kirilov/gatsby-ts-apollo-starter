@@ -15,6 +15,8 @@ interface IPropsTypography {
 interface IProps {
   theme: Theme;
   weight: string;
+  mb?: string;
+  mt?: string;
 }
 
 const switchWeight = (type: IPropsTypography): IPropsWeight => ({
@@ -32,6 +34,8 @@ export const Title1 = styled.h1<IProps>`
   }};
   font-size: ${({ theme }) => theme.typography.h1.fontSize};
   margin: 0;
+  ${({ mb }) => mb && css`margin-bottom: ${mb}px;`};
+  ${({ mt }) => mt && css`margin-top: ${mt}px;`};
 `;
 export const Title2 = styled.h2<IProps>`
   font-family: ${({ theme }) => theme.typography.h2.fontFamily};
@@ -41,6 +45,8 @@ export const Title2 = styled.h2<IProps>`
   }};
   font-size: ${({ theme }) => theme.typography.h2.fontSize};
   margin: 0;
+  ${({ mb }) => mb && css`margin-bottom: ${mb}px;`};
+  ${({ mt }) => mt && css`margin-top: ${mt}px;`};
 `;
 export const Title3 = styled.h3<IProps>`
   font-family: ${({ theme }) => theme.typography.h3.fontFamily};
@@ -50,6 +56,8 @@ export const Title3 = styled.h3<IProps>`
   }};
   font-size: ${({ theme }) => theme.typography.h3.fontSize};
   margin: 0;
+  ${({ mb }) => mb && css`margin-bottom: ${mb}px;`};
+  ${({ mt }) => mt && css`margin-top: ${mt}px;`};
 `;
 export const Title4 = styled.h4<IProps>`
   font-family: ${({ theme }) => theme.typography.h4.fontFamily};
@@ -59,6 +67,8 @@ export const Title4 = styled.h4<IProps>`
   }};
   font-size: ${({ theme }) => theme.typography.h4.fontSize};
   margin: 0;
+  ${({ mb }) => mb && css`margin-bottom: ${mb}px;`};
+  ${({ mt }) => mt && css`margin-top: ${mt}px;`};
 `;
 export const Title5 = styled.h5<IProps>`
   font-family: ${({ theme }) => theme.typography.h5.fontFamily};
@@ -68,4 +78,6 @@ export const Title5 = styled.h5<IProps>`
   }};
   font-size: ${({ theme }) => theme.typography.h5.fontSize};
   margin: 0;
+  ${({ mb }) => mb && css`margin-bottom: ${mb}px;`};
+  ${({ mt }) => mt && css`margin-top: ${mt}px;`};
 `;

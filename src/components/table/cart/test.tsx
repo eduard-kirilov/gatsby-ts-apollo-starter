@@ -12,7 +12,7 @@ import { TableCart } from './index';
 import { IProducts } from 'utils/interface';
 
 describe('TableCart', () => {
-  const TableCartTest: React.FC<IProducts> = ({ products = [] }) => {
+  const TableCartTest: React.FC<IProducts> = ({ products }) => {
     return (
       <ThemeProvider theme={theme}>
         <TableCart

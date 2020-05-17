@@ -12,10 +12,11 @@ import { LOGOUT_MUTATION } from 'gql/mutation';
 import { IChildren } from 'utils/interface';
 import { actions } from 'stores/modals';
 import { get as getSelected } from 'stores/cart/selected';
-
+import { ContainerStyled, ContentWrapper } from 'styles/custom/layout';
+import { LinearStatus } from 'components/status';
 import { PopupAuthCompose } from 'compose/popup';
-import { Layout } from 'components/layout';
 import { Header } from 'components/header';
+import { Footer } from 'components/footer';
 
 interface IProps {
   auth: {
@@ -36,22 +37,20 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
   const productIds = useSelector(getCartSelectedIds);
   const dispatch = useDispatch();
 
-  const [logout] = useMutation(LOGOUT_MUTATION,
-    {
-      update: (cache) => cache.writeQuery({
+  const [logout] = useMutation(LOGOUT_MUTATION, {
+    update: cache =>
+      cache.writeQuery({
         query: CURRENT_USER_QUERY,
         data: { currentUser: null },
       }),
-    }
-  )
+  });
   const handleOpen = () => dispatch(openLogin());
 
   const { authorized, loading, currentUser } = auth;
 
   return (
-    <Layout
-      loading={loading}
-    >
+    <>
+      {loading && <LinearStatus />}
       <Header
         handleOpen={handleOpen}
         productIds={productIds}
@@ -59,8 +58,11 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
         currentUser={currentUser}
         logout={logout}
       />
-      {children}
-      <PopupAuthCompose/>
-    </Layout>
+      <ContentWrapper>
+        <ContainerStyled maxWidth="lg">{children}</ContainerStyled>
+        <Footer />
+      </ContentWrapper>
+      <PopupAuthCompose />
+    </>
   );
 };

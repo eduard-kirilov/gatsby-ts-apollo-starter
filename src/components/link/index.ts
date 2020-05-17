@@ -1,1 +1,1 @@
-export { LinkClearStyles } from './clear';
+export { LinkClearStyles, LinkAnyClearStyles } from './clear';

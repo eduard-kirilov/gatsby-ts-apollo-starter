@@ -10,7 +10,7 @@ import {
   List,
 } from '@material-ui/core';
 
-import { Title } from 'components/admin/styles';
+import { Title5 } from 'components/typography';
 import {
   PopupAddProductCompose,
   PopupUpProductCompose,
@@ -23,7 +23,7 @@ const AdminComposeMemo = () => {
     <>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={4} md={3}>
-          <Title weight="bold">Actions</Title>
+          <Title5 weight="bold" mb="40">Actions</Title5>
           <Paper>
             <List aria-label="list of admin actions">
               <ItemCompose />
@@ -31,7 +31,7 @@ const AdminComposeMemo = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={8} md={9}>
-          <Title weight="bold">Products</Title>
+          <Title5 weight="bold" mb="40">Products</Title5>
           <TableProductsCompose />
         </Grid>
       </Grid>

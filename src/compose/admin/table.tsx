@@ -69,7 +69,6 @@ const TableProductsComposeMemo: React.FC = () => {
   const handleChangePage = (_: unknown, newPage: number) => {
     handleLoadData(newPage);
     dispatch(setPage(newPage));
-    console.log('handleChangePage ', newPage);
   };
 
   const handleDelProduct = (_id: string) => {

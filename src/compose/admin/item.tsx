@@ -9,7 +9,7 @@ import { ListItem, ListItemIcon } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 
 import { actions } from 'stores/modals';
-import { ListItemTextStyled } from 'components/admin/styles';
+import { ListItemTextStyled } from 'styles/custom/admin';
 
 const { openAddProduct } = actions;
 

@@ -18,3 +18,14 @@ export const LinkClearStyles = styled(Link)<{ theme: Theme }>`
     color: ${({ theme }) => theme.palette.common.black};
   }
 `;
+export const LinkAnyClearStyles = styled.a<{ theme: Theme }>`
+  font-family: ${({ theme }) => theme.typography.fontFamily};
+  font-weight: ${({ theme }) => theme.typography.fontWeightRegular};
+  font-size: ${({ theme }) => theme.typography.fontSize};
+  text-decoration: none;
+  color: ${({ theme }) => theme.palette.common.black};
+  &:hover {
+    text-decoration: none;
+    color: ${({ theme }) => theme.palette.common.black};
+  }
+`;

@@ -8,7 +8,7 @@ import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import { IAllStringProps } from 'utils/interface';
-import theme from 'styles/theme'
+import theme from 'styles/theme';
 import { Header } from './index';
 
 interface IHeaderProps {
