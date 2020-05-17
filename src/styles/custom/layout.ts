@@ -17,5 +17,5 @@ export const ContentWrapper = styled.div<{ theme: Theme }>`
   flex-direction: column;
   justify-content: space-between;
   align-content: center;
-  height: 100vh;
+  min-height: 100vh;
 `;
