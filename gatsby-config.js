@@ -1,13 +1,13 @@
 /**
-* React, Gatsby, Jest, TypeScript, Apollo - Starter
-* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
-* Copyright (c) 2020 Eduard Kirilov | MIT License
-*/
+ * React, Gatsby, Jest, TypeScript, Apollo - Starter
+ * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+ * Copyright (c) 2020 Eduard Kirilov | MIT License
+ */
 module.exports = {
   siteMetadata: {
     title: `Gatsby, Ts, Apollo - Starter.`,
     description: `This is a testing ground for running code and new technologies just for fun;`,
-    author: `Eduard Kirilov <kev987.free@ya.ru>`,
+    author: `Eduard Kirilov <ph0en1x.free@ya.ru>`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -18,19 +18,11 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-top-layout`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: 'gatsby-plugin-material-ui',
-      options: {
-        stylesProvider: {
-          injectFirst: true,
-        },
-      },
-    },
+    `gatsby-plugin-material-ui`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -42,6 +34,14 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/logo.png`,
       },
+    },
+    {
+       resolve: 'gatsby-plugin-offline',
+       options: {
+          workboxConfig: {
+             globPatterns: ['**/*'],
+          }
+       },
     },
     {
       resolve: `gatsby-plugin-alias-imports`,

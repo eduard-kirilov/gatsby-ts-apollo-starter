@@ -10,7 +10,7 @@ interface IBox {
 export const Wrapper = styled.div<{ theme: Theme }>`
   padding-top: 90px;
   padding-bottom: 80px;
-  background-color: ${({ theme }) => theme.palette.primary.light};
+  background-color: ${({ theme }) => theme.palette.primary.main};
   @media screen and (max-width: ${({ theme }) =>
     theme.breakpoints.values.md}px) {
     padding-top: 60px;

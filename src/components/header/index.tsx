@@ -38,7 +38,7 @@ interface IHeaderProps {
   handleOpen?: () => void;
   logout?: () => void;
   language?: string;
-  productIds?: string[],
+  productIds?: string[];
   setLanguage?: (type: string) => void;
 }
 interface IProfileMenu {
@@ -115,9 +115,7 @@ const HeaderMemo: React.FC<IHeaderProps> = ({
       {menu.map(item =>
         item.link ? (
           <MenuItem key={item.title}>
-            <LinkClearStyles to={item.link}>
-              {item.title}
-            </LinkClearStyles>
+            <LinkClearStyles to={item.link}>{item.title}</LinkClearStyles>
           </MenuItem>
         ) : (
           <MenuItem onClick={item.action} key={item.title}>
@@ -142,9 +140,7 @@ const HeaderMemo: React.FC<IHeaderProps> = ({
       {menu.map(item =>
         item.link ? (
           <MenuItem key={item.title}>
-            <LinkClearStyles to={item.link}>
-              {item.title}
-            </LinkClearStyles>
+            <LinkClearStyles to={item.link}>{item.title}</LinkClearStyles>
           </MenuItem>
         ) : (
           <MenuItem onClick={item.action} key={item.title}>
@@ -164,14 +160,14 @@ const HeaderMemo: React.FC<IHeaderProps> = ({
             </NavLeft>
             {authorized ? (
               <NavRight>
+                <Link to="/cart">
+                  <IconButton aria-label="show 4 new mails" color="inherit">
+                    <Badge badgeContent={productIds.length} color="secondary">
+                      <ShoppingCart fontSize="small" />
+                    </Badge>
+                  </IconButton>
+                </Link>
                 <SectionDesktop>
-                  <Link to="/cart">
-                    <IconButton aria-label="show 4 new mails" color="inherit">
-                      <Badge badgeContent={productIds.length} color="secondary">
-                        <ShoppingCart fontSize="small" />
-                      </Badge>
-                    </IconButton>
-                  </Link>
                   <Profile
                     tabIndex={0}
                     aria-label="account of current user"
@@ -202,6 +198,13 @@ const HeaderMemo: React.FC<IHeaderProps> = ({
               </NavRight>
             ) : (
               <NavRight>
+                <Link to="/cart">
+                  <IconButton aria-label="show 4 new mails" color="inherit">
+                    <Badge badgeContent={productIds.length} color="secondary">
+                      <ShoppingCart fontSize="small" />
+                    </Badge>
+                  </IconButton>
+                </Link>
                 <Button
                   color="inherit"
                   aria-label="login"
