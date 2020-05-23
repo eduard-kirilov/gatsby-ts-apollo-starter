@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import React from 'react';
+import * as React from 'react';
 import { GatsbyTopLayout } from './gatsby-top-layout';
 
 export const wrapRootElement = ({ element }) => (

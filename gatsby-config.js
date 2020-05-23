@@ -10,6 +10,14 @@ module.exports = {
     author: `Eduard Kirilov <ph0en1x.free@ya.ru>`,
   },
   plugins: [
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-top-layout`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: false,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -19,10 +27,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-typescript`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-material-ui`,
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

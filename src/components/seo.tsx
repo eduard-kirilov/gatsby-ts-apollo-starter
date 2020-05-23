@@ -1,11 +1,12 @@
 /**
-* React, Gatsby, Jest, TypeScript, Apollo - Starter
-* https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
-* Copyright (c) 2020 Eduard Kirilov | MIT License
-*/
+ * React, Gatsby, Jest, TypeScript, Apollo - Starter
+ * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
+ * Copyright (c) 2020 Eduard Kirilov | MIT License
+ */
 import * as React from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { HelmetGlobalStyled } from 'styles/global-styled';
 
 interface IProps {
   description?: string;
@@ -77,6 +78,10 @@ export const SEO: React.FC<IProps> = ({
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <style type="text/css">
+        {HelmetGlobalStyled}
+      </style>
+    </Helmet>
   );
 };

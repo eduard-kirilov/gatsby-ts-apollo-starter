@@ -12,11 +12,10 @@ import { LOGOUT_MUTATION } from 'gql/mutation';
 import { IChildren } from 'utils/interface';
 import { actions } from 'stores/modals';
 import { get as getSelected } from 'stores/cart/selected';
-import { ContainerStyled, ContentWrapper } from 'styles/custom/layout';
 import { LinearStatus } from 'components/status';
 import { PopupAuthCompose } from 'compose/popup';
 import { Header } from 'components/header';
-import { Footer } from 'components/footer';
+import { Layout } from 'components/layout';
 
 interface IProps {
   auth: {
@@ -30,7 +29,7 @@ interface IProps {
 const { openLogin } = actions;
 const { getCartSelectedIds } = getSelected;
 
-export const LayoutWrapper: React.FC<IChildren & IProps> = ({
+export const LayoutWrapperMemo: React.FC<IChildren & IProps> = ({
   children,
   auth,
 }) => {
@@ -58,11 +57,12 @@ export const LayoutWrapper: React.FC<IChildren & IProps> = ({
         currentUser={currentUser}
         logout={logout}
       />
-      <ContentWrapper>
-        <ContainerStyled maxWidth="lg">{children}</ContainerStyled>
-        <Footer />
-      </ContentWrapper>
+      <Layout>
+        {children}
+      </Layout>
       <PopupAuthCompose />
     </>
   );
 };
+
+export const LayoutWrapper = React.memo(LayoutWrapperMemo);

@@ -21,6 +21,7 @@ import { Logo } from 'components/logo';
 
 import {
   AppBarStyled,
+  HeaderWrapper,
   Link,
   NavLeft,
   NavRight,
@@ -29,7 +30,6 @@ import {
   SectionDesktop,
   SectionMobile,
   Toolbar,
-  Wrapper,
 } from './styles';
 
 interface IHeaderProps {
@@ -151,7 +151,7 @@ const HeaderMemo: React.FC<IHeaderProps> = ({
     </Menu>
   );
   return (
-    <Wrapper>
+    <HeaderWrapper>
       <AppBarStyled position="fixed">
         <Container maxWidth="lg">
           <Toolbar>
@@ -220,7 +220,7 @@ const HeaderMemo: React.FC<IHeaderProps> = ({
       </AppBarStyled>
       {renderMobileMenu}
       {renderMenu}
-    </Wrapper>
+    </HeaderWrapper>
   );
 };
 

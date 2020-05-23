@@ -7,9 +7,9 @@ import styled, { css } from 'styled-components';
 import { Theme } from '@material-ui/core/styles';
 import { Link as LinkGatsby } from 'gatsby';
 
-import { AppBar, Button } from '@material-ui/core';
+import { AppBar } from '@material-ui/core';
 
-export const Wrapper = styled.div`
+export const HeaderWrapper = styled.div`
   display: flex;
   flex-grow: 1;
 `;
