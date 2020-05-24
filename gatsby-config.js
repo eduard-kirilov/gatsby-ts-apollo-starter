@@ -6,7 +6,7 @@
 module.exports = {
   siteMetadata: {
     title: `React, Gatsby, Jest, TypeScript, Apollo - Starter.`,
-    description: `This is a testing ground for running code and new technologies just for fun;`,
+    description: `This product is the starting template for setting up any project that requires the technological stack described below.`,
     author: `Eduard Kirilov <ph0en1x.free@ya.ru>`,
   },
   plugins: [
