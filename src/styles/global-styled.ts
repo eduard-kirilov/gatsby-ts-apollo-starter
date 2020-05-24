@@ -6,6 +6,7 @@
 export const HelmetGlobalStyled: any = `
   body {
     margin: 0;
+    overflow-x: hidden;
   }
   svg {
     fill: currentColor;

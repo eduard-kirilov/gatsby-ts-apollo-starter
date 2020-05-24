@@ -60,14 +60,14 @@ const PopupUpProductComposeMemo: React.FC = () => {
   };
   
   if (loading) return null;
-
+  if (!data || !data.product) return null;
   return (
     <Modal
       open={open}
       handleClose={handleClose}
     >
       <PopupUpProduct
-        product={data ? data.product : {}}
+        product={data.product}
         handleClose={handleClose}
         handleUpProduct={handleUpProduct}
       />

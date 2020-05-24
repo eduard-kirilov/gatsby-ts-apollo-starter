@@ -1,16 +1,46 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <h1 align="start">
   React, Gatsby, Jest, TypeScript, Apollo - Starter
 </h1>
-<p>It is too early to use this starter at the moment! Work in progress.</p>
 <p align="center">
+  <a href="https://reactjs.org/">
+    <img alt="React" title="React" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K" width="60" />
+  </a>
   <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+    <img alt="Gatsby" title="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  </a>
+  <a href="https://nodejs.org/">
+    <img alt="Jest" title="Jest" src="https://cdn.freebiesupply.com/logos/large/2x/jest-logo-png-transparent.png" width="50"/>
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img alt="TypeScript" title="TypeScript" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png" width="50"/>
+  </a>
+    <a href="https://styled-components.com/">
+    <img alt="Styled-components" title="Styled-components" src="https://raw.githubusercontent.com/styled-components/brand/master/styled-components.png" width="50"/>
+  </a>
+    </a>
+    <a href="https://material-ui.com/">
+    <img alt="Material-UI" title="Material-UI" src="https://camo.githubusercontent.com/cf05625198fe7b6ad8a302d1ce16bc99b93ec2ac/68747470733a2f2f6d6174657269616c2d75692e636f6d2f7374617469632f6c6f676f2e737667" width="50"/>
   </a>
 </p>
-<h4 align="start">
-  Developed with the assistance of Gatsby
-</h4>
+<br/>
+<p>
+  This product is the starting template for setting up any project that requires the technological stack described below.
+</p>
+
+<img alt="nodejs" src="./src/images/demo.gif" max-width="100"/>
+
+## Demo:
+- **Frontend: [ph0en1x.ru](https://ph0en1x.ru/).**
+- **Backend: [ph0en1x.herokuapp.com/graphql](https://ph0en1x.herokuapp.com/graphql).**
+  
+  
+## ⭐️ Advantage
+
+- **This starter is configured to interact with GraphQL of your backend through Apollo.**
+- **[Typescript, Apollo, Mongo - backend](https://github.com/eduard-kirilov/node-ts-apollo-auth-starter).**
+- **Unit tests based on jest and enzyme.**
+- **In this starter, Styled-components and Material-UI can be used simultaneously.**
+- **This starter has tuned redux with reselect on board**
 
 ## 🚀 Quick start
 
@@ -25,9 +55,12 @@
     npm install
     ```
 
-1.  **Rename the file .env.example**
+1.  **Create the .env.development and .env.production**
 
-    Rename the file .env.example in .env and write your API url to the GATSBY_API_URL variable .
+    Create the .env.development and .env.production file from the .env.example file.
+    Description of environment variables:
+    - GATSBY_API_URL - your URL for GraphQL;
+    - GATSBY_MEDIA_URL - your URL for media resources.
 
 1.  **Start the project.**
 
@@ -41,72 +74,85 @@
     ```
 
     Once launched, the app will be available on `http://localhost:8000`!
+    
+    _You will also see a second link: _`http://localhost:8000/__graphql`_.
+    This is a tool that you can use to experiment with requesting your data if you export it to Gatsby, but since this project uses a separate server, you can access it at `<Your backend / graphql>https://ph0en1x.herokuapp.com/graphql`.
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
-
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 
     .
-    ├── node_modules
+    ├── __mocks __
+    ├── jest
+    ├── plugins
     ├── src
     ├──/──components
     ├──/──compose
+    ├──/──gql
     ├──/──images
     ├──/──pages
-    ├──/──shema
+    ├──/──stores
     ├──/──styles
     ├──/──utils
     ├── .env
     ├── .gitignore
     ├── .prettierrc
+    ├── configureStore.ts
+    ├── custom.d.ts
     ├── gatsby-browser.js
     ├── gatsby-config.js
     ├── gatsby-node.js
     ├── gatsby-ssr.js
-    ├── jest-preprocess.js
+    ├── gatsby-top-layout.js
     ├── jest.config.js
-    ├── jest.setup.js
     ├── LICENSE
-    ├── LICENSE - gatsbyjs
     ├── loadershim.js
     ├── package.json
     ├── tempPolyfills.js
     ├── tsconfig.json
-    ├── yarn.lock
     └── README.md
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+1.  **`/__mocks __`**: __mocks __ - necessary for jest tests to work correctly [You can read more here](https://www.gatsbyjs.org/docs/unit-testing/#2-creating-a-configuration-file-for-jest).
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+1.  **`/jest`**: - the configuration referenced by jest.config.js.
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+1.  **`/plugins`**: - a plugin that is needed to build material-ui styles.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+1.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+1.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+1.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+1.  **`configureStore.ts`**: Redux reducers are connected in this file.
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+1.  **`custom.d.ts`**: This file is necessary for proper svg processing with TepeScript.
 
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+1.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+1.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+1.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+1.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
 
-## 🎓 Learning Gatsby
+1.  **`gatsby-top-layout.js`**: gatsby-top-layout.js - In this file happens:
+- Providing store in react-redux;
+- prefetching and data provider in @ apollo / client;
+- Providing topics in material-ui, styled-components and authorization;
+- Providing authorization data through AuthProvider.
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+1.  **`LICENSE`**: React, Gatsby, Jest, TypeScript, Apollo - Starter is licensed under the MIT license.
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+1.  **`jest.config.js`**: Here is the unit test configuration.
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+1. **`package-lock.json or yarn.lock`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+
+1. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+
+1. **`README.md`**: A text file containing useful reference information about your project.
+
+
+This starter is based on [Gatsby starter default](https://github.com/gatsbyjs/gatsby-starter-default)
