@@ -1,6 +1,3 @@
-<h1 align="start">
-  React, Gatsby, Jest, TypeScript, Apollo - Starter
-</h1>
 <p align="center">
   <a href="https://reactjs.org/">
     <img alt="React" title="React" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" width="60" />
@@ -23,11 +20,14 @@
   </a>
 </p>
 <br/>
-<p>
+<h1 align="center">
+  React, Gatsby, Jest, TypeScript, Apollo - Starter
+</h1>
+<p align="center">
   This product is the starting template for setting up any project that requires the technological stack described below.
 </p>
 
-<img alt="nodejs" src="./src/images/demo.gif" max-width="100"/>
+<img alt="demo" src="./src/images/demo.gif" max-width="100"/>
 
 ## Demo:
 - **Frontend: [ph0en1x.ru](https://ph0en1x.ru/).**
