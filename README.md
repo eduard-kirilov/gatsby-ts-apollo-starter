@@ -37,6 +37,7 @@
 ## ⭐️ Advantage
 
 - **This starter is configured to interact with GraphQL of your backend through Apollo.**
+- **Strong typing with TypeScript.**
 - **[Typescript, Apollo, Mongo - backend](https://github.com/eduard-kirilov/node-ts-apollo-auth-starter).**
 - **Unit tests based on jest and enzyme.**
 - **In this starter, Styled-components and Material-UI can be used simultaneously.**
