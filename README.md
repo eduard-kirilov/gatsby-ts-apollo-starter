@@ -3,7 +3,7 @@
 </h1>
 <p align="center">
   <a href="https://reactjs.org/">
-    <img alt="React" title="React" src="https://www.vectorlogo.zone/util/preview.html?image=/logos/reactjs/reactjs-icon.svg" width="60" />
+    <img alt="React" title="React" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" width="60" />
   </a>
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" title="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
