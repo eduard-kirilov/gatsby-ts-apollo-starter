@@ -77,7 +77,7 @@ export const Signup: React.FC<IProps> = ({
 
   return (
     <>
-      <Tilte>Регистрация</Tilte>
+      <Tilte>Signup</Tilte>
       <Form noValidate autoComplete="off">
         <TextFieldStyled
           name="email"

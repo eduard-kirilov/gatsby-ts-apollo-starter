@@ -4,18 +4,18 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { HelmetGlobalStyled } from 'styles/global-styled';
 
 interface IProps {
   description?: string;
   lang?: string;
-  meta?: string[];
+  meta?: any;
   title: string;
 };
 
-export const SEO: React.FC<IProps> = ({
+const SeoMemo: React.FC<IProps> = ({
   description,
   lang,
   meta = [],
@@ -85,3 +85,5 @@ export const SEO: React.FC<IProps> = ({
     </Helmet>
   );
 };
+
+export const SEO = React.memo(SeoMemo);
