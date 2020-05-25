@@ -24,7 +24,7 @@
   React, Gatsby, Jest, TypeScript, Apollo - Starter
 </h1>
 <p align="center">
-  This product is the starting template for setting up any project that requires the technological stack described below.
+  This starter is a ready-made configuration that includes Gatsby, React, Redux, Apollo, GraphQL, TypeScript, Styled-Components, Material-UI, Jest, Enzyme.
 </p>
 
 <img alt="demo" src="./src/images/demo.gif" max-width="100"/>
