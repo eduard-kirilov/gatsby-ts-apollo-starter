@@ -2,7 +2,7 @@
   "name": "gatsby-ts-apollo-starter",
   "private": true,
   "version": "0.1.0",
-  "description": "React, Gatsby, Jest, TypeScript, Apollo - Starter",
+  "description": "This starter is a ready-made configuration that includes Gatsby, React, Redux, Apollo, GraphQL, TypeScript, Styled-Components, Material-UI, Jest, Enzyme.",
   "author": "Eduard Kirilov <ph0en1x.free@ya.ru>",
   "dependencies": {
     "@apollo/client": "^3.0.0-beta.50",
