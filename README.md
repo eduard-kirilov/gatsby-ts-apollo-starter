@@ -32,6 +32,7 @@
 ## Demo:
 - **Frontend: [ph0en1x.ru](https://ph0en1x.ru/).**
 - **Backend: [ph0en1x.herokuapp.com/graphql](https://ph0en1x.herokuapp.com/graphql).**
+P.s.: In this demo, the initial response from the API can be more than 10 seconds. This is temporary.
   
   
 ## ⭐️ Advantage
