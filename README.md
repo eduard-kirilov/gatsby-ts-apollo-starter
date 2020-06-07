@@ -31,9 +31,9 @@
 
 ## Demo:
 - **Frontend: [ph0en1x.ru](https://ph0en1x.ru/).**
-- **Backend: [ph0en1x.herokuapp.com/graphql](https://ph0en1x.herokuapp.com/graphql).**
+- **Backend: [ph0en1x.ru/graphqll](https://ph0en1x.ru/graphql).**  
   
-  
+
 ## ⭐️ Advantage
 
 - **This starter is configured to interact with GraphQL of your backend through Apollo.**
