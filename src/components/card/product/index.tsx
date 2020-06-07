@@ -53,7 +53,7 @@ const CardProductMemo: React.FC<IProps & IProduct> = ({
             variant="contained"
             onClick={() => addToCard(_id)}
           >
-            В корзину
+            Add to cart
           </Button>
         </CardFooter>
       </CardStyled>

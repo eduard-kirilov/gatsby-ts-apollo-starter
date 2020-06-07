@@ -23,7 +23,7 @@ const ButtonSetMemo: React.FC<IProps> = ({ handleResetData }) => {
   return (
     <Box mt={5} display="flex" justifyContent="flex-end" alignItems="center">
       <Button variant="outlined" onClick={handleCancel}>
-        Отчистить корзину
+        Clear the cart
       </Button>
     </Box>
   );
