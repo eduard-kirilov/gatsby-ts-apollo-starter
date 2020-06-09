@@ -39,7 +39,7 @@ const TableCartMemo: React.FC<IProps> = ({
     return priceToStr(amount);
   };
 
-  const amount = priceSumArr(data.map(({ price }) => price));
+  const amount = priceSumArr(data.map(({ price }) => priceToNum(price)));
 
   return (
     <TableContainer component={Paper}>

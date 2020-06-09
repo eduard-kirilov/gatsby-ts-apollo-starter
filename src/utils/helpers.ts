@@ -18,11 +18,6 @@ export function priceToNum(price: string) {
 
 export function priceSumArr(items: any) {
   if (!items || items.length === 0) return '$ 0';
-  const allSum = items.reduce((acc: any, item: string) => {
-    if (typeof acc === 'string') {
-      return priceToNum(acc);
-    }
-    return acc + priceToNum(item);
-  });
+  const allSum = items.reduce((acc: any, item: string) => acc + item);
   return priceToStr(allSum);
 }
