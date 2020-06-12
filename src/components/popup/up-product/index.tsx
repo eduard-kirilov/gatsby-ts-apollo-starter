@@ -5,7 +5,7 @@
  */
 import * as React from 'react';
 
-import { IAllStringProps, IProduct } from 'utils/interface';
+import { IAllStringProps } from 'utils/interface';
 import { selectList, selectUrl } from './url';
 import { InputLabel, Select, MenuItem } from '@material-ui/core';
 

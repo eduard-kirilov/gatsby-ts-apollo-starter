@@ -8,8 +8,8 @@ import { shallow } from 'enzyme';
 
 import { SEO } from './index';
 
-describe('AlertUser Container', () => {
-  describe('AlertUser container is open', () => {
+describe('SEO Container', () => {
+  describe('SEO container is open', () => {
     const mount = shallow(
       <SEO
         title="title"
@@ -23,8 +23,8 @@ describe('AlertUser Container', () => {
         ]}
       />
     );
-    it('<AlertUser /> test should work', () => {
-      expect(mount.find('AlertUser')).toHaveLength(0);
+    it('<SEO /> test should work', () => {
+      expect(mount.find('SEO')).toHaveLength(0);
     });
   });
 });
