@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 
@@ -29,7 +29,7 @@ interface IProps {
 const { openLogin } = actions;
 const { getCartSelectedIds } = getSelected;
 
-export const LayoutWrapperMemo: React.FC<IChildren & IProps> = ({
+export const LayoutWrapperMemo: FC<IChildren & IProps> = ({
   children,
   auth,
 }) => {
@@ -65,4 +65,4 @@ export const LayoutWrapperMemo: React.FC<IChildren & IProps> = ({
   );
 };
 
-export const LayoutWrapper = React.memo(LayoutWrapperMemo);
+export const LayoutWrapper = memo(LayoutWrapperMemo);

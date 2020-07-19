@@ -3,10 +3,10 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, ChangeEvent, useState, memo } from 'react';
 
 import { IAllStringProps } from 'utils/interface';
-import { selectList, selectUrl } from './url';
+import { selectList, selectUrl } from 'utils/helpers';
 import {
   InputLabel,
   Select,
@@ -27,14 +27,14 @@ interface IProps {
   handleClose: () => void;
 }
 
-const PopupAddProductMemo: React.FC<IProps> = ({ handleAddProduct, handleClose }) => {
-  const [productData, setProductData] = React.useState({
+const PopupAddProductMemo: FC<IProps> = ({ handleAddProduct, handleClose }) => {
+  const [productData, setProductData] = useState({
     price: '',
     subtitle: '',
     title: '',
     urlKey: '',
   });
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProductData({
       ...productData,
@@ -118,4 +118,4 @@ const PopupAddProductMemo: React.FC<IProps> = ({ handleAddProduct, handleClose }
   );
 };
 
-export const PopupAddProduct = React.memo(PopupAddProductMemo);
+export const PopupAddProduct = memo(PopupAddProductMemo);

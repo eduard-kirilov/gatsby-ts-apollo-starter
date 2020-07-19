@@ -3,7 +3,7 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-import * as React from 'react';
+import React, { FC } from 'react';
 import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
@@ -16,7 +16,7 @@ interface IProps {
 }
 
 describe('Modal Container', () => {
-  const ModalTest: React.FC<IProps> = ({ open }) => {
+  const ModalTest: FC<IProps> = ({ open }) => {
     return (
       <ThemeProvider theme={theme}>
         <Modal

@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, MouseEvent, useState, memo } from 'react';
 import {
   Badge,
   Button,
@@ -47,28 +47,28 @@ interface IProfileMenu {
   action?: () => void;
 }
 
-const HeaderMemo: React.FC<IHeaderProps> = ({
+const HeaderMemo: FC<IHeaderProps> = ({
   productIds = [],
   handleOpen,
   currentUser,
   logout,
   authorized,
 }) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const [
     mobileMoreAnchorEl,
     setMobileMoreAnchorEl,
-  ] = React.useState<null | HTMLElement>(null);
+  ] = useState<null | HTMLElement>(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMobileMenuOpen = (event: MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  const handleProfileMenuOpen = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -87,10 +87,6 @@ const HeaderMemo: React.FC<IHeaderProps> = ({
   };
 
   const menu: IProfileMenu[] = [
-    // {
-    //   title: 'Profile',
-    //   link: '/profile',
-    // },
     {
       title: 'Admin',
       link: '/admin',
@@ -224,4 +220,4 @@ const HeaderMemo: React.FC<IHeaderProps> = ({
   );
 };
 
-export const Header = React.memo(HeaderMemo);
+export const Header = memo(HeaderMemo);

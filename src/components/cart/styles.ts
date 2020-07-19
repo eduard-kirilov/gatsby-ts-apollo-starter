@@ -4,7 +4,6 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import styled from 'styled-components';
-import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import { ListItemText } from '@material-ui/core';
 import { Title5 } from 'components/typography';
 
@@ -16,8 +15,3 @@ export const ListItemTextStyled = styled(ListItemText)`
     margin: 0;
   }
 `;
-// export const ButtonSetWrapper = styled(Title5)`
-//   margin-top: 40px;
-//   display: flex;
-//   flex-direction:
-// `;

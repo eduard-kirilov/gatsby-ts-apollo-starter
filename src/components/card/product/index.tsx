@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 
 import { IProduct } from 'utils/interface';
 
@@ -23,7 +23,7 @@ interface IProps {
   addToCard: (key: string) => void;
 }
 
-const CardProductMemo: React.FC<IProps & IProduct> = ({
+const CardProductMemo: FC<IProps & IProduct> = ({
   addToCard,
   subtitle,
   title,
@@ -61,4 +61,4 @@ const CardProductMemo: React.FC<IProps & IProduct> = ({
   );
 };
 
-export const CardProduct = React.memo(CardProductMemo);
+export const CardProduct = memo(CardProductMemo);

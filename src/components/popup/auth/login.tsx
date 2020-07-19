@@ -3,7 +3,14 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import
+  React, {
+  FC,
+  MouseEvent,
+  ChangeEvent,
+  useState,
+  memo,
+} from 'react';
 
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { IAllStringProps } from 'utils/interface';
@@ -32,20 +39,20 @@ interface IProps {
   handleLogin?: (props: IAllStringProps) => void;
 }
 
-export const Login: React.FC<IProps> = ({
+const LoginMemo: FC<IProps> = ({
   handleClose,
   handleLogin,
   setTabName,
 }) => {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const [userData, setUserData] = React.useState({
+  const [showPassword, setShowPassword] = useState(false);
+  const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
-  const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
   };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData({
       ...userData,
@@ -123,3 +130,5 @@ export const Login: React.FC<IProps> = ({
     </>
   );
 };
+
+export const Login = memo(LoginMemo);

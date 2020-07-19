@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, SyntheticEvent, useState, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 
@@ -18,10 +18,10 @@ import { IAllStringProps } from 'utils/interface';
 const { closeLogin } = actions;
 const { getLoginModalsStatus } = get;
 
-const PopupAuthComposeMemo: React.FC = () => {
+const PopupAuthComposeMemo: FC = () => {
   const open = useSelector(getLoginModalsStatus);
-  const [openAlert, setOpenAlert] = React.useState(false);
-  const [error, setError] = React.useState<string>();
+  const [openAlert, setOpenAlert] = useState(false);
+  const [error, setError] = useState<string>();
   const dispatch = useDispatch();
 
   const [signup] = useMutation(SIGNUP_MUTATION, {
@@ -60,7 +60,7 @@ const PopupAuthComposeMemo: React.FC = () => {
     },
   });
 
-  const handleCloseAlert = (_?: React.SyntheticEvent, reason?: string) => {
+  const handleCloseAlert = (_?: SyntheticEvent, reason?: string) => {
     if (reason !== 'clickaway') {
       setOpenAlert(false);
     }
@@ -94,4 +94,4 @@ const PopupAuthComposeMemo: React.FC = () => {
   );
 };
 
-export const PopupAuthCompose = React.memo(PopupAuthComposeMemo);
+export const PopupAuthCompose = memo(PopupAuthComposeMemo);

@@ -3,17 +3,17 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, SyntheticEvent, memo } from 'react';
 import { Snackbar } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 
 interface IProps {
   openAlert?: boolean;
   error?: any;
-  handleClose: (_?: React.SyntheticEvent, type?: string) => void;
+  handleClose: (_?: SyntheticEvent, type?: string) => void;
 }
 
-const AlertUserMemo: React.FC<IProps> = ({ openAlert, error, handleClose }) => {
+const AlertUserMemo: FC<IProps> = ({ openAlert, error, handleClose }) => {
   const severity = error ? 'error' : 'success';
   const text = error ? error : 'Success login!';
 
@@ -32,4 +32,4 @@ const AlertUserMemo: React.FC<IProps> = ({ openAlert, error, handleClose }) => {
   );
 };
 
-export const AlertUser = React.memo(AlertUserMemo);
+export const AlertUser = memo(AlertUserMemo);

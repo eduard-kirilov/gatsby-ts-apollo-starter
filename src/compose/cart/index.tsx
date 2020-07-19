@@ -3,13 +3,13 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { Grid } from '@material-ui/core';
 
 import { Title } from 'components/cart/styles';
 import { TableCartCompose } from './table';
 
-const CartComposeMemo = () => {
+const CartComposeMemo: FC = () => {
   return (
     <Grid container spacing={4}>
       <Grid item xs={12}>
@@ -20,4 +20,4 @@ const CartComposeMemo = () => {
   );
 };
 
-export const CartCompose = React.memo(CartComposeMemo);
+export const CartCompose = memo(CartComposeMemo);

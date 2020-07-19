@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { ListItem, ListItemIcon } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
@@ -13,7 +13,7 @@ import { ListItemTextStyled } from 'styles/custom/admin';
 
 const { openAddProduct } = actions;
 
-const ItemComposeMemo: React.FC = () => {
+const ItemComposeMemo: FC = () => {
   const dispatch = useDispatch();
   const handleOpen = () => dispatch(openAddProduct());
   return (
@@ -26,4 +26,4 @@ const ItemComposeMemo: React.FC = () => {
   );
 };
 
-export const ItemCompose = React.memo(ItemComposeMemo);
+export const ItemCompose = memo(ItemComposeMemo);

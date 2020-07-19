@@ -3,12 +3,12 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 
 import { LayoutWrapper } from 'compose/not-found/layout';
 import { SEO } from 'components/seo';
 
-const NotFoundPage: React.FC = () => (
+const NotFoundPage: FC = () => (
   <LayoutWrapper>
     <SEO title="404: Not found" />
     <h1>NOT FOUND</h1>
@@ -16,4 +16,4 @@ const NotFoundPage: React.FC = () => (
   </LayoutWrapper>
 );
 
-export default NotFoundPage;
+export default memo(NotFoundPage);

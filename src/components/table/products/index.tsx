@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { IProduct } from 'utils/interface';
 
 import { Edit, Delete } from '@material-ui/icons';
@@ -40,7 +40,7 @@ interface IProps {
   toggleDirection: () => void;
 }
 
-const TableProductsMemo: React.FC<IProps> = ({
+const TableProductsMemo: FC<IProps> = ({
   direction,
   handleChangePage,
   handleChangeRowsPerPage,
@@ -125,4 +125,4 @@ const TableProductsMemo: React.FC<IProps> = ({
   );
 };
 
-export const TableProducts = React.memo(TableProductsMemo);
+export const TableProducts = memo(TableProductsMemo);

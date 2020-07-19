@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { IChildren } from 'utils/interface';
 
 import { Backdrop, Fade } from '@material-ui/core';
@@ -14,7 +14,7 @@ interface IProps {
   open?: boolean;
 }
 
-const ModalMemo: React.FC<IProps & IChildren> = ({
+const ModalMemo: FC<IProps & IChildren> = ({
   children,
   handleClose,
   open = false,
@@ -34,4 +34,4 @@ const ModalMemo: React.FC<IProps & IChildren> = ({
   </ModalStyled>
 );
 
-export const Modal = React.memo(ModalMemo);
+export const Modal = memo(ModalMemo);

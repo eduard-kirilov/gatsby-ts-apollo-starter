@@ -3,9 +3,9 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useQuery, useMutation } from '@apollo/client';
+import React, { FC, memo } from 'react';
+import { useSelector } from 'react-redux';
+import { useQuery } from '@apollo/client';
 
 import { PRODUCTS_QUERY } from 'gql/query';
 import { get } from 'stores/admin/table';
@@ -18,7 +18,7 @@ import { ButtonSet } from './button-set';
 const { getPerPage, getDirection } = get;
 const { getCartSelectedIds } = selectefGet;
 
-const TableCartComposeMemo: React.FC = () => {
+const TableCartComposeMemo: FC = () => {
   const ids = useSelector(getCartSelectedIds);
   const perPage = useSelector(getPerPage);
   const direction = useSelector(getDirection);
@@ -61,4 +61,4 @@ const TableCartComposeMemo: React.FC = () => {
   );
 };
 
-export const TableCartCompose = React.memo(TableCartComposeMemo);
+export const TableCartCompose = memo(TableCartComposeMemo);

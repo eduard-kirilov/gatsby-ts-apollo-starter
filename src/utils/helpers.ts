@@ -1,4 +1,4 @@
-import { ICropText } from 'utils/interface';
+import { ICropText, IAllStringProps } from 'utils/interface';
 
 export function cropText({ text, size }: ICropText) {
   return (text.length > size) ? `${text.slice(0, size)} ...` : text;
@@ -21,3 +21,12 @@ export function priceSumArr(items: any) {
   const allSum = items.reduce((acc: any, item: string) => acc + item);
   return priceToStr(allSum);
 }
+
+export const selectList: string[] = ['Macbook', 'Acer', 'Hp', 'Asus'];
+
+export const selectUrl: IAllStringProps = {
+  Macbook: '/api/v1/media/1-macbook.jpg?w=285&h=160',
+  Acer: '/api/v1/media/2-acer.jpg?w=285&h=160',
+  Hp: '/api/v1/media/3-hp.jpg?w=285&h=160',
+  Asus: '/api/v1/media/4-asus.jpg?w=285&h=160',
+};

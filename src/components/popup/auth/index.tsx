@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, useState, memo } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 
 import { IAllStringProps } from 'utils/interface';
@@ -16,12 +16,12 @@ interface IProps {
   handleSignup: (props: IAllStringProps) => void;
 }
 
-const PopupAuthMemo: React.FC<IProps> = ({
+const PopupAuthMemo: FC<IProps> = ({
   handleClose,
   handleSignup,
   handleLogin,
 }) => {
-  const [tabName, setTabName] = React.useState(0);
+  const [tabName, setTabName] = useState(0);
 
   const tabSwitcher: any = {
     '0': (
@@ -48,4 +48,4 @@ const PopupAuthMemo: React.FC<IProps> = ({
   );
 };
 
-export const PopupAuth = React.memo(PopupAuthMemo);
+export const PopupAuth = memo(PopupAuthMemo);

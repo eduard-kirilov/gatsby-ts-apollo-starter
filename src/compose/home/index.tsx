@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { Grid, Button, Box } from '@material-ui/core';
@@ -21,7 +21,7 @@ import { Title5 } from 'components/typography';
 const { setPage } = actions;
 const { getPage, getPerPage, getDirection } = get;
 
-const ProductsComposeMemo: React.FC = () => {
+const ProductsComposeMemo: FC = () => {
   const page = useSelector(getPage);
   const perPage = useSelector(getPerPage);
   const direction = useSelector(getDirection);
@@ -107,4 +107,4 @@ const ProductsComposeMemo: React.FC = () => {
   );
 };
 
-export const ProductsCompose = React.memo(ProductsComposeMemo);
+export const ProductsCompose = memo(ProductsComposeMemo);

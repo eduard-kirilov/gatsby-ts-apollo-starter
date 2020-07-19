@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import {
   Grid,
   Paper,
@@ -18,7 +18,7 @@ import {
 import { ItemCompose } from './item';
 import { TableProductsCompose } from './table';
 
-const AdminComposeMemo = () => {
+const AdminComposeMemo: FC = () => {
   return (
     <>
       <Grid container spacing={4}>
@@ -41,4 +41,4 @@ const AdminComposeMemo = () => {
   );
 };
 
-export const AdminCompose = React.memo(AdminComposeMemo);
+export const AdminCompose = memo(AdminComposeMemo);

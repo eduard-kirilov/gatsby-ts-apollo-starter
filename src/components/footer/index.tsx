@@ -3,14 +3,14 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { Container, Grid } from '@material-ui/core';
 import { Logo } from 'components/logo';
 import { LinkAnyClearStyles } from 'components/link';
 
 import { Wrapper, Text, Box } from './styled';
 
-export const FooterMemo: React.FC = () => (
+export const FooterMemo: FC = () => (
   <Wrapper>
     <Container maxWidth="lg">
       <Grid container spacing={3}>
@@ -38,4 +38,4 @@ export const FooterMemo: React.FC = () => (
   </Wrapper>
 );
 
-export const Footer = React.memo(FooterMemo);
+export const Footer = memo(FooterMemo);

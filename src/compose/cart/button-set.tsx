@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { Box, Button } from '@material-ui/core';
 
@@ -12,7 +12,7 @@ import { resetCart } from 'stores/cart/selected/actions';
 interface IProps {
   handleResetData: () => void;
 }
-const ButtonSetMemo: React.FC<IProps> = ({ handleResetData }) => {
+const ButtonSetMemo: FC<IProps> = ({ handleResetData }) => {
   const dispatch = useDispatch();
 
   const handleCancel = () => {
@@ -29,4 +29,4 @@ const ButtonSetMemo: React.FC<IProps> = ({ handleResetData }) => {
   );
 };
 
-export const ButtonSet = React.memo(ButtonSetMemo);
+export const ButtonSet = memo(ButtonSetMemo);

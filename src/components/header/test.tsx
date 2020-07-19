@@ -3,7 +3,7 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-import * as React from 'react';
+import React, { FC } from 'react';
 import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
@@ -17,7 +17,7 @@ interface IHeaderProps {
 }
 
 describe('Header Container', () => {
-  const HeaderTest: React.FC<IHeaderProps> = ({ authorized, currentUser }) => {
+  const HeaderTest: FC<IHeaderProps> = ({ authorized, currentUser }) => {
     return (
       <ThemeProvider theme={theme}>
         <Header

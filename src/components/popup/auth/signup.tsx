@@ -3,7 +3,14 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import
+  React, {
+  FC,
+  MouseEvent,
+  ChangeEvent,
+  useState,
+  memo,
+} from 'react';
 
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { IAllStringProps } from 'utils/interface';
@@ -36,21 +43,21 @@ interface IShow {
   [key: string]: boolean,
 };
 
-export const Signup: React.FC<IProps> = ({
+const SignupMemo: FC<IProps> = ({
   handleClose,
   handleSignup,
   setTabName,
 }) => {
-  const [show, setShow] = React.useState<IShow>({
+  const [show, setShow] = useState<IShow>({
     password: false,
     confirmPassword: false,
   });
-  const [userData, setUserData] = React.useState({
+  const [userData, setUserData] = useState({
     email: '',
     password: '',
     confirmPassword: '',
   });
-  const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
   };
   const handleShow = (key: string) => {
@@ -59,7 +66,7 @@ export const Signup: React.FC<IProps> = ({
       [key]: !show[key]
     })
   }
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData({
       ...userData,
@@ -172,3 +179,5 @@ export const Signup: React.FC<IProps> = ({
     </>
   );
 };
+
+export const Signup = memo(SignupMemo);

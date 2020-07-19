@@ -3,8 +3,8 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
-import { IProduct, IAllStringProps } from 'utils/interface';
+import React, { FC, memo } from 'react';
+import { IProduct } from 'utils/interface';
 import { priceToStr, priceToNum, priceSumArr } from 'utils/helpers';
 
 import {
@@ -27,12 +27,12 @@ interface IProps {
   };
 }
 
-const TableCartMemo: React.FC<IProps> = ({
+const TableCartMemo: FC<IProps> = ({
   loading = false,
   products,
 }) => {
   const head = ['Id', 'Name', 'Price', 'Quantity', 'Amount'];
-  const { data = [], total = 0 } = products;
+  const { data = [] } = products;
 
   function sum(price: string, qty: number) {
     const amount = priceToNum(price) * qty;
@@ -77,4 +77,4 @@ const TableCartMemo: React.FC<IProps> = ({
   );
 };
 
-export const TableCart = React.memo(TableCartMemo);
+export const TableCart = memo(TableCartMemo);

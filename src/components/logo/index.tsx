@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { Button } from '@material-ui/core';
 
 import LogoLeft from 'images/logo-white.inline.svg';
@@ -16,7 +16,7 @@ import {
   LogoWrapper,
 } from './styles';
 
-export const LogoMemo: React.FC = () => {
+export const LogoMemo: FC = () => {
   return (
     <LinkLogo to="/">
       <Button color="inherit">
@@ -33,4 +33,4 @@ export const LogoMemo: React.FC = () => {
   );
 };
 
-export const Logo = React.memo(LogoMemo);
+export const Logo = memo(LogoMemo);

@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, ChangeEvent, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useQuery, useMutation } from '@apollo/client';
 
@@ -18,7 +18,7 @@ const { openUpProduct } = actions;
 const { setPage, setPerPage, setUpdateId, setDirection } = adminActions;
 const { getPage, getPerPage, getDirection } = adminGet;
 
-const TableProductsComposeMemo: React.FC = () => {
+const TableProductsComposeMemo: FC = () => {
   const page = useSelector(getPage);
   const perPage = useSelector(getPerPage);
   const direction = useSelector(getDirection);
@@ -60,7 +60,7 @@ const TableProductsComposeMemo: React.FC = () => {
   };
 
   const handleChangeRowsPerPage = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     dispatch(setPerPage(parseInt(e.target.value, 10)));
     dispatch(setPage(0));
@@ -104,4 +104,4 @@ const TableProductsComposeMemo: React.FC = () => {
   );
 };
 
-export const TableProductsCompose = React.memo(TableProductsComposeMemo);
+export const TableProductsCompose = memo(TableProductsComposeMemo);

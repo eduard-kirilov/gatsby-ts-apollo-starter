@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { useEffect, memo } from 'react';
 
 interface IProps {
   children: React.ReactNode;
@@ -13,11 +13,11 @@ export const InitMemo: React.FC<IProps> = ({
   children,
   handleMount,
 }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     handleMount();
-  });
+  }, []);
 
   return <>{children}</>;
 };
 
-export const Init = React.memo(InitMemo);
+export const Init = memo(InitMemo);

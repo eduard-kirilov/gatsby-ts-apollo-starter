@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Init } from 'components/init';
@@ -13,7 +13,7 @@ import { IChildren } from 'utils/interface';
 
 const { setPage, setPerPage } = actions;
 
-const InitComposeMemo: React.FC<IChildren> = ({ children }) => {
+const InitComposeMemo: FC<IChildren> = ({ children }) => {
   const dispatch = useDispatch();
 
   const handleMount = () => {
@@ -31,4 +31,4 @@ const InitComposeMemo: React.FC<IChildren> = ({ children }) => {
   );
 };
 
-export const InitCompose = React.memo(InitComposeMemo);
+export const InitCompose = memo(InitComposeMemo);

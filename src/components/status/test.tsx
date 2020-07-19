@@ -3,7 +3,7 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-import * as React from 'react';
+import React, { FC } from 'react';
 import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
@@ -11,7 +11,7 @@ import theme from 'styles/theme'
 import { LinearStatus } from './index';
 
 describe('LinearStatus Container', () => {
-  const LinearStatusTest: React.FC = () => {
+  const LinearStatusTest: FC = () => {
     return (
       <ThemeProvider theme={theme}>
         <LinearStatus />

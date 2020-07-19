@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useQuery, useMutation } from '@apollo/client';
 
@@ -24,7 +24,7 @@ const { closeUpProduct } = modalActions;
 const { getUpdateId, getPage, getPerPage, getDirection } = get;
 const { getUpProductModalsStatus } = modalGet;
 
-const PopupUpProductComposeMemo: React.FC = () => {
+const PopupUpProductComposeMemo: FC = () => {
   const page = useSelector(getPage);
   const perPage = useSelector(getPerPage);
   const updateId = useSelector(getUpdateId);
@@ -75,4 +75,4 @@ const PopupUpProductComposeMemo: React.FC = () => {
   );
 };
 
-export const PopupUpProductCompose = React.memo(PopupUpProductComposeMemo);
+export const PopupUpProductCompose = memo(PopupUpProductComposeMemo);

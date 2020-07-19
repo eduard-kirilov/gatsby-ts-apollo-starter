@@ -3,10 +3,16 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import
+  React, {
+  FC,
+  ChangeEvent,
+  useState,
+  memo,
+} from 'react';
 
 import { IAllStringProps } from 'utils/interface';
-import { selectList, selectUrl } from './url';
+import { selectList, selectUrl } from 'utils/helpers';
 import { InputLabel, Select, MenuItem } from '@material-ui/core';
 
 import {
@@ -23,12 +29,12 @@ interface IProps {
   product: IAllStringProps;
 }
 
-const PopupUpProductMemo: React.FC<IProps> = ({
+const PopupUpProductMemo: FC<IProps> = ({
   handleUpProduct,
   handleClose,
   product,
 }) => {
-  const [productData, setProductData] = React.useState({
+  const [productData, setProductData] = useState({
     _id: product._id,
     price: product.price,
     subtitle: product.subtitle,
@@ -37,10 +43,8 @@ const PopupUpProductMemo: React.FC<IProps> = ({
       ([key, item]) => item === product.url,
     )[0][0],
   });
-  const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-  };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProductData({
       ...productData,
@@ -124,4 +128,4 @@ const PopupUpProductMemo: React.FC<IProps> = ({
   );
 };
 
-export const PopupUpProduct = React.memo(PopupUpProductMemo);
+export const PopupUpProduct = memo(PopupUpProductMemo);

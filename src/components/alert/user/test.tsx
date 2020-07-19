@@ -3,7 +3,7 @@
 * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
-import * as React from 'react';
+import React, { FC } from 'react';
 import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
@@ -12,11 +12,14 @@ import { AlertUser } from './index';
 
 
 describe('AlertUser Container', () => {
-  const AlertUserTest: React.FC = () => {
+  const AlertUserTest: FC = () => {
+    const e: any  = {};
+    const type: string = 'test';
     return (
       <ThemeProvider theme={theme}>
         <AlertUser
-          loading={false}
+          openAlert={false}
+          handleClose={(e, type) => {}}
         />
       </ThemeProvider>
     );

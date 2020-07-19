@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC } from 'react';
 import { shallow } from 'enzyme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
@@ -12,7 +12,7 @@ import { TableProducts } from './index';
 import { IProducts } from 'utils/interface';
 
 describe('TableProducts', () => {
-  const TableProductsTest: React.FC<IProducts> = ({ products = { data: [] } }) => {
+  const TableProductsTest: FC<IProducts> = ({ products = { data: [] } }) => {
     return (
       <ThemeProvider theme={theme}>
         <TableProducts

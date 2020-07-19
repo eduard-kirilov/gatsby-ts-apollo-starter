@@ -3,7 +3,7 @@
  * https://github.com/eduard-kirilov/gatsby-ts-apollo-starter
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
-import * as React from 'react';
+import React, { FC, memo } from 'react';
 
 import { InitCompose } from 'compose/home/init';
 import { LayoutWrapper } from 'compose/layout';
@@ -14,7 +14,7 @@ import { SEO } from 'components/seo';
 import { AuthContext } from 'utils/authorize';
 import { IAutorize } from 'utils/interface';
 
-const Home: React.FC = () => (
+const Home: FC = () => (
   <InitCompose>
     <AuthContext.Consumer>
       {(auth: IAutorize) => (
@@ -27,4 +27,4 @@ const Home: React.FC = () => (
   </InitCompose>
 );
 
-export default  React.memo(Home);
+export default  memo(Home);
