@@ -3,7 +3,7 @@
     <img alt="React" title="React" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" width="60" />
   </a>
   <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" title="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+    <img alt="Gatsby" title="Gatsby" src="https://avatars1.githubusercontent.com/u/12551863?s=200&v=4" width="60" />
   </a>
   <a href="https://nodejs.org/">
     <img alt="Jest" title="Jest" src="https://cdn.freebiesupply.com/logos/large/2x/jest-logo-png-transparent.png" width="50"/>
