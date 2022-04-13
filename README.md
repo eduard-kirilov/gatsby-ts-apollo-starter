@@ -28,10 +28,6 @@
 </p>
 
 <img alt="demo" src="./src/images/demo.gif" max-width="100"/>
-
-## Demo:
-- **Frontend: [ph0en1x.ru](https://ph0en1x.ru/).**
-- **Backend: [ph0en1x.ru/graphqll](https://ph0en1x.ru/graphql).**  
   
 
 ## ⭐️ Advantage
