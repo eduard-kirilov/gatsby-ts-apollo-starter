@@ -73,6 +73,9 @@ module.exports = {
           include: /\.inline\.svg$/
         }
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-material-ui`,
+    },
   ],
 }

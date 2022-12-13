@@ -4,7 +4,7 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import styled from 'styled-components';
-import { Theme } from '@material-ui/core/styles';
+import { Theme } from '@mui/material';
 
 export const ButtonClearStyles = styled.button<{ theme: Theme }>`
   font-family: ${({ theme }) => theme.typography.fontFamily};

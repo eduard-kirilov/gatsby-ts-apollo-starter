@@ -6,7 +6,7 @@
 import React, { FC, memo } from 'react';
 import { IChildren } from 'utils/interface';
 
-import { Backdrop, Fade } from '@material-ui/core';
+import { Backdrop, Fade } from '@mui/material';
 import { ModalStyled, Wrapper } from './styles';
 
 interface IProps {

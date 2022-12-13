@@ -11,9 +11,9 @@ import {
   IconButton,
   Menu,
   MenuItem,
-} from '@material-ui/core';
+} from '@mui/material';
 
-import { AccountCircle, MoreVert, ShoppingCart } from '@material-ui/icons';
+import { AccountCircle, MoreVert, ShoppingCart } from '@mui/icons-material';
 import { IAllStringProps } from 'utils/interface';
 
 import { LinkClearStyles } from 'components/link';

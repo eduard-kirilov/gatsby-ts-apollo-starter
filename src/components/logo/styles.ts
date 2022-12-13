@@ -4,7 +4,7 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import styled, { css } from 'styled-components';
-import { Theme } from '@material-ui/core/styles';
+import { Theme } from '@mui/material';
 import { Link as LinkGatsby } from 'gatsby';
 
 export const LogoWrapper = styled.div<{ theme: Theme }>`

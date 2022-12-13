@@ -4,7 +4,7 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import styled from 'styled-components';
-import { ListItemText } from '@material-ui/core';
+import { ListItemText } from '@mui/material';
 import { Title5 } from 'components/typography';
 
 export const Title = styled(Title5)`

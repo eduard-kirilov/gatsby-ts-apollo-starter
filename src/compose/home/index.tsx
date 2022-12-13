@@ -6,8 +6,8 @@
 import React, { FC, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
-import { Grid, Button, Box } from '@material-ui/core';
-import { CloudDownload } from '@material-ui/icons';
+import { Grid, Button, Box } from '@mui/material';
+import { CloudDownload } from '@mui/icons-material';
 
 import { PRODUCTS_QUERY } from 'gql/query';
 import { addToCart } from 'stores/cart/selected/actions';

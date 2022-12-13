@@ -4,7 +4,7 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import React, { FC, memo } from 'react';
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid } from '@mui/material';
 import { Logo } from 'components/logo';
 import { LinkAnyClearStyles } from 'components/link';
 

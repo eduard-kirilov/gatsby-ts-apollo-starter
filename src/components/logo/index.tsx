@@ -4,7 +4,7 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import React, { FC, memo } from 'react';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 import LogoLeft from 'images/logo-white.inline.svg';
 import LogoRight from 'images/logo-right.inline.svg';

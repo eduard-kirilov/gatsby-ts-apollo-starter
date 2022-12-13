@@ -4,7 +4,7 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import * as React from 'react';
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import { ServerStyleSheets } from '@mui/styles';
 
 const globalLeak = new Map();
 

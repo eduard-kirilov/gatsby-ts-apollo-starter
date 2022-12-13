@@ -6,7 +6,7 @@
 import React, { FC, memo } from 'react';
 import { IProduct } from 'utils/interface';
 
-import { Edit, Delete } from '@material-ui/icons';
+import { Edit, Delete } from '@mui/icons-material';
 
 import {
   Tooltip,
@@ -19,7 +19,7 @@ import {
   IconButton,
   TableSortLabel,
   TablePagination,
-} from '@material-ui/core';
+} from '@mui/material';
 import { LinearStatus } from 'components/status';
 import { TableStyled, ButtonWrapper } from './styles';
 

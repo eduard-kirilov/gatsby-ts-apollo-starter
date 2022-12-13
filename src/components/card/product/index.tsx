@@ -7,7 +7,7 @@ import React, { FC, memo } from 'react';
 
 import { IProduct } from 'utils/interface';
 
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button } from '@mui/material';
 import { Title5 } from 'components/typography';
 import { cropText } from 'utils/helpers';
 import {

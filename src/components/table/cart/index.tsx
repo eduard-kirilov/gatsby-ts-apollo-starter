@@ -14,7 +14,7 @@ import {
   TableHead,
   TableRow,
   Paper,
-} from '@material-ui/core';
+} from '@mui/material';
 import { LinearStatus } from 'components/status';
 import { TableStyled, TbleFooter, Text, Amount } from './styles';
 

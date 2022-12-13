@@ -12,7 +12,7 @@ import
   memo,
 } from 'react';
 
-import { Visibility, VisibilityOff } from '@material-ui/icons';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { IAllStringProps } from 'utils/interface';
 
 import {
@@ -21,7 +21,7 @@ import {
   InputLabel,
   OutlinedInput,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import {
   ButtonClear,
@@ -89,7 +89,6 @@ const LoginMemo: FC<IProps> = ({
             type={showPassword ? 'text' : 'password'}
             value={userData.password}
             onChange={handleChange}
-            labelWidth={73}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton

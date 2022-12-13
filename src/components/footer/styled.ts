@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Theme } from '@material-ui/core/styles';
+import { Theme } from '@mui/material';
 import { Text1 } from 'components/typography';
 
 interface IBox {

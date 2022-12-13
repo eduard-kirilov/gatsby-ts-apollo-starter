@@ -4,14 +4,14 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import styled from 'styled-components';
-import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import { Title5, TextDefault } from 'components/typography';
 
 import {
   Card,
   CardMedia,
   CardContent,
-} from '@material-ui/core';
+  Theme,
+} from '@mui/material';
 
 export const CardStyled = styled(Card)`
   height: 100%;
@@ -32,13 +32,13 @@ export const CardContentStyled = styled(CardContent)`
   flex-grow: 1;
 `;
 export const CardFooter = styled.div<{ theme: Theme }>`
-  padding: ${({ theme }) => theme.spacing(2)}px !important;
+  padding: ${({ theme }) => theme.spacing(2)} !important;
   display: flex;
   justify-content: space-between;
 `;
 export const Title = styled(Title5)<{ theme: Theme }>`
-  margin-bottom: ${({ theme }) => theme.spacing(2)}px;
+  margin-bottom: ${({ theme }) => theme.spacing(2)};
 `;
 export const Subtitle = styled(TextDefault)<{ theme: Theme }>`
-  margin-bottom: ${({ theme }) => theme.spacing(2)}px;
+  margin-bottom: ${({ theme }) => theme.spacing(2)};
 `;

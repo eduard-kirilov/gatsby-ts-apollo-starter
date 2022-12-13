@@ -5,7 +5,7 @@
 */
 import React, { FC } from 'react';
 import { shallow } from 'enzyme';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
 import theme from 'styles/theme'
 import { LinearStatus } from './index';

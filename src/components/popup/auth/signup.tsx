@@ -12,7 +12,7 @@ import
   memo,
 } from 'react';
 
-import { Visibility, VisibilityOff } from '@material-ui/icons';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { IAllStringProps } from 'utils/interface';
 
 import {
@@ -21,7 +21,7 @@ import {
   InputLabel,
   OutlinedInput,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import {
   ButtonClear,
@@ -106,7 +106,6 @@ const SignupMemo: FC<IProps> = ({
             type={show.password ? 'text' : 'password'}
             value={userData.password}
             onChange={handleChange}
-            labelWidth={73}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -138,7 +137,6 @@ const SignupMemo: FC<IProps> = ({
             type={show.confirmPassword ? 'text' : 'password'}
             value={userData.confirmPassword}
             onChange={handleChange}
-            labelWidth={170}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton

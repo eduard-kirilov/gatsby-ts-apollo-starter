@@ -13,7 +13,7 @@ import
 
 import { IAllStringProps } from 'utils/interface';
 import { selectList, selectUrl } from 'utils/helpers';
-import { InputLabel, Select, MenuItem } from '@material-ui/core';
+import { InputLabel, Select, MenuItem } from '@mui/material';
 
 import {
   ButtonStyled,

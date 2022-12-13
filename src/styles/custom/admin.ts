@@ -4,7 +4,7 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import styled from 'styled-components';
-import { ListItemText } from '@material-ui/core';
+import { ListItemText } from '@mui/material';
 
 export const ListItemTextStyled = styled(ListItemText)`
   &.MuiListItemText-root {

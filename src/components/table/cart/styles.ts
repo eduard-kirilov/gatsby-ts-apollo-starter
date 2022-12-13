@@ -4,8 +4,7 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import styled from 'styled-components';
-import { Title4 } from 'components/typography';
-import { Table } from '@material-ui/core';
+import { Table } from '@mui/material';
 
 export const TableStyled = styled(Table)`
   min-width: 750px;

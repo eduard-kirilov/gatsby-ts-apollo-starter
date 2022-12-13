@@ -4,9 +4,7 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import styled from 'styled-components';
-import { Theme } from '@material-ui/core/styles';
-
-import { Container } from '@material-ui/core';
+import { Theme, Container } from '@mui/material';
 
 export const ContainerStyled = styled(Container)<{ theme: Theme }>`
   margin-top: ${({ theme }) => theme.mixins.toolbar.minHeight + 60}px;

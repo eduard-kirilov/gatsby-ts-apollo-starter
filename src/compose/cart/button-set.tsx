@@ -5,7 +5,7 @@
  */
 import React, { FC, memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button } from '@mui/material';
 
 import { resetCart } from 'stores/cart/selected/actions';
 

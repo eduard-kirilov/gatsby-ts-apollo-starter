@@ -12,15 +12,12 @@ import {
 } from '@apollo/client';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import {
-  ThemeProvider as MuiThemeProvider,
-  StylesProvider,
-} from '@material-ui/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { CssBaseline, StyledEngineProvider } from '@mui/material';
 import fetch from 'isomorphic-fetch';
 import PropTypes from 'prop-types';
 
 import { AuthProvider } from 'utils/authorize';
-import { CssBaseline } from '@material-ui/core';
 import { store } from './configureStore';
 import theme from 'styles/theme';
 
@@ -38,12 +35,12 @@ export function GatsbyTopLayout({ children }) {
     <Provider store={store}>
       <ApolloProvider client={client}>
         <MuiThemeProvider theme={theme}>
-          <StylesProvider injectFirst>
+          <StyledEngineProvider injectFirst>
             <ThemeProvider theme={theme}>
               <CssBaseline />
               <AuthProvider>{children}</AuthProvider>
             </ThemeProvider>
-          </StylesProvider>
+          </StyledEngineProvider>
         </MuiThemeProvider>
       </ApolloProvider>
     </Provider>

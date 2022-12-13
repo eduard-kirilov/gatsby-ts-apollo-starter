@@ -4,8 +4,7 @@
  * Copyright (c) 2020 Eduard Kirilov | MIT License
  */
 import React, { FC, SyntheticEvent, memo } from 'react';
-import { Snackbar } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import { Snackbar, Alert } from '@mui/material';
 
 interface IProps {
   openAlert?: boolean;

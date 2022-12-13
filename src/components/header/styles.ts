@@ -4,10 +4,8 @@
 * Copyright (c) 2020 Eduard Kirilov | MIT License
 */
 import styled, { css } from 'styled-components';
-import { Theme } from '@material-ui/core/styles';
+import { Theme, AppBar } from '@mui/material';
 import { Link as LinkGatsby } from 'gatsby';
-
-import { AppBar } from '@material-ui/core';
 
 export const HeaderWrapper = styled.div`
   display: flex;

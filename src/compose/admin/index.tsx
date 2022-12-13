@@ -8,7 +8,7 @@ import {
   Grid,
   Paper,
   List,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { Title5 } from 'components/typography';
 import {

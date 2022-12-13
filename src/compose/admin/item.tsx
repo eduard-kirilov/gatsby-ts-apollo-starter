@@ -5,8 +5,8 @@
  */
 import React, { FC, memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { ListItem, ListItemIcon } from '@material-ui/core';
-import { Add } from '@material-ui/icons';
+import { ListItem, ListItemIcon } from '@mui/material';
+import { Add } from '@mui/icons-material';
 
 import { actions } from 'stores/modals';
 import { ListItemTextStyled } from 'styles/custom/admin';
